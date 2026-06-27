@@ -1,0 +1,19 @@
+[Unit]
+Description=OCB logs collector with OpAMP extension
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+EnvironmentFile={{ collector_env_remote_path }}
+ExecStart={{ ocb_collector_binary_remote_path }} --config={{ collector_supervised_config }}
+Restart=always
+RestartSec=5
+User=root
+Group=root
+LimitNOFILE=65536
+StandardOutput=append:/var/log/opamp-poc/otelcol-logs-opamp.log
+StandardError=append:/var/log/opamp-poc/otelcol-logs-opamp.log
+
+[Install]
+WantedBy=multi-user.target

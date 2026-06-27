@@ -1,0 +1,9 @@
+scenario,status,time_to_exit_seconds,data_path_downtime_seconds,secrets_replaced,stale_old_control_plane,recovery_seconds,maintainer_friction,evidence_path,notes
+fleet-to-opamp,documented-from-prior-and-stale-ui,,not-measured,Fleet OpAMP auth header,yes,,medium-high,exit-fleet-to-opamp.md,Fleet collector was already stopped; Fleet UI showed stale offline rows.
+bindplane-to-opamp,executed,<1,not-measurable,Bindplane secret key to OPAMP_AUTH_TOKEN,yes,,medium-high,exit-bindplane-to-opamp.md,BDOT had minimal nop config; supervisor-managed OCB started immediately and exported to Elastic.
+opamp-token-rotation,document-only,,,,,,,secrets-catalog.md,
+opamp-invalid-token,executed,,0,OPAMP_AUTH_TOKEN changed to invalid placeholder,n/a,,critical,secrets-catalog.md,Agent still connected and inventory refreshed; server does not enforce Authorization header.
+opamp-go-outage,executed,,0,none,n/a,25,high,control-plane-outage.md,Elastic received 1898 events during outage window; inventory refreshed about 25s after restart.
+fleet-opamp-outage,not-rerun,,not-measured,none,yes,,medium-high,control-plane-outage.md,Fleet collector was already inactive; UI showed stale offline rows.
+bindplane-opamp-outage,covered-by-exit,,not-measurable,Bindplane secret key to OPAMP_AUTH_TOKEN,yes,,high,control-plane-outage.md,BDOT stopped and Bindplane row became disconnected; no Elastic baseline from BDOT.
+infra-destroy,executed,,,,n/a,,n/a,teardown-summary.md,Terraform destroyed 6 resources; Hetzner project lab server and firewall counts are zero.

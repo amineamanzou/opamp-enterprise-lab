@@ -1,0 +1,2 @@
+133692 bash -c pgrep -af "otelcol-contrib --config /opt/elastic-fleet-otel-only/scale" || true; systemctl is-active otelcol-fleet-opamp
+active

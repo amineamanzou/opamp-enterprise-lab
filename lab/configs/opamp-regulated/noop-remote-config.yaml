@@ -1,0 +1,6 @@
+# Reset remote config for regulated observability runs.
+#
+# The vanilla supervisor merges this fragment with the local collector config.
+# Keep it intentionally empty at the component level so stale day-2 operation
+# fragments do not create incompatible pipelines against the regulated config.
+processors: {}

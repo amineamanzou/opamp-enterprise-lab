@@ -1,0 +1,20 @@
+{
+  "window": "now-15m",
+  "total": {
+    "value": 10000,
+    "relation": "gte"
+  },
+  "by_service": [
+    {"service": "opamp-poc-host-logs", "count": 393023},
+    {"service": "otelcol-logs-opamp", "count": 6622},
+    {"service": "opamp-poc-host", "count": 375}
+  ],
+  "by_dataset": [
+    {"dataset": "infra.host.otel", "count": 376642},
+    {"dataset": "security.host.otel", "count": 16380},
+    {"dataset": "observability.collector.otel", "count": 3959},
+    {"dataset": "metrics.collector.otel", "count": 2649},
+    {"dataset": "hostmetricsreceiver.otel", "count": 374},
+    {"dataset": "service_summary.1m.otel", "count": 16}
+  ]
+}

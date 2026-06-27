@@ -1,0 +1,6 @@
+---
+- name: Prepare OpAMP server and evidence host
+  hosts: opamp_server
+  become: true
+  roles:
+    - opamp_server

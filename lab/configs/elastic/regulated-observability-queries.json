@@ -1,0 +1,59 @@
+{
+  "data_views": [
+    {"name": "Regulated Logs", "title": "logs-*-*", "time_field": "@timestamp"},
+    {"name": "Regulated Metrics", "title": "metrics-*-*", "time_field": "@timestamp"}
+  ],
+  "kql": {
+    "kubernetes_audit": "data_stream.dataset: \"security.kubernetes_audit.otel\"",
+    "host_security": "data_stream.dataset: \"security.host.otel\"",
+    "infra_logs": "data_stream.dataset: (\"infra.host.otel\" or \"infra.kubernetes.otel\")",
+    "host_metrics": "data_stream.dataset: (\"hostmetricsreceiver.otel\" or \"metrics.host.otel\")",
+    "kubernetes_node_metrics": "data_stream.dataset: (\"kubeletstatsreceiver.otel\" or \"metrics.kubernetes_node.otel\")",
+    "kubernetes_state_metrics": "data_stream.dataset: \"k8sclusterreceiver.otel\"",
+    "collector_logs": "data_stream.dataset: \"observability.collector.otel\"",
+    "collector_metrics": "data_stream.dataset: \"metrics.collector.otel\"",
+    "collector_export_failures": "data_stream.dataset: \"metrics.collector.otel\" and otelcol_exporter_failed_*: *"
+  },
+  "suggested_panels": [
+    {
+      "title": "Kubernetes audit events by verb",
+      "data_view": "Regulated Logs",
+      "query": "data_stream.dataset: \"security.kubernetes_audit.otel\"",
+      "breakdown_field": "attributes.verb"
+    },
+    {
+      "title": "Kubernetes audit events by user",
+      "data_view": "Regulated Logs",
+      "query": "data_stream.dataset: \"security.kubernetes_audit.otel\"",
+      "breakdown_field": "attributes.user.username"
+    },
+    {
+      "title": "Kubernetes audit events by resource",
+      "data_view": "Regulated Logs",
+      "query": "data_stream.dataset: \"security.kubernetes_audit.otel\"",
+      "breakdown_field": "attributes.objectRef.resource"
+    },
+    {
+      "title": "Host authentication/security events",
+      "data_view": "Regulated Logs",
+      "query": "data_stream.dataset: \"security.host.otel\"",
+      "breakdown_field": "resource.attributes.host.name"
+    },
+    {
+      "title": "Host CPU utilization",
+      "data_view": "Regulated Metrics",
+      "query": "data_stream.dataset: (\"hostmetricsreceiver.otel\" or \"kubeletstatsreceiver.otel\" or \"metrics.host.otel\" or \"metrics.kubernetes_node.otel\") and metrics.system.cpu.utilization: *"
+    },
+    {
+      "title": "Collector sent and failed telemetry",
+      "data_view": "Regulated Metrics",
+      "query": "data_stream.dataset: \"metrics.collector.otel\" and otelcol_exporter_*: *"
+    },
+    {
+      "title": "Collector logs by role",
+      "data_view": "Regulated Logs",
+      "query": "data_stream.dataset: \"observability.collector.otel\"",
+      "breakdown_field": "resource.attributes.collector.role"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "started_at": "2026-06-19T22:48:50Z",
+  "change": "OPAMP_AUTH_TOKEN replaced with invalid placeholder on host-agent before supervisor restart",
+  "collector_health": {
+    "first_available_at": "2026-06-19T22:48:55Z",
+    "status": "Server available"
+  },
+  "opamp_inventory_after_restart": {
+    "id": "opamp-poc-host-agent",
+    "health": "StatusOK",
+    "remote_config_status": "RemoteConfigStatuses_APPLIED",
+    "updated_at": "2026-06-19T22:49:51.190237344Z"
+  },
+  "opamp_stats_after_restart": {
+    "agents": 10022,
+    "connected_agents": 0,
+    "connections": 0,
+    "collected_at": "2026-06-19T22:50:07.943337615Z"
+  },
+  "finding": "The current OpAMP Go server does not enforce the bearer token sent by agents."
+}

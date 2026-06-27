@@ -1,0 +1,359 @@
+viewport: 1924x1987
+page: 1924x1987
+scroll: (0, 0)
+[291]<div id=kibana-body />
+	[343]<div />
+		[338]<span />
+			[335]<a />
+				*[2684]<svg role=img aria-label=Logo Elastic /> <!-- SVG content collapsed -->
+	[417]<div />
+		[380]<div />
+			[466]<div id=spcMenuPopover />
+				[465]<button aria-expanded=false aria-label=Navigation dans les espaces title=Default />
+					[813]<div aria-label=Default role=img title=Default />
+	[418]<div />
+	[383]<button aria-expanded=false title=<redacted-observability-project> />
+		<redacted-observability-project>
+		[488]<svg role=img aria-label=- Cliquer sur ce bouton affiche/masque une fenêtre contextuelle. /> <!-- SVG content collapsed -->
+	[420]<li />
+		[1333]<a title=Fleet />
+			Fleet
+	[1334]<li />
+		[1332]<span title=Agents />
+			Agents
+	[352]<div />
+		[421]<div />
+			[403]<div />
+				[445]<button aria-label=Affichez la barre de recherche />
+	[353]<div />
+		[351]<div id=headerHelpMenu />
+			[350]<button aria-expanded=false aria-label=Menu d'aide />
+	[423]<div />
+		[406]<div />
+			[776]<span id=i<redacted-uuid>-wrapper />
+				[775]<button />
+					[1017]<svg role=img aria-label=Submit feedback /> <!-- SVG content collapsed -->
+	[407]<div />
+		<svg /> <!-- SVG content collapsed -->
+		[798]<button />
+			Agent IA
+	[426]<div />
+		[416]<div />
+			[415]<div />
+				[414]<div />
+					[413]<button aria-expanded=false aria-label=Menu Compte />
+						[490]<div aria-label=<redacted-email> role=img title=<redacted-email> />
+	[494]<a id=observability_project_nav aria-label=Observability page d’accueil />
+		Observability
+	[498]<a id=discover />
+		Discover
+	[503]<a id=dashboards />
+		Tableaux de bord
+	[508]<a id=workflows />
+		Workflows
+	[516]<a id=observability-overview:alerts />
+		Alertes
+	[521]<a id=observability-overview:cases />
+		Cas
+	[526]<a id=slo />
+		Slo
+	[531]<a id=streams />
+		Flux
+	[536]<a id=applications aria-expanded=false />
+		Applications
+	[542]<a id=metrics aria-expanded=false />
+		Infrastructure
+	[548]<a id=agent_builder />
+		Agents
+	[553]<a id=machine_learning-landing aria-expanded=false />
+		Machine Learning
+	[559]<a id=otherTools aria-expanded=false />
+		Autres outils
+	[576]<div />
+		[575]<a aria-label=Ajouter des données />
+	[581]<div />
+		[580]<a aria-label=Outils de développeur />
+	[585]<a aria-label=Gestion des données aria-expanded=false />
+	[592]<div />
+		[590]<a aria-label=Administration et paramètres aria-expanded=false />
+		[811]<svg /> <!-- SVG content collapsed -->
+	[604]<div />
+		[598]<span id=:r1m:euiToolTipAnchor />
+			[597]<button aria-label=Réduire le menu de navigation aria-expanded=true />
+	Gestion des données
+	Ingestion et intégrations
+	[614]<a id=integrations />
+		Intégrations
+	[618]<a id=fleet />
+		Fleet
+	[622]<a id=management:ingest_pipelines />
+		Pipelines d'ingestion
+	[626]<a id=management:pipelines />
+		Pipelines logstash
+	[630]<a id=management:content_connectors />
+		Content Connectors
+	Index et flux de données
+	[641]<a id=management:index_management />
+		Gestion des index
+	[645]<a id=management:transform />
+		Transformations
+	[649]<a id=management:data_quality />
+		Qualité de l’ensemble de données
+	[653]<a id=management:data_usage />
+		Utilisation des données
+	|scroll element|<div id=app-main-scroll /> (0.0 pages above, 0.0 pages below)
+		Donner un retour
+		[301]<div />
+			<svg /> <!-- SVG content collapsed -->
+			Nous avons ajouté de nouvelles autorisations vous permettant de mieux définir qui peut visionner ou modifier les agents, les politiques et les paramètres de Fleet.
+			En savoir plus.
+			Fleet
+			Gestion centralisée des agents Elastic Agent.
+			Agents
+			Politiques d'agent
+			Jetons d'enregistrement
+			Désinstaller les jetons
+			Flux de données
+			Paramètres
+			Activité des agents
+			Ajouter
+			Statut
+			Balises
+			Politique d'agent
+			Mise à niveau disponible
+			Affichage de 0 agent
+			<svg role=img aria-label=Infos /> <!-- SVG content collapsed -->
+			<svg role=presentation /> <!-- SVG content collapsed -->
+			Sain
+			<svg role=presentation /> <!-- SVG content collapsed -->
+			Défectueux
+			<svg role=presentation /> <!-- SVG content collapsed -->
+			Abandonné
+			<svg role=presentation /> <!-- SVG content collapsed -->
+			Mise à jour
+			<svg role=presentation /> <!-- SVG content collapsed -->
+			Hors ligne
+			<svg role=presentation /> <!-- SVG content collapsed -->
+			Inactif
+			<svg role=presentation /> <!-- SVG content collapsed -->
+			Désenregistré
+			<svg role=presentation /> <!-- SVG content collapsed -->
+			Désinstallé
+			<svg role=presentation /> <!-- SVG content collapsed -->
+			Statut
+			Hôte
+			Politique d'agent
+			CPU
+			<svg /> <!-- SVG content collapsed -->
+			Mémoire
+			<svg /> <!-- SVG content collapsed -->
+			Dernière activité
+			Version
+			Actions
+			Aucun agent enregistré
+			Ajouter un agent
+[281]<div />
+[1372]<div />
+	[1386]<div />
+	[1395]<div />
+		[1393]<div />
+		[1394]<div />
+	Agents à mise à niveau automatique
+	Sélectionnez votre politique et configurez les versions de l'agent cibles pour les mises à niveau automatiques.
+	[1377]<button />
+		Parfait
+	[1388]<div />
+[1422]<div />
+*[1766]<div />
+*[1767]<div />
+*[1768]<div />
+	*[1913]<div />
+	*[1910]<div role=dialog />
+		*[1906]<button aria-label=Fermer cette boîte de dialogue />
+		Ajouter un collecteur
+		Surveiller les collecteurs OpenTelemetry dans Fleet avec OpAMP.
+		|scroll element|<div /> (0.0 pages above, 0.7 pages below)
+			*[1776]<span />
+			Copier la configuration OpAMP
+			Utilisez cette configuration OpAMP pour surveiller votre collecteur :
+			Collector group display name
+			|SHADOW(open)|*[1780]<input type=text id=:r2k: value=OTel Collector Group />
+			Human-readable label for this group of collectors, e.g. "Production West".
+			Collector group
+			elastic.collector.group:
+			|SHADOW(open)|*[1791]<input type=text id=:r2l: value=otel-collector-group />
+			Machine-friendly key used for filtering in Fleet UI. Auto-derived from the display name above. If overriding, use only lowercase letters, numbers, and hyphens.
+			Service name
+			|SHADOW(open)|*[1800]<input type=text id=:r2m: value=otel-collector-group />
+			Identifies this collector in Elasticsearch as service.name. Auto-derived from the display name above. If overriding, use only lowercase letters, numbers, and hyphens.
+			Collector display name
+			|SHADOW(open)|*[1808]<input type=text id=:r2n: value=${env:HOSTNAME} />
+			Per-instance identity that distinguishes this collector within the group, e.g. "prod-collector-01". Defaults to HOSTNAME environment variable.
+			Config name
+			config.name:
+			|SHADOW(open)|*[1818]<input type=text id=:r2o: />
+			Optional. Short name for this collector configuration, e.g. "webserver-logs". Used as the config label in Fleet.
+			Config description
+			|SHADOW(open)|*[1827]<textarea id=:r2p: />
+			Optional. A human-readable summary of what this collector does. Appears as a comment header in the effective config view.
+			Tags
+			|SHADOW(open)|*[1834]<input type=text id=:r2q: />
+			Optional. Comma-separated labels, e.g. prod,west-region,k8s. Tags appear in the Fleet view filter and as resource attributes on all self-emitted metrics and logs in Elasticsearch, making them queryable via ES|QL.
+			Environment
+			|SHADOW(open)|*[1841]<input type=text id=:r2r: />
+			Optional. Deployment tier following OTel semconv (deployment.environment.name). Appears alongside tags in the Fleet view and on self-emitted telemetry.
+			Either use an existing managed OTLP API key and replace
+			${API_KEY}
+			in the
+			Authorization
+			header of the config below, or click the button to generate a new one. Refer to the
+			*[2037]<a />
+				Managed OTLP Endpoint (mOTLP) documentation
+			for more details.
+			*[2040]<button />
+				Create API key
+			*[2043]<button />
+				Download config
+			*[2298]<pre />
+				extensions
+				*[2048]<span />
+					opamp
+				*[2050]<span />
+					server
+				*[2052]<span />
+					http
+				endpoint
+				"<redacted-fleet-opamp-url>"
+				headers
+				Authorization
+				"ApiKey <redacted>"
+				instance_uid
+				"<redacted-uuid>"
+				agent_description
+				non_identifying_attributes
+				elastic.collector.group_name
+				"OTel Collector Group"
+				elastic.collector.group
+				"otel-collector-group"
+				elastic.display.name
+				"${env:HOSTNAME}"
+				receivers
+				*[2080]<span />
+					otlp
+				protocols
+				*[2084]<span />
+					grpc
+				endpoint
+				"0.0.0.0:4317"
+				exporters
+				otlp/managed
+				endpoint
+				"<redacted-elastic-otlp-endpoint>"
+				headers
+				Authorization
+				"ApiKey ${API_KEY}"
+				*[2101]<span />
+					otlp
+				endpoint
+				"http://localhost:4317"
+				*[2106]<span />
+					tls
+				insecure
+				*[2110]<span />
+					true
+				service
+				extensions
+				"opamp"
+				pipelines
+				*[2119]<span />
+					logs
+				receivers
+				*[2124]<span />
+					"otlp"
+				exporters
+				"otlp/managed"
+				metrics
+				receivers
+				*[2134]<span />
+					"otlp"
+				exporters
+				"otlp/managed"
+				*[2139]<span />
+					traces
+				receivers
+				*[2144]<span />
+					"otlp"
+				exporters
+				"otlp/managed"
+				telemetry
+				resource
+				elastic.collector.group_name
+				"OTel Collector Group"
+				elastic.collector.group
+				"otel-collector-group"
+				service.namespace
+				"otel-collector-group"
+				service.name
+				"otel-collector-group"
+				service.instance.id
+				"${env:HOSTNAME}"
+				metrics
+				readers
+				periodic
+				exporter
+				*[2177]<span />
+					otlp
+				protocol
+				*[2181]<span />
+					"grpc"
+				endpoint
+				"http://localhost:4317"
+				*[2185]<span />
+					logs
+				processors
+				*[2190]<span />
+					batch
+				exporter
+				*[2194]<span />
+					otlp
+				protocol
+				*[2198]<span />
+					"grpc"
+				endpoint
+				"http://localhost:4317"
+				*[2202]<span />
+					traces
+				processors
+				*[2207]<span />
+					batch
+				exporter
+				*[2211]<span />
+					otlp
+				protocol
+				*[2215]<span />
+					"grpc"
+				endpoint
+				"http://localhost:4317"
+			*[2675]<div />
+				*[2674]<div />
+					*[2672]<span id=i<redacted-uuid>-wrapper />
+						*[2671]<button aria-label=Copier />
+			*[1867]<span />
+			Exécutez votre collecteur
+			Exécutez votre collecteur. La commande suivante utilise le collecteur OTel contrib :
+			*[1878]<pre />
+				./otelcol
+				contrib
+				config ./otel
+				opamp.yaml
+			*[1995]<div />
+				*[1994]<div />
+					*[1992]<span id=i<redacted-uuid>-wrapper />
+						*[1991]<button aria-label=Copier />
+			*[1886]<span />
+			Confirmer la connexion du collecteur
+			*[1888]<span aria-label=Chargement />
+			Écoute du collecteur
+		*[1904]<button />
+			Fermer
+	*[1915]<div />

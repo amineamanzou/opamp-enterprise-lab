@@ -1,0 +1,47 @@
+---
+ansible_user: root
+
+lab_base_packages:
+  - ca-certificates
+  - curl
+  - htop
+  - jq
+  - lsof
+  - tar
+  - unzip
+
+opamp_listen_address: "[::]"
+opamp_grpc_port: 4320
+opamp_http_port: 4321
+opamp_data_dir: /var/lib/opamp-poc
+opamp_config_dir: /etc/opamp-poc
+opamp_install_dir: /opt/opamp-poc
+opamp_binary_local_path: ../../opamp-server/bin/opamp-poc-server
+opamp_binary_remote_path: /opt/opamp-poc/opamp-poc-server
+opamp_service_enabled: true
+
+synthetic_log_user: synthetic-logs
+synthetic_log_rate_per_second: 2
+synthetic_log_path: /var/log/opamp-poc/synthetic.log
+
+collector_config_dir: /etc/otelcol
+collector_env_local_path: "{{ playbook_dir }}/../../../tmp/collector-host.env"
+collector_env_remote_path: /etc/otelcol/collector.env
+collector_service_name: otelcol
+collector_opamp_endpoint: "ws://127.0.0.1:4320/v1/opamp"
+collector_opamp_ring: dev
+collector_supervisor_bin: /opt/opamp-poc/opampsupervisor
+collector_supervised_bin: /usr/local/bin/otelcol-logs-opamp
+collector_supervised_config: /etc/otelcol/logs-opamp-elastic.yaml
+ocb_collector_binary_local_path: "{{ lookup('env', 'OCB_COLLECTOR_BINARY_LOCAL_PATH') | default(playbook_dir ~ '/../../../dist/otelcol-logs-opamp/otelcol-logs-opamp', true) }}"
+ocb_collector_binary_remote_path: /usr/local/bin/otelcol-logs-opamp
+
+k3s_distribution: k3s
+k3s_notes_dir: /etc/opamp-poc/kubernetes
+k3s_version: v1.36.1+k3s1
+k3s_cluster_cidr: 10.42.0.0/16
+k3s_service_cidr: 10.43.0.0/16
+k3s_kubeconfig_local_path: "{{ playbook_dir }}/../../../secrets/kubeconfig-opamp-poc.yaml"
+k3s_install_script_url: https://get.k3s.io
+k3s_binary_local_path: "{{ playbook_dir }}/../../../tmp/k3s/{{ k3s_version }}/k3s"
+k3s_binary_remote_path: /usr/local/bin/k3s

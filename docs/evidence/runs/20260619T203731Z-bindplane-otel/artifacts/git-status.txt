@@ -1,0 +1,9 @@
+## scenario/bindplane-otel-experience
+ M Taskfile.yml
+ M docs/study/README.md
+ M scripts/evidence-run.sh
+?? data/
+?? docs/runbooks/bindplane-otel.md
+?? lab/configs/bindplane-otel/
+?? lab/opamp-server-py-src/
+?? scripts/evidence-bindplane-otel.sh

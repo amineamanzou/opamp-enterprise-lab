@@ -1,0 +1,361 @@
+viewport: 1924x1987
+page: 1924x1987
+scroll: (0, 0)
+[20787]<div id=kibana-body />
+	[20839]<div />
+		[20834]<span />
+			[20831]<a />
+				[22450]<svg role=img aria-label=Logo Elastic /> <!-- SVG content collapsed -->
+	[20913]<div />
+		[20876]<div />
+			[21259]<div id=spcMenuPopover />
+				[21258]<button aria-label=Navigation dans les espaces title=Default expanded=false />
+					[21528]<div aria-label=Default role=img title=Default />
+	[20914]<div />
+	[20879]<button title=<redacted-observability-project> expanded=false />
+		<redacted-observability-project>
+		[21292]<svg role=img aria-label=- Cliquer sur ce bouton affiche/masque une fenêtre contextuelle. /> <!-- SVG content collapsed -->
+	[20916]<li level=1 />
+		[21847]<a title=Fleet />
+			Fleet
+	[21848]<li level=1 />
+		[21846]<span title=Agents />
+			Agents
+	[20848]<div />
+		[20917]<div />
+			[20899]<div />
+				[20941]<button aria-label=Affichez la barre de recherche />
+	[20849]<div />
+		[20847]<div id=headerHelpMenu />
+			[20846]<button aria-label=Menu d'aide expanded=false />
+	[20919]<div />
+		[20902]<div />
+			[21279]<span id=if751a021-6c19-11f1-bff6-17065384dd46-wrapper />
+				[21278]<button />
+					[21531]<svg role=img aria-label=Submit feedback /> <!-- SVG content collapsed -->
+	[20903]<div />
+		<svg /> <!-- SVG content collapsed -->
+		[21312]<button />
+			Agent IA
+	[20922]<div />
+		[20912]<div />
+			[20911]<div />
+				[20910]<div />
+					[20909]<button aria-label=Menu Compte expanded=false />
+						[20956]<div aria-label=<redacted-email> role=img title=<redacted-email> />
+	[20976]<a id=observability_project_nav aria-label=Observability page d’accueil />
+		Observability
+	[20980]<a id=discover />
+		Discover
+	[20985]<a id=dashboards />
+		Tableaux de bord
+	[20990]<a id=workflows />
+		Workflows
+	[20998]<a id=observability-overview:alerts />
+		Alertes
+	[21003]<a id=observability-overview:cases />
+		Cas
+	[21008]<a id=slo />
+		Slo
+	[21013]<a id=streams />
+		Flux
+	[21018]<a id=applications expanded=false />
+		Applications
+	[21024]<a id=metrics expanded=false />
+		Infrastructure
+	[21030]<a id=agent_builder />
+		Agents
+	[21035]<a id=machine_learning-landing expanded=false />
+		Machine Learning
+	[21041]<a id=otherTools expanded=false />
+		Autres outils
+	[21058]<div />
+		[21057]<a aria-label=Ajouter des données />
+	[21063]<div />
+		[21062]<a aria-label=Outils de développeur />
+	[21067]<a aria-label=Gestion des données expanded=false />
+	[21074]<div />
+		[21072]<a aria-label=Administration et paramètres expanded=false />
+		[21523]<svg /> <!-- SVG content collapsed -->
+	[21085]<hr />
+	[21086]<div />
+		[21080]<span id=:r1m:euiToolTipAnchor />
+			[21079]<button aria-label=Réduire le menu de navigation pressed=true expanded=true />
+	Gestion des données
+	Ingestion et intégrations
+	[21096]<a id=integrations />
+		Intégrations
+	[21100]<a id=fleet />
+		Fleet
+	[21104]<a id=management:ingest_pipelines />
+		Pipelines d'ingestion
+	[21108]<a id=management:pipelines />
+		Pipelines logstash
+	[21112]<a id=management:content_connectors />
+		Content Connectors
+	Index et flux de données
+	[21123]<a id=management:index_management />
+		Gestion des index
+	[21127]<a id=management:transform />
+		Transformations
+	[21131]<a id=management:data_quality />
+		Qualité de l’ensemble de données
+	[21135]<a id=management:data_usage />
+		Utilisation des données
+	|scroll element|<div id=app-main-scroll /> (0.0 pages above, 0.0 pages below)
+		[21856]<div />
+			[21863]<button />
+				Donner un retour
+		[20797]<div />
+			[21589]<svg /> <!-- SVG content collapsed -->
+			Nous avons ajouté de nouvelles autorisations vous permettant de mieux définir qui peut visionner ou modifier les agents, les politiques et les paramètres de Fleet.
+			[21590]<a />
+				En savoir plus.
+			[21594]<button aria-label=Rejeter ce rappel />
+			Fleet
+			Gestion centralisée des agents Elastic Agent.
+			[21611]<a role=tab name=[object Object] selected=true />
+				Agents
+			[21883]<div />
+				[21612]<a role=tab name=[object Object] id=fleet-agent-policies-tab selected=false />
+					Politiques d'agent
+			[21613]<a role=tab name=[object Object] selected=false />
+				Jetons d'enregistrement
+			[21614]<a role=tab name=[object Object] selected=false />
+				Désinstaller les jetons
+			[21615]<a role=tab name=[object Object] selected=false />
+				Flux de données
+			[21616]<a role=tab name=[object Object] selected=false />
+				Paramètres
+			[21877]<div />
+				[21626]<button id=agentActivityButton expanded=false />
+					Activité des agents
+			[21631]<button expanded=false />
+				Ajouter
+			|SHADOW(open)|[21923]<textarea autocomplete=list aria-label=Start typing to search and filter the Fleet page aria-autocomplete=list role=textbox id=if7fed011-6c19-11f1-bff6-17065384dd46 placeholder=Filter your data using KQL syntax />
+			[21646]<button expanded=false />
+				Statut
+				[21640]<span aria-label=5 filtres actifs role=marquee />
+			[21655]<button expanded=false />
+				Balises
+				[21649]<span aria-label=2 filtres disponibles role=marquee />
+			[21663]<button expanded=false />
+				Politique d'agent
+				[21657]<span aria-label=1 filtres disponibles role=marquee />
+			[21667]<button pressed=false />
+				Mise à niveau disponible
+			[21880]<div />
+				Affichage de 3 agents
+				<svg role=img aria-label=Infos /> <!-- SVG content collapsed -->
+			<svg role=presentation /> <!-- SVG content collapsed -->
+			Sain
+			<svg role=presentation /> <!-- SVG content collapsed -->
+			Défectueux
+			[22003]<div />
+				[21998]<svg role=presentation /> <!-- SVG content collapsed -->
+			Abandonné
+			[22001]<div />
+				[21999]<span />
+			[22013]<div />
+				[22008]<svg role=presentation /> <!-- SVG content collapsed -->
+			Mise à jour
+			[22011]<div />
+				[22009]<span />
+			[22023]<div />
+				[22018]<svg role=presentation /> <!-- SVG content collapsed -->
+			Hors ligne
+			[22021]<div />
+				[22019]<span />
+			[22033]<div />
+				[22028]<svg role=presentation /> <!-- SVG content collapsed -->
+			[22030]<div />
+				Inactif
+			[22031]<div />
+				[22029]<span />
+			[22043]<div />
+				[22038]<svg role=presentation /> <!-- SVG content collapsed -->
+			Désenregistré
+			[22041]<div />
+				[22039]<span />
+			[22053]<div />
+				[22048]<svg role=presentation /> <!-- SVG content collapsed -->
+			Désinstallé
+			[22051]<div />
+				[22049]<span />
+			[21755]<table id=__table_f7f692b1-6c19-11f1-bff6-17065384dd46 />
+				[21747]<tr />
+					[21738]<th />
+						[21694]<div />
+							[21693]<div />
+								[21692]<div />
+									[21690]<span />
+										[21689]<svg role=presentation /> <!-- SVG content collapsed -->
+					[21696]<span title=Statut />
+						Statut
+					Hôte
+					[21708]<button />
+						Politique d'agent
+					[21714]<span title=CPU />
+						[21713]<span id=if7f6e0d5-6c19-11f1-bff6-17065384dd46-wrapper />
+							[21712]<span />
+								CPU
+								[21949]<svg /> <!-- SVG content collapsed -->
+					[21718]<span />
+						Mémoire
+						[21950]<svg /> <!-- SVG content collapsed -->
+					[21726]<button />
+						Dernière activité
+					[21732]<button />
+						Version
+					[21735]<span title=Actions />
+						Actions
+				[22343]<tr />
+					[22147]<td />
+						[22079]<div />
+							[22078]<div />
+								[22077]<div />
+									[22075]<span />
+										[22074]<svg role=presentation /> <!-- SVG content collapsed -->
+					[22148]<td />
+						[22084]<span id=if855c9b1-6c19-11f1-bff6-17065384dd46-wrapper />
+							[22083]<span title=Sain />
+								[22082]<span />
+									[22081]<span />
+										Sain
+					[22149]<td />
+						[22087]<a />
+							asset-000001.example.invalid
+						[22089]<div />
+							otelcol-contrib
+					[22150]<td />
+					[22151]<td />
+						[22107]<div />
+							[22101]<div />
+								N/A
+						[22108]<div />
+							[22106]<span id=if855f0c3-6c19-11f1-bff6-17065384dd46-wrapper />
+								[22105]<svg role=img aria-label=Infos /> <!-- SVG content collapsed -->
+					[22152]<td />
+						[22118]<div />
+							[22112]<div />
+								N/A
+						[22119]<div />
+							[22117]<span id=if855f0c5-6c19-11f1-bff6-17065384dd46-wrapper />
+								[22116]<svg role=img aria-label=Infos /> <!-- SVG content collapsed -->
+					[22153]<td />
+						[22123]<span />
+							il y a 6 secondes
+					[22154]<td />
+						0.151.0
+						[22134]<div />
+							[22132]<span id=if85617d1-6c19-11f1-bff6-17065384dd46-wrapper />
+								[22131]<svg role=img aria-label=Infos /> <!-- SVG content collapsed -->
+					[22155]<td />
+						[22144]<div />
+							[22143]<div />
+								[22142]<span id=:r2n:euiToolTipAnchor />
+									[22141]<button aria-label=Ouvrir le menu expanded=false />
+				[22344]<tr />
+					[22229]<td />
+						[22161]<div />
+							[22160]<div />
+								[22159]<div />
+									[22157]<span />
+										[22156]<svg role=presentation /> <!-- SVG content collapsed -->
+					[22230]<td />
+						Hors ligne
+					[22231]<td />
+						[22169]<a />
+							asset-000001.example.invalid
+						[22171]<div />
+							otelcol-contrib
+					[22232]<td />
+					[22233]<td />
+						[22189]<div />
+							[22183]<div />
+								N/A
+						[22190]<div />
+							[22188]<span id=if85665f3-6c19-11f1-bff6-17065384dd46-wrapper />
+								[22187]<svg role=img aria-label=Infos /> <!-- SVG content collapsed -->
+					[22234]<td />
+						[22200]<div />
+							[22194]<div />
+								N/A
+						[22201]<div />
+							[22199]<span id=if85665f5-6c19-11f1-bff6-17065384dd46-wrapper />
+								[22198]<svg role=img aria-label=Infos /> <!-- SVG content collapsed -->
+					[22235]<td />
+						[22205]<span />
+							il y a 14 minutes
+					[22236]<td />
+						0.151.0
+						[22216]<div />
+							[22214]<span id=if8568d01-6c19-11f1-bff6-17065384dd46-wrapper />
+								[22213]<svg role=img aria-label=Infos /> <!-- SVG content collapsed -->
+					[22237]<td />
+						[22226]<div />
+							[22225]<div />
+								[22224]<span id=:r2u:euiToolTipAnchor />
+									[22223]<button aria-label=Ouvrir le menu expanded=false />
+				[22345]<tr />
+					[22311]<td />
+						[22243]<div />
+							[22242]<div />
+								[22241]<div />
+									[22239]<span />
+										[22238]<svg role=presentation /> <!-- SVG content collapsed -->
+					[22312]<td />
+						Hors ligne
+					[22313]<td />
+						[22251]<a />
+							asset-000001.example.invalid
+						[22253]<div />
+							otelcol-contrib
+					[22314]<td />
+					[22315]<td />
+						[22271]<div />
+							[22265]<div />
+								N/A
+						[22272]<div />
+							[22270]<span id=if856b413-6c19-11f1-bff6-17065384dd46-wrapper />
+								[22269]<svg role=img aria-label=Infos /> <!-- SVG content collapsed -->
+					[22316]<td />
+						[22282]<div />
+							[22276]<div />
+								N/A
+						[22283]<div />
+							[22281]<span id=if856b415-6c19-11f1-bff6-17065384dd46-wrapper />
+								[22280]<svg role=img aria-label=Infos /> <!-- SVG content collapsed -->
+					[22317]<td />
+						[22287]<span />
+							il y a 15 minutes
+					[22318]<td />
+						0.151.0
+						[22298]<div />
+							[22296]<span id=if856b419-6c19-11f1-bff6-17065384dd46-wrapper />
+								[22295]<svg role=img aria-label=Infos /> <!-- SVG content collapsed -->
+					[22319]<td />
+						[22308]<div />
+							[22307]<div />
+								[22306]<span id=:r35:euiToolTipAnchor />
+									[22305]<button aria-label=Ouvrir le menu expanded=false />
+			[22324]<button expanded=false />
+				Lignes par page
+				20
+			[22333]<button aria-label=Page précédente disabled=true />
+			[22334]<ul />
+				[22330]<li level=1 />
+					[22329]<button aria-label=Page 1 sur 1 disabled=true />
+			[22335]<button aria-label=Page suivante disabled=true />
+[20777]<div />
+[21886]<div />
+	[21900]<div />
+	[21909]<div />
+		[21907]<div />
+		[21908]<div />
+	Agents à mise à niveau automatique
+	Sélectionnez votre politique et configurez les versions de l'agent cibles pour les mises à niveau automatiques.
+	[21891]<button />
+		Parfait
+	[21902]<div />
+[21933]<div />

@@ -1,0 +1,6 @@
+scenario,result,collector_count,ui_actions,visible_status,remote_config_editable,logs_visible,recovery_seconds,notes
+first_connection,pass,1,2,Healthy,no,yes,,Fleet Add -> Collector (OpAMP) produced config; one upstream otelcol-contrib connected.
+bad_config,partial,1,,Healthy after recovery,no,yes,,Bad config is caught by external otelcol validate/systemd; Fleet does not push config.
+restart,partial_pass,1,,Healthy after recovery,no,yes,~10,Missing instance_uid created duplicate stale rows; stable instance_uid fixed subsequent restarts.
+disconnect,pass,1,,Offline then Healthy,no,yes,~12,Stop for 75s showed stable collector offline; restart returned healthy.
+scale,blocked,10,,not visible,no,n/a,,Extra collectors first failed config/telemetry conflicts; corrected run hit OpAMP 401 when reusing generated credential.

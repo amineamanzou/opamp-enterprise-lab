@@ -1,0 +1,6 @@
+---
+- name: Deploy OCB OpAMP collector on host log agents
+  hosts: host_agents
+  become: true
+  roles:
+    - ocb_collector_host

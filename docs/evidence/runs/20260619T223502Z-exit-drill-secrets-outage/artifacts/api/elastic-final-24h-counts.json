@@ -1,0 +1,152 @@
+{
+  "captured_at_utc": "2026-06-19T22:59:41Z",
+  "window": "now-24h",
+  "total": {
+    "value": 10000,
+    "relation": "gte"
+  },
+  "by_dataset": [
+    {
+      "dataset": "generic.otel",
+      "count": 4675617
+    },
+    {
+      "dataset": "infra.host.otel",
+      "count": 3692668
+    },
+    {
+      "dataset": "app.synthetic.otel",
+      "count": 433515
+    },
+    {
+      "dataset": "hostmetricsreceiver.otel",
+      "count": 426095
+    },
+    {
+      "dataset": "security.kubernetes_audit.otel",
+      "count": 351269
+    },
+    {
+      "dataset": "k8sclusterreceiver.otel",
+      "count": 265658
+    },
+    {
+      "dataset": "kubeletstatsreceiver.otel",
+      "count": 252544
+    },
+    {
+      "dataset": "metrics.collector.otel",
+      "count": 249205
+    },
+    {
+      "dataset": "infra.kubernetes.otel",
+      "count": 247888
+    },
+    {
+      "dataset": "metrics.kubernetes_node.otel",
+      "count": 176176
+    },
+    {
+      "dataset": "security.host.otel",
+      "count": 118264
+    },
+    {
+      "dataset": "metrics.host.otel",
+      "count": 68688
+    },
+    {
+      "dataset": "opamp.inventory",
+      "count": 40052
+    },
+    {
+      "dataset": "observability.collector.otel",
+      "count": 12005
+    },
+    {
+      "dataset": "service_summary.1m.otel",
+      "count": 8920
+    },
+    {
+      "dataset": "metrics.application.otel",
+      "count": 8676
+    },
+    {
+      "dataset": "fleet_server.agent_status",
+      "count": 195
+    },
+    {
+      "dataset": "fleet_server.agent_versions",
+      "count": 195
+    },
+    {
+      "dataset": "opamp.events",
+      "count": 106
+    },
+    {
+      "dataset": "elastic_agent.status_change",
+      "count": 14
+    },
+    {
+      "dataset": "opamp.connections",
+      "count": 7
+    },
+    {
+      "dataset": "opamp.server",
+      "count": 7
+    }
+  ],
+  "by_service": [
+    {
+      "service": "opamp-poc-host-logs",
+      "count": 5433025
+    },
+    {
+      "service": "otelcol-contrib-fleet",
+      "count": 3000421
+    },
+    {
+      "service": "synthetic-otel-app",
+      "count": 442916
+    },
+    {
+      "service": "opamp-poc-k8s-host",
+      "count": 357311
+    },
+    {
+      "service": "k3s-apiserver-audit",
+      "count": 352271
+    },
+    {
+      "service": "opamp-poc-k8s-logs",
+      "count": 303078
+    },
+    {
+      "service": "opamp-poc-k8s-cluster",
+      "count": 266340
+    },
+    {
+      "service": "opamp-poc-k8s-kubeletstats",
+      "count": 253231
+    },
+    {
+      "service": "otelcol-logs-opamp",
+      "count": 230407
+    },
+    {
+      "service": "opamp-poc-k8s-node",
+      "count": 176491
+    },
+    {
+      "service": "opamp-poc-host",
+      "count": 138747
+    },
+    {
+      "service": "otelcol-app-opamp",
+      "count": 32532
+    },
+    {
+      "service": "otelcol-logs-opamp-bindplane-custom",
+      "count": 418
+    }
+  ]
+}

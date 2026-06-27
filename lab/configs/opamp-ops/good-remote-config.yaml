@@ -1,0 +1,11 @@
+processors:
+  attributes/opamp_ops_phase:
+    actions:
+      - key: opamp.ops.phase
+        value: remote-config-good
+        action: upsert
+
+service:
+  pipelines:
+    logs:
+      processors: [memory_limiter, resource, attributes, attributes/opamp_ops_phase, filter/drop_health_noise, batch]

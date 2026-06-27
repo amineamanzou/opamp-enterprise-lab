@@ -1,0 +1,6 @@
+---
+- name: Bootstrap base Linux packages for the lab
+  hosts: lab
+  become: true
+  roles:
+    - base

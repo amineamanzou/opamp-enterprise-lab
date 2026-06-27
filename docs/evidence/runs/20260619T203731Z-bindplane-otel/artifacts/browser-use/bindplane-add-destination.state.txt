@@ -1,0 +1,230 @@
+viewport: 1924x1987
+page: 1924x1987
+scroll: (0, 0)
+Overview
+Agents
+Fleets
+Configurations
+Library
+Blueprints
+<org-redacted>
+Default Project
+Configurations
+<svg /> <!-- SVG content collapsed -->
+New
+Details
+Specify some basic settings for the platform you'll be shipping logs and/or metrics from.
+Add Sources
+A source is a combination of receivers and processors
+Add Destination
+A destination is a combination of an exporter and processors
+Add a destination where you'd like to send your telemetry.
+A destination simply represents where you'd like to send your telemetry data. You can configure that here. Depending on the destination you choose, we'll configure specific OpenTelemetry processors for you, ensuring your data shows up in a useful state.
+Add Destination
+Back
+Save
+*[4872]<div />
+*[4873]<div />
+*[4874]<div role=dialog />
+	Add Destination
+	*[4169]<div />
+		*[4167]<button aria-label=Close Resource Dialog />
+	*[4867]<div />
+		*[4184]<div />
+			*[4181]<div />
+				<svg /> <!-- SVG content collapsed -->
+			|SHADOW(open)|*[4182]<input id=:r5p: placeholder=Search for a technology... type=search />
+	|scroll element|<div /> (0.0 pages above, 1.1 pages below)
+		*[4807]<button />
+			Amazon CloudWatch
+			Alpha
+			logs
+			metrics
+		*[4808]<button />
+			Amazon Managed Prometheus
+			metrics
+		*[4809]<button />
+			AWS S3
+			logs
+			metrics
+			traces
+		*[4810]<button />
+			AWS Security Lake
+			Alpha
+			logs
+		*[4811]<button />
+			Axiom (OTLP)
+			logs
+			metrics
+			traces
+		*[4812]<button />
+			Azure Blob
+			logs
+			metrics
+			traces
+		*[4813]<button />
+			Azure Monitor
+			logs
+			metrics
+			traces
+		*[4814]<button />
+			Bindplane Gateway
+			logs
+			metrics
+			traces
+		*[4815]<button />
+			Chronosphere
+			logs
+			metrics
+			traces
+		*[4816]<button />
+			ClickHouse
+			logs
+			metrics
+			traces
+		*[4817]<button />
+			ClickStack
+			logs
+			metrics
+			traces
+		*[4818]<button />
+			Coralogix
+			logs
+			metrics
+			traces
+		*[4819]<button />
+			CrowdStrike Falcon LogScale
+			logs
+		*[4820]<button />
+			Custom
+			logs
+			metrics
+			traces
+		*[4821]<button />
+			Dash0 (OTLP)
+			logs
+			metrics
+			traces
+		*[4822]<button />
+			Datadog
+			logs
+			metrics
+			traces
+		*[4823]<button />
+			Dev Null
+			logs
+			metrics
+			traces
+		*[4824]<button />
+			Dynatrace
+			logs
+			metrics
+			traces
+		*[4825]<button />
+			Elasticsearch (Legacy)
+			logs
+			traces
+		*[4826]<button />
+			Elasticsearch (OTLP)
+			logs
+			metrics
+			traces
+		*[4827]<button />
+			Enhance Indexing S3
+			logs
+			traces
+		*[4828]<button />
+			File
+			logs
+			metrics
+			traces
+		*[4829]<button />
+			Google Cloud
+			logs
+			metrics
+			traces
+		*[4830]<button />
+			Google Cloud Storage
+			logs
+			metrics
+			traces
+		*[4831]<button />
+			Google Managed Prometheus
+			metrics
+		*[4832]<button />
+			Google SecOps
+			logs
+		*[4833]<button />
+			Google SecOps Forwarder
+			logs
+		*[4834]<button />
+			Grafana Cloud
+			logs
+			metrics
+			traces
+		*[4835]<button />
+			Grafana Tempo (OTLP)
+			traces
+		*[4836]<button />
+			Honeycomb Refinery
+			logs
+			traces
+		*[4837]<button />
+			Honeycomb.io
+			logs
+			metrics
+			traces
+		*[4838]<button />
+			InfluxDB
+			logs
+			metrics
+			traces
+		*[4839]<button />
+			insightIDR
+			logs
+		*[4840]<button />
+			Jaeger
+			traces
+		*[4841]<button />
+			Kafka
+			logs
+			metrics
+			traces
+		*[4842]<button />
+			Kloudmate
+			logs
+			metrics
+			traces
+		*[4843]<button />
+			Logz.io
+			logs
+			metrics
+			traces
+		*[4844]<button />
+			Loki (OTLP)
+			logs
+		*[4845]<button />
+			Microsoft Sentinel
+			logs
+		*[4846]<button />
+			Middleware
+			logs
+			metrics
+			traces
+		*[4847]<button />
+			New Relic
+			logs
+			metrics
+			traces
+		*[4848]<button />
+			Observe
+			logs
+			metrics
+			traces
+		*[4849]<button />
+			Oodle (OTLP)
+			logs
+			metrics
+			traces
+		*[4850]<button />
+*[4875]<div />

@@ -1,0 +1,231 @@
+{
+  "component_templates": [
+    {
+      "name": "opamp-lab-common",
+      "body": {
+        "template": {
+          "mappings": {
+            "dynamic": true,
+            "properties": {
+              "@timestamp": {"type": "date"},
+              "data_stream": {
+                "properties": {
+                  "type": {"type": "constant_keyword"},
+                  "dataset": {"type": "constant_keyword"},
+                  "namespace": {"type": "constant_keyword"}
+                }
+              },
+              "event": {
+                "properties": {
+                  "dataset": {"type": "keyword"},
+                  "kind": {"type": "keyword"},
+                  "category": {"type": "keyword"},
+                  "type": {"type": "keyword"},
+                  "action": {"type": "keyword"}
+                }
+              },
+              "opamp": {
+                "properties": {
+                  "server_url": {"type": "keyword"},
+                  "snapshot_id": {"type": "keyword"},
+                  "source": {"type": "keyword"}
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "compat_mappings": [
+    {
+      "index": "metrics-k8sclusterreceiver.otel-*",
+      "body": {
+        "properties": {
+          "metrics": {
+            "properties": {
+              "k8s.job.active_pods": {"type": "long", "time_series_metric": "gauge"},
+              "k8s.job.desired_successful_pods": {"type": "long", "time_series_metric": "gauge"},
+              "k8s.job.failed_pods": {"type": "long", "time_series_metric": "gauge"},
+              "k8s.job.successful_pods": {"type": "long", "time_series_metric": "gauge"},
+              "k8s.statefulset.current_pods": {"type": "long", "time_series_metric": "gauge"},
+              "k8s.statefulset.desired_pods": {"type": "long", "time_series_metric": "gauge"},
+              "k8s.statefulset.ready_pods": {"type": "long", "time_series_metric": "gauge"},
+              "k8s.statefulset.updated_pods": {"type": "long", "time_series_metric": "gauge"}
+            }
+          },
+          "resource": {
+            "properties": {
+              "attributes": {
+                "properties": {
+                  "k8s.container.status.last_terminated_reason": {"type": "keyword", "ignore_above": 1024, "time_series_dimension": true}
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "index": "metrics-kubeletstatsreceiver.otel-*",
+      "body": {
+        "properties": {
+          "resource": {
+            "properties": {
+              "attributes": {
+                "properties": {
+                  "k8s.container.status.last_terminated_reason": {"type": "keyword", "ignore_above": 1024, "time_series_dimension": true}
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "index_templates": [
+    {
+      "name": "opamp-inventory-lab",
+      "body": {
+        "index_patterns": ["logs-opamp.inventory-*"],
+        "data_stream": {},
+        "composed_of": ["opamp-lab-common"],
+        "priority": 500,
+        "template": {
+          "mappings": {
+            "properties": {
+              "agent": {
+                "properties": {
+                  "id": {"type": "keyword"},
+                  "instance_uid": {"type": "keyword"},
+                  "ring": {"type": "keyword"},
+                  "version": {"type": "keyword"},
+                  "hostname": {"type": "keyword"},
+                  "health": {"type": "keyword"},
+                  "connected": {"type": "boolean"},
+                  "limited_metadata": {"type": "boolean"},
+                  "capabilities": {"type": "long"},
+                  "desired_config_hash": {"type": "keyword"},
+                  "effective_config": {"type": "keyword", "ignore_above": 8191},
+                  "remote_config_status": {"type": "keyword", "ignore_above": 1024},
+                  "restart_command_pending": {"type": "boolean"},
+                  "updated_at": {"type": "date"}
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "opamp-connections-lab",
+      "body": {
+        "index_patterns": ["logs-opamp.connections-*"],
+        "data_stream": {},
+        "composed_of": ["opamp-lab-common"],
+        "priority": 500,
+        "template": {
+          "mappings": {
+            "properties": {
+              "connection": {
+                "properties": {
+                  "agent_id": {"type": "keyword"},
+                  "remote_addr": {"type": "keyword"},
+                  "connected": {"type": "boolean"}
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "opamp-events-lab",
+      "body": {
+        "index_patterns": ["logs-opamp.events-*"],
+        "data_stream": {},
+        "composed_of": ["opamp-lab-common"],
+        "priority": 500,
+        "template": {
+          "mappings": {
+            "properties": {
+              "agent": {
+                "properties": {
+                  "id": {"type": "keyword"},
+                  "instance_uid": {"type": "keyword"},
+                  "ring": {"type": "keyword"},
+                  "hostname": {"type": "keyword"},
+                  "previous_version": {"type": "keyword"},
+                  "current_version": {"type": "keyword"},
+                  "version_direction": {"type": "keyword"},
+                  "previous_health": {"type": "keyword"},
+                  "current_health": {"type": "keyword"},
+                  "previous_status": {"type": "keyword"},
+                  "current_status": {"type": "keyword"},
+                  "previous_config_hash": {"type": "keyword"},
+                  "current_config_hash": {"type": "keyword"}
+                }
+              },
+              "event": {
+                "properties": {
+                  "sequence": {"type": "long"},
+                  "reason": {"type": "keyword"}
+                }
+              },
+              "experiment": {
+                "properties": {
+                  "id": {"type": "keyword"},
+                  "phase": {"type": "keyword"},
+                  "target_rate": {"type": "double"}
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "opamp-server-metrics-lab",
+      "body": {
+        "index_patterns": ["metrics-opamp.server-*"],
+        "data_stream": {},
+        "priority": 500,
+        "template": {
+          "mappings": {
+            "dynamic": true,
+            "properties": {
+              "@timestamp": {"type": "date"},
+              "data_stream": {
+                "properties": {
+                  "type": {"type": "constant_keyword"},
+                  "dataset": {"type": "constant_keyword"},
+                  "namespace": {"type": "constant_keyword"}
+                }
+              },
+              "opamp": {
+                "properties": {
+                  "server_url": {"type": "keyword"},
+                  "snapshot_id": {"type": "keyword"},
+                  "source": {"type": "keyword"}
+                }
+              },
+              "server": {
+                "properties": {
+                  "agents": {"type": "long"},
+                  "connected_agents": {"type": "long"},
+                  "connections": {"type": "long"},
+                  "limited_metadata_agents": {"type": "long"},
+                  "heap_alloc_bytes": {"type": "long"},
+                  "heap_sys_bytes": {"type": "long"},
+                  "runtime_sys_bytes": {"type": "long"},
+                  "num_goroutine": {"type": "long"},
+                  "collected_at": {"type": "date"}
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

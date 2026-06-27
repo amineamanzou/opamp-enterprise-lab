@@ -1,0 +1,273 @@
+extensions:
+  health_check:
+    endpoint: "${env:OTEL_HEALTH_CHECK_ENDPOINT}"
+
+receivers:
+  filelog/infra:
+    include: ["/var/log/syslog", "/var/log/opamp-poc/synthetic.log"]
+    start_at: beginning
+    include_file_path: true
+    include_file_name: true
+    operators:
+      - type: move
+        from: attributes["log.file.path"]
+        to: resource["log.file.path"]
+
+  filelog/security:
+    include: ["/var/log/auth.log"]
+    start_at: beginning
+    include_file_path: true
+    include_file_name: true
+    operators:
+      - type: move
+        from: attributes["log.file.path"]
+        to: resource["log.file.path"]
+
+  filelog/collector:
+    include: ["/var/log/opamp-poc/otelcol-logs-opamp.log", "/var/log/opamp-poc/opampsupervisor-logs.log"]
+    start_at: beginning
+    include_file_path: true
+    include_file_name: true
+    operators:
+      - type: move
+        from: attributes["log.file.path"]
+        to: resource["log.file.path"]
+
+  hostmetrics:
+    collection_interval: 30s
+    scrapers:
+      cpu:
+        metrics:
+          system.cpu.utilization:
+            enabled: true
+      memory:
+        metrics:
+          system.memory.utilization:
+            enabled: true
+      load:
+      filesystem:
+      disk:
+      network:
+      paging:
+      processes:
+
+  prometheus/collector:
+    config:
+      scrape_configs:
+        - job_name: otelcol-self
+          scrape_interval: 30s
+          static_configs:
+            - targets: ["${env:OTEL_SELF_METRICS_HOST}:${env:OTEL_SELF_METRICS_PORT}"]
+
+  otlp:
+    protocols:
+      grpc:
+        endpoint: "${env:OTEL_OTLP_GRPC_ENDPOINT}"
+      http:
+        endpoint: "${env:OTEL_OTLP_HTTP_ENDPOINT}"
+
+processors:
+  memory_limiter:
+    check_interval: 1s
+    limit_mib: ${env:OTEL_MEMORY_LIMIT_MIB}
+    spike_limit_mib: ${env:OTEL_MEMORY_SPIKE_LIMIT_MIB}
+
+  resource/base:
+    attributes:
+      - key: service.name
+        value: "${env:SERVICE_NAME}"
+        action: upsert
+      - key: service.version
+        value: "${env:COLLECTOR_VERSION}"
+        action: upsert
+      - key: service.instance.id
+        value: "${env:SERVICE_INSTANCE_ID}"
+        action: upsert
+      - key: host.name
+        value: "${env:HOST_NAME}"
+        action: upsert
+      - key: host.id
+        value: "${env:HOST_ID}"
+        action: upsert
+      - key: deployment.environment
+        value: "${env:DEPLOYMENT_ENVIRONMENT}"
+        action: upsert
+      - key: telemetry.distro.name
+        value: otelcol-logs-opamp
+        action: upsert
+      - key: onboarding.id
+        value: "${env:ELASTIC_ONBOARDING_ID}"
+        action: upsert
+      - key: data_stream.namespace
+        value: lab
+        action: upsert
+
+  resource/infra_host:
+    attributes:
+      - key: data_stream.type
+        value: logs
+        action: upsert
+      - key: data_stream.dataset
+        value: infra.host
+        action: upsert
+      - key: event.dataset
+        value: infra.host
+        action: upsert
+      - key: elastic.poc.path
+        value: host-infra
+        action: upsert
+
+  resource/security_host:
+    attributes:
+      - key: data_stream.type
+        value: logs
+        action: upsert
+      - key: data_stream.dataset
+        value: security.host
+        action: upsert
+      - key: event.dataset
+        value: security.host
+        action: upsert
+      - key: elastic.poc.path
+        value: host-security
+        action: upsert
+
+  resource/metrics_host:
+    attributes:
+      - key: service.name
+        value: opamp-poc-host
+        action: upsert
+      - key: data_stream.type
+        value: metrics
+        action: upsert
+      - key: data_stream.dataset
+        value: hostmetricsreceiver
+        action: upsert
+      - key: elastic.poc.path
+        value: host-metrics
+        action: upsert
+
+  resource/collector:
+    attributes:
+      - key: service.name
+        value: otelcol-logs-opamp
+        action: upsert
+      - key: collector.role
+        value: host-supervised
+        action: upsert
+      - key: telemetry.source
+        value: collector-self
+        action: upsert
+
+  resource/collector_logs:
+    attributes:
+      - key: data_stream.type
+        value: logs
+        action: upsert
+      - key: data_stream.dataset
+        value: observability.collector
+        action: upsert
+      - key: event.dataset
+        value: observability.collector
+        action: upsert
+      - key: elastic.poc.path
+        value: collector-self-logs
+        action: upsert
+
+  resource/collector_metrics:
+    attributes:
+      - key: data_stream.type
+        value: metrics
+        action: upsert
+      - key: data_stream.dataset
+        value: metrics.collector
+        action: upsert
+      - key: elastic.poc.path
+        value: collector-self-metrics
+        action: upsert
+
+  attributes/base:
+    actions:
+      - key: elastic.poc.name
+        value: "${env:POC_NAME}"
+        action: upsert
+
+  attributes/security_host:
+    actions:
+      - key: event.category
+        value: authentication
+        action: upsert
+      - key: event.type
+        value: info
+        action: upsert
+
+  attributes/collector_logs:
+    actions:
+      - key: event.category
+        value: observability
+        action: upsert
+      - key: event.type
+        value: info
+        action: upsert
+
+  filter/drop_health_noise:
+    error_mode: ignore
+    logs:
+      log_record:
+        - 'IsMatch(body, ".*health(check)? ok.*")'
+
+  batch:
+    timeout: "${env:OTEL_BATCH_TIMEOUT}"
+    send_batch_size: ${env:OTEL_BATCH_SEND_SIZE}
+    send_batch_max_size: ${env:OTEL_BATCH_SEND_MAX_SIZE}
+
+exporters:
+  otlphttp/elastic:
+    endpoint: "${env:ELASTIC_OTLP_ENDPOINT}"
+    headers:
+      Authorization: "ApiKey ${env:ELASTIC_API_KEY}"
+    compression: gzip
+    timeout: "${env:ELASTIC_EXPORT_TIMEOUT}"
+    retry_on_failure:
+      enabled: true
+      initial_interval: 1s
+      max_interval: 30s
+      max_elapsed_time: 300s
+    sending_queue:
+      enabled: true
+      num_consumers: ${env:OTEL_EXPORT_QUEUE_CONSUMERS}
+      queue_size: ${env:OTEL_EXPORT_QUEUE_SIZE}
+
+service:
+  telemetry:
+    logs:
+      level: "${env:OTEL_LOG_LEVEL}"
+    metrics:
+      readers:
+        - pull:
+            exporter:
+              prometheus:
+                host: "${env:OTEL_SELF_METRICS_HOST}"
+                port: ${env:OTEL_SELF_METRICS_PORT}
+  extensions: [health_check]
+  pipelines:
+    logs/infra:
+      receivers: [filelog/infra, otlp]
+      processors: [memory_limiter, resource/base, resource/infra_host, attributes/base, filter/drop_health_noise, batch]
+      exporters: [otlphttp/elastic]
+    logs/security:
+      receivers: [filelog/security]
+      processors: [memory_limiter, resource/base, resource/security_host, attributes/base, attributes/security_host, batch]
+      exporters: [otlphttp/elastic]
+    logs/collector:
+      receivers: [filelog/collector]
+      processors: [memory_limiter, resource/base, resource/collector, resource/collector_logs, attributes/base, attributes/collector_logs, batch]
+      exporters: [otlphttp/elastic]
+    metrics/host:
+      receivers: [hostmetrics, otlp]
+      processors: [memory_limiter, resource/base, resource/metrics_host, attributes/base, batch]
+      exporters: [otlphttp/elastic]
+    metrics/collector:
+      receivers: [prometheus/collector]
+      processors: [memory_limiter, resource/base, resource/collector, resource/collector_metrics, attributes/base, batch]
+      exporters: [otlphttp/elastic]

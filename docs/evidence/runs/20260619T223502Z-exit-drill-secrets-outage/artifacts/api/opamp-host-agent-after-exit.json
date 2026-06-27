@@ -1,0 +1,19 @@
+{
+  "inventory_total_agents": 10022,
+  "host_agent": {
+    "id": "opamp-poc-host-agent",
+    "hostname": "opamp-poc-host-agent",
+    "version": "0.151.0",
+    "health": "StatusOK",
+    "connected": false,
+    "remote_config_status": "RemoteConfigStatuses_APPLIED",
+    "updated_at": "2026-06-19T22:37:39.865846461Z"
+  },
+  "stats": {
+    "agents": 10022,
+    "connected_agents": 0,
+    "connections": 0,
+    "limited_metadata_agents": 5
+  },
+  "note": "Inventory refreshed for the host agent, but connection accounting stayed at zero."
+}

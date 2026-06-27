@@ -1,0 +1,21 @@
+{
+  "window": "now-2m",
+  "control_plane": "opamp-go-stopped",
+  "total": {
+    "value": 1898,
+    "relation": "eq"
+  },
+  "by_service": [
+    {"service": "otelcol-logs-opamp", "count": 1012},
+    {"service": "opamp-poc-host", "count": 521},
+    {"service": "opamp-poc-host-logs", "count": 365}
+  ],
+  "by_dataset": [
+    {"dataset": "observability.collector.otel", "count": 540},
+    {"dataset": "hostmetricsreceiver.otel", "count": 520},
+    {"dataset": "metrics.collector.otel", "count": 471},
+    {"dataset": "infra.host.otel", "count": 343},
+    {"dataset": "security.host.otel", "count": 21},
+    {"dataset": "service_summary.1m.otel", "count": 3}
+  ]
+}

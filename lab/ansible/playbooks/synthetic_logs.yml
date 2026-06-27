@@ -1,0 +1,6 @@
+---
+- name: Configure synthetic host log generators
+  hosts: host_agents
+  become: true
+  roles:
+    - synthetic_logs

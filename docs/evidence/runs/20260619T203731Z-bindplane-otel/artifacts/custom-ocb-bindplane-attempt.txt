@@ -1,0 +1,122 @@
+Jun 19 21:28:58 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opamp-go@v0.23.0/client/wsclient.go:350
+Jun 19 21:28:58 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opamp-go/client.(*wsClient).runUntilStopped
+Jun 19 21:28:58 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opamp-go@v0.23.0/client/wsclient.go:442
+Jun 19 21:28:58 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opamp-go/client/internal.(*ClientCommon).StartConnectAndRun.func1
+Jun 19 21:28:58 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opamp-go@v0.23.0/client/internal/clientcommon.go:249
+Jun 19 21:28:58 <host-redacted> otelcol-logs-opamp[138000]: 2026-06-19T21:28:58.333Z        error        opampextension@v0.151.0/logger.go:26        Connection failed (websocket: bad handshake), will retry.        {"resource": {"service.instance.id": "<id-redacted>", "service.name": "otelcol-logs-opamp", "service.version": ""}, "otelcol.component.id": "opamp", "otelcol.component.kind": "extension", "client": "ws"}
+Jun 19 21:28:58 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension.(*opAMPLogger).Errorf
+Jun 19 21:28:58 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension@v0.151.0/logger.go:26
+Jun 19 21:28:58 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opamp-go/client.(*wsClient).ensureConnected
+Jun 19 21:28:58 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opamp-go@v0.23.0/client/wsclient.go:312
+Jun 19 21:28:58 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opamp-go/client.(*wsClient).runOneCycle
+Jun 19 21:28:58 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opamp-go@v0.23.0/client/wsclient.go:350
+Jun 19 21:28:58 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opamp-go/client.(*wsClient).runUntilStopped
+Jun 19 21:28:58 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opamp-go@v0.23.0/client/wsclient.go:442
+Jun 19 21:28:58 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opamp-go/client/internal.(*ClientCommon).StartConnectAndRun.func1
+Jun 19 21:28:58 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opamp-go@v0.23.0/client/internal/clientcommon.go:249
+Jun 19 21:29:04 <host-redacted> otelcol-logs-opamp[138000]: 2026-06-19T21:29:04.338Z        error        opampextension@v0.151.0/opamp_agent.go:142        Failed to connect to the OpAMP server        {"resource": {"service.instance.id": "<id-redacted>", "service.name": "otelcol-logs-opamp", "service.version": ""}, "otelcol.component.id": "opamp", "otelcol.component.kind": "extension", "error": "websocket: bad handshake"}
+Jun 19 21:29:04 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension.(*opampAgent).Start.func3
+Jun 19 21:29:04 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension@v0.151.0/opamp_agent.go:142
+Jun 19 21:29:04 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opamp-go/client.(*wsClient).tryConnectOnce
+Jun 19 21:29:04 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opamp-go@v0.23.0/client/wsclient.go:263
+Jun 19 21:29:04 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opamp-go/client.(*wsClient).ensureConnected
+Jun 19 21:29:04 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opamp-go@v0.23.0/client/wsclient.go:306
+Jun 19 21:29:04 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opamp-go/client.(*wsClient).runOneCycle
+Jun 19 21:29:04 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opamp-go@v0.23.0/client/wsclient.go:350
+Jun 19 21:29:04 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opamp-go/client.(*wsClient).runUntilStopped
+Jun 19 21:29:04 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opamp-go@v0.23.0/client/wsclient.go:442
+Jun 19 21:29:04 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opamp-go/client/internal.(*ClientCommon).StartConnectAndRun.func1
+Jun 19 21:29:04 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opamp-go@v0.23.0/client/internal/clientcommon.go:249
+Jun 19 21:29:04 <host-redacted> otelcol-logs-opamp[138000]: 2026-06-19T21:29:04.339Z        error        opampextension@v0.151.0/logger.go:26        Server responded with status=403 Forbidden        {"resource": {"service.instance.id": "<id-redacted>", "service.name": "otelcol-logs-opamp", "service.version": ""}, "otelcol.component.id": "opamp", "otelcol.component.kind": "extension", "client": "ws"}
+Jun 19 21:29:04 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension.(*opAMPLogger).Errorf
+Jun 19 21:29:04 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension@v0.151.0/logger.go:26
+Jun 19 21:29:04 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opamp-go/client.(*wsClient).tryConnectOnce
+Jun 19 21:29:04 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opamp-go@v0.23.0/client/wsclient.go:273
+Jun 19 21:29:04 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opamp-go/client.(*wsClient).ensureConnected
+Jun 19 21:29:04 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opamp-go@v0.23.0/client/wsclient.go:306
+Jun 19 21:29:04 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opamp-go/client.(*wsClient).runOneCycle
+Jun 19 21:29:04 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opamp-go@v0.23.0/client/wsclient.go:350
+Jun 19 21:29:04 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opamp-go/client.(*wsClient).runUntilStopped
+Jun 19 21:29:04 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opamp-go@v0.23.0/client/wsclient.go:442
+Jun 19 21:29:04 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opamp-go/client/internal.(*ClientCommon).StartConnectAndRun.func1
+Jun 19 21:29:04 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opamp-go@v0.23.0/client/internal/clientcommon.go:249
+Jun 19 21:29:04 <host-redacted> otelcol-logs-opamp[138000]: 2026-06-19T21:29:04.339Z        error        opampextension@v0.151.0/opamp_agent.go:142        Failed to connect to the OpAMP server        {"resource": {"service.instance.id": "<id-redacted>", "service.name": "otelcol-logs-opamp", "service.version": ""}, "otelcol.component.id": "opamp", "otelcol.component.kind": "extension", "error": "websocket: bad handshake"}
+Jun 19 21:29:04 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension.(*opampAgent).Start.func3
+Jun 19 21:29:04 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension@v0.151.0/opamp_agent.go:142
+Jun 19 21:29:04 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opamp-go/client.(*wsClient).tryConnectOnce.func1
+Jun 19 21:29:04 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opamp-go@v0.23.0/client/wsclient.go:256
+Jun 19 21:29:04 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opamp-go/client.(*wsClient).tryConnectOnce
+Jun 19 21:29:04 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opamp-go@v0.23.0/client/wsclient.go:275
+Jun 19 21:29:04 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opamp-go/client.(*wsClient).ensureConnected
+Jun 19 21:29:04 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opamp-go@v0.23.0/client/wsclient.go:306
+Jun 19 21:29:04 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opamp-go/client.(*wsClient).runOneCycle
+Jun 19 21:29:04 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opamp-go@v0.23.0/client/wsclient.go:350
+Jun 19 21:29:04 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opamp-go/client.(*wsClient).runUntilStopped
+Jun 19 21:29:04 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opamp-go@v0.23.0/client/wsclient.go:442
+Jun 19 21:29:04 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opamp-go/client/internal.(*ClientCommon).StartConnectAndRun.func1
+Jun 19 21:29:04 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opamp-go@v0.23.0/client/internal/clientcommon.go:249
+Jun 19 21:29:04 <host-redacted> otelcol-logs-opamp[138000]: 2026-06-19T21:29:04.339Z        error        opampextension@v0.151.0/logger.go:26        Connection failed (websocket: bad handshake), will retry.        {"resource": {"service.instance.id": "<id-redacted>", "service.name": "otelcol-logs-opamp", "service.version": ""}, "otelcol.component.id": "opamp", "otelcol.component.kind": "extension", "client": "ws"}
+Jun 19 21:29:04 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension.(*opAMPLogger).Errorf
+Jun 19 21:29:04 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension@v0.151.0/logger.go:26
+Jun 19 21:29:04 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opamp-go/client.(*wsClient).ensureConnected
+Jun 19 21:29:04 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opamp-go@v0.23.0/client/wsclient.go:312
+Jun 19 21:29:04 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opamp-go/client.(*wsClient).runOneCycle
+Jun 19 21:29:04 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opamp-go@v0.23.0/client/wsclient.go:350
+Jun 19 21:29:04 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opamp-go/client.(*wsClient).runUntilStopped
+Jun 19 21:29:04 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opamp-go@v0.23.0/client/wsclient.go:442
+Jun 19 21:29:04 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opamp-go/client/internal.(*ClientCommon).StartConnectAndRun.func1
+Jun 19 21:29:04 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opamp-go@v0.23.0/client/internal/clientcommon.go:249
+Jun 19 21:29:11 <host-redacted> otelcol-logs-opamp[138000]: 2026-06-19T21:29:11.133Z        error        opampextension@v0.151.0/opamp_agent.go:142        Failed to connect to the OpAMP server        {"resource": {"service.instance.id": "<id-redacted>", "service.name": "otelcol-logs-opamp", "service.version": ""}, "otelcol.component.id": "opamp", "otelcol.component.kind": "extension", "error": "websocket: bad handshake"}
+Jun 19 21:29:11 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension.(*opampAgent).Start.func3
+Jun 19 21:29:11 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension@v0.151.0/opamp_agent.go:142
+Jun 19 21:29:11 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opamp-go/client.(*wsClient).tryConnectOnce
+Jun 19 21:29:11 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opamp-go@v0.23.0/client/wsclient.go:263
+Jun 19 21:29:11 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opamp-go/client.(*wsClient).ensureConnected
+Jun 19 21:29:11 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opamp-go@v0.23.0/client/wsclient.go:306
+Jun 19 21:29:11 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opamp-go/client.(*wsClient).runOneCycle
+Jun 19 21:29:11 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opamp-go@v0.23.0/client/wsclient.go:350
+Jun 19 21:29:11 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opamp-go/client.(*wsClient).runUntilStopped
+Jun 19 21:29:11 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opamp-go@v0.23.0/client/wsclient.go:442
+Jun 19 21:29:11 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opamp-go/client/internal.(*ClientCommon).StartConnectAndRun.func1
+Jun 19 21:29:11 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opamp-go@v0.23.0/client/internal/clientcommon.go:249
+Jun 19 21:29:11 <host-redacted> otelcol-logs-opamp[138000]: 2026-06-19T21:29:11.133Z        error        opampextension@v0.151.0/logger.go:26        Server responded with status=403 Forbidden        {"resource": {"service.instance.id": "<id-redacted>", "service.name": "otelcol-logs-opamp", "service.version": ""}, "otelcol.component.id": "opamp", "otelcol.component.kind": "extension", "client": "ws"}
+Jun 19 21:29:11 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension.(*opAMPLogger).Errorf
+Jun 19 21:29:11 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension@v0.151.0/logger.go:26
+Jun 19 21:29:11 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opamp-go/client.(*wsClient).tryConnectOnce
+Jun 19 21:29:11 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opamp-go@v0.23.0/client/wsclient.go:273
+Jun 19 21:29:11 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opamp-go/client.(*wsClient).ensureConnected
+Jun 19 21:29:11 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opamp-go@v0.23.0/client/wsclient.go:306
+Jun 19 21:29:11 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opamp-go/client.(*wsClient).runOneCycle
+Jun 19 21:29:11 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opamp-go@v0.23.0/client/wsclient.go:350
+Jun 19 21:29:11 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opamp-go/client.(*wsClient).runUntilStopped
+Jun 19 21:29:11 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opamp-go@v0.23.0/client/wsclient.go:442
+Jun 19 21:29:11 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opamp-go/client/internal.(*ClientCommon).StartConnectAndRun.func1
+Jun 19 21:29:11 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opamp-go@v0.23.0/client/internal/clientcommon.go:249
+Jun 19 21:29:11 <host-redacted> otelcol-logs-opamp[138000]: 2026-06-19T21:29:11.133Z        error        opampextension@v0.151.0/opamp_agent.go:142        Failed to connect to the OpAMP server        {"resource": {"service.instance.id": "<id-redacted>", "service.name": "otelcol-logs-opamp", "service.version": ""}, "otelcol.component.id": "opamp", "otelcol.component.kind": "extension", "error": "websocket: bad handshake"}
+Jun 19 21:29:11 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension.(*opampAgent).Start.func3
+Jun 19 21:29:11 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension@v0.151.0/opamp_agent.go:142
+Jun 19 21:29:11 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opamp-go/client.(*wsClient).tryConnectOnce.func1
+Jun 19 21:29:11 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opamp-go@v0.23.0/client/wsclient.go:256
+Jun 19 21:29:11 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opamp-go/client.(*wsClient).tryConnectOnce
+Jun 19 21:29:11 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opamp-go@v0.23.0/client/wsclient.go:275
+Jun 19 21:29:11 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opamp-go/client.(*wsClient).ensureConnected
+Jun 19 21:29:11 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opamp-go@v0.23.0/client/wsclient.go:306
+Jun 19 21:29:11 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opamp-go/client.(*wsClient).runOneCycle
+Jun 19 21:29:11 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opamp-go@v0.23.0/client/wsclient.go:350
+Jun 19 21:29:11 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opamp-go/client.(*wsClient).runUntilStopped
+Jun 19 21:29:11 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opamp-go@v0.23.0/client/wsclient.go:442
+Jun 19 21:29:11 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opamp-go/client/internal.(*ClientCommon).StartConnectAndRun.func1
+Jun 19 21:29:11 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opamp-go@v0.23.0/client/internal/clientcommon.go:249
+Jun 19 21:29:11 <host-redacted> otelcol-logs-opamp[138000]: 2026-06-19T21:29:11.134Z        error        opampextension@v0.151.0/logger.go:26        Connection failed (websocket: bad handshake), will retry.        {"resource": {"service.instance.id": "<id-redacted>", "service.name": "otelcol-logs-opamp", "service.version": ""}, "otelcol.component.id": "opamp", "otelcol.component.kind": "extension", "client": "ws"}
+Jun 19 21:29:11 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension.(*opAMPLogger).Errorf
+Jun 19 21:29:11 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension@v0.151.0/logger.go:26
+Jun 19 21:29:11 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opamp-go/client.(*wsClient).ensureConnected
+Jun 19 21:29:11 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opamp-go@v0.23.0/client/wsclient.go:312
+Jun 19 21:29:11 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opamp-go/client.(*wsClient).runOneCycle
+Jun 19 21:29:11 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opamp-go@v0.23.0/client/wsclient.go:350
+Jun 19 21:29:11 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opamp-go/client.(*wsClient).runUntilStopped
+Jun 19 21:29:11 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opamp-go@v0.23.0/client/wsclient.go:442
+Jun 19 21:29:11 <host-redacted> otelcol-logs-opamp[138000]: github.com/open-telemetry/opamp-go/client/internal.(*ClientCommon).StartConnectAndRun.func1
+Jun 19 21:29:11 <host-redacted> otelcol-logs-opamp[138000]:         github.com/open-telemetry/opamp-go@v0.23.0/client/internal/clientcommon.go:249
+inactive
+active

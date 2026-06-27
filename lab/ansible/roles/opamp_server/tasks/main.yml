@@ -1,0 +1,91 @@
+---
+- name: Create OpAMP config directory
+  ansible.builtin.file:
+    path: "{{ opamp_config_dir }}"
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Create OpAMP data directory
+  ansible.builtin.file:
+    path: "{{ opamp_data_dir }}"
+    state: directory
+    owner: root
+    group: root
+    mode: "0750"
+
+- name: Create OpAMP install directory
+  ansible.builtin.file:
+    path: "{{ opamp_install_dir }}"
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Check local OpAMP server binary
+  ansible.builtin.stat:
+    path: "{{ opamp_binary_local_path }}"
+  delegate_to: localhost
+  become: false
+  register: opamp_local_binary
+
+- name: Install OpAMP server binary
+  ansible.builtin.copy:
+    src: "{{ opamp_binary_local_path }}"
+    dest: "{{ opamp_binary_remote_path }}"
+    owner: root
+    group: root
+    mode: "0755"
+  when: opamp_local_binary.stat.exists
+  notify: Restart opamp-poc-server
+
+- name: Write non-secret OpAMP environment example
+  ansible.builtin.template:
+    src: opamp-server.env.j2
+    dest: "{{ opamp_config_dir }}/opamp-server.env.example"
+    owner: root
+    group: root
+    mode: "0640"
+
+- name: Write OpAMP environment
+  ansible.builtin.template:
+    src: opamp-server.env.j2
+    dest: "{{ opamp_config_dir }}/opamp-server.env"
+    owner: root
+    group: root
+    mode: "0640"
+  when: opamp_local_binary.stat.exists
+  notify: Restart opamp-poc-server
+
+- name: Install OpAMP systemd unit
+  ansible.builtin.template:
+    src: opamp-poc-server.service.j2
+    dest: /etc/systemd/system/opamp-poc-server.service
+    owner: root
+    group: root
+    mode: "0644"
+  when: opamp_local_binary.stat.exists
+  notify:
+    - Reload systemd
+    - Restart opamp-poc-server
+
+- name: Enable OpAMP service
+  ansible.builtin.systemd:
+    name: opamp-poc-server
+    enabled: "{{ opamp_service_enabled }}"
+    state: started
+    daemon_reload: true
+  when: opamp_local_binary.stat.exists
+
+- name: Write deployment placeholder
+  ansible.builtin.copy:
+    dest: "{{ opamp_config_dir }}/README"
+    owner: root
+    group: root
+    mode: "0644"
+    content: |
+      This host is reserved for the OpAMP server and evidence/log sink.
+
+      Keep real tokens, TLS private keys, and enrollment secrets out of git.
+      Run task opamp:build before this role to install and start the server binary.

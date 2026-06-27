@@ -1,0 +1,7 @@
+scenario,status,time_to_exit_seconds,data_path_downtime_seconds,secrets_replaced,stale_old_control_plane,recovery_seconds,maintainer_friction,evidence_path,notes
+fleet-to-opamp,pending,,,,,,,exit-fleet-to-opamp.md,
+bindplane-to-opamp,pending,,,,,,,exit-bindplane-to-opamp.md,
+opamp-token-rotation,document-only,,,,,,,secrets-catalog.md,
+opamp-go-outage,pending,,,,,,,control-plane-outage.md,
+fleet-opamp-outage,pending,,,,,,,control-plane-outage.md,
+bindplane-opamp-outage,pending,,,,,,,control-plane-outage.md,

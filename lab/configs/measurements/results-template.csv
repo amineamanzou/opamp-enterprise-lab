@@ -1,0 +1,2 @@
+run_id,date_utc,variant,collector_version,ocb_manifest,config_path,host_type,os_arch,binary_size_bytes,image_size_compressed_bytes,image_size_uncompressed_bytes,rss_idle_mib,rss_load_mib,cpu_load_percent,startup_time_ms,log_payload_bytes,target_logs_per_sec,observed_logs_per_sec,first_loss_logs_per_sec,backpressure_signal,elastic_response_errors,collector_dropped_records,notes
+001,YYYY-MM-DDTHH:MM:SSZ,otelcol-logs-min,0.151.0,lab/collector-ocb/otelcol-logs-min.yaml,lab/configs/collector/logs-min-elastic.yaml,REPLACE,REPLACE,,,,,,,,,,,,,,,

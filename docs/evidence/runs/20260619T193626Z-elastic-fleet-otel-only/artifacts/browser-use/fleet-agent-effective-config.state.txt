@@ -1,0 +1,549 @@
+viewport: 1924x1987
+page: 1924x1987
+scroll: (0, 0)
+[291]<div id=kibana-body />
+	[343]<div />
+		[338]<span />
+			[335]<a />
+				[3116]<svg role=img aria-label=Logo Elastic /> <!-- SVG content collapsed -->
+	[417]<div />
+		[380]<div />
+			[466]<div id=spcMenuPopover />
+				[465]<button aria-label=Navigation dans les espaces title=Default expanded=false />
+					[813]<div aria-label=Default role=img title=Default />
+	[418]<div />
+	[383]<button title=<redacted-observability-project> expanded=false />
+		<redacted-observability-project>
+		[488]<svg role=img aria-label=- Cliquer sur ce bouton affiche/masque une fenêtre contextuelle. /> <!-- SVG content collapsed -->
+	[420]<li level=1 />
+		[3613]<a title=Fleet />
+			Fleet
+	[3611]<a title=Agents />
+		Agents
+	asset-000001.example.invalid
+	[352]<div />
+		[421]<div />
+			[403]<div />
+				[445]<button aria-label=Affichez la barre de recherche />
+	[353]<div />
+		[351]<div id=headerHelpMenu />
+			[350]<button aria-label=Menu d'aide expanded=false />
+	[423]<div />
+		[406]<div />
+			[776]<span id=i<redacted-uuid>-wrapper />
+				[775]<button />
+					[1017]<svg role=img aria-label=Submit feedback /> <!-- SVG content collapsed -->
+	[407]<div />
+		<svg /> <!-- SVG content collapsed -->
+		[798]<button />
+			Agent IA
+	[426]<div />
+		[416]<div />
+			[415]<div />
+				[414]<div />
+					[413]<button aria-label=Menu Compte expanded=false />
+						[490]<div aria-label=<redacted-email> role=img title=<redacted-email> />
+	[494]<a id=observability_project_nav aria-label=Observability page d’accueil />
+		Observability
+	[498]<a id=discover />
+		Discover
+	[503]<a id=dashboards />
+		Tableaux de bord
+	[508]<a id=workflows />
+		Workflows
+	[516]<a id=observability-overview:alerts />
+		Alertes
+	[521]<a id=observability-overview:cases />
+		Cas
+	[526]<a id=slo />
+		Slo
+	[531]<a id=streams />
+		Flux
+	[536]<a id=applications expanded=false />
+		Applications
+	[542]<a id=metrics expanded=false />
+		Infrastructure
+	[548]<a id=agent_builder />
+		Agents
+	[553]<a id=machine_learning-landing expanded=false />
+		Machine Learning
+	[559]<a id=otherTools expanded=false />
+		Autres outils
+	[576]<div />
+		[575]<a aria-label=Ajouter des données />
+	[581]<div />
+		[580]<a aria-label=Outils de développeur />
+	[585]<a aria-label=Gestion des données expanded=false />
+	[592]<div />
+		[590]<a aria-label=Administration et paramètres expanded=false />
+		[811]<svg /> <!-- SVG content collapsed -->
+	[603]<hr />
+	[604]<div />
+		[598]<span id=:r1m:euiToolTipAnchor />
+			[597]<button aria-label=Réduire le menu de navigation pressed=true expanded=true />
+	Gestion des données
+	Ingestion et intégrations
+	[614]<a id=integrations />
+		Intégrations
+	[618]<a id=fleet />
+		Fleet
+	[622]<a id=management:ingest_pipelines />
+		Pipelines d'ingestion
+	[626]<a id=management:pipelines />
+		Pipelines logstash
+	[630]<a id=management:content_connectors />
+		Content Connectors
+	Index et flux de données
+	[641]<a id=management:index_management />
+		Gestion des index
+	[645]<a id=management:transform />
+		Transformations
+	[649]<a id=management:data_quality />
+		Qualité de l’ensemble de données
+	[653]<a id=management:data_usage />
+		Utilisation des données
+	Donner un retour
+	Afficher tous les agents
+	asset-000001.example.invalid
+	Actions
+	Détails de l'agent
+	Logs
+	Diagnostics
+	Paramètres
+	Aperçu
+	CPU
+	<svg /> <!-- SVG content collapsed -->
+	N/A
+	<svg role=img aria-label=Infos /> <!-- SVG content collapsed -->
+	Mémoire
+	<svg /> <!-- SVG content collapsed -->
+	N/A
+	<svg role=img aria-label=Infos /> <!-- SVG content collapsed -->
+	Afficher plus d'indicateurs d'agent
+	Voir la configuration du collecteur
+	Statut
+	Sain
+	Dernière activité
+	19 juin 2026
+	21:46
+	Dernier message de vérification
+	StatusOK
+	ID d'agent
+	<redacted-uuid>
+	Politique d'agent
+	Version d'agent
+	0.151.0
+	<svg role=img aria-label=Infos /> <!-- SVG content collapsed -->
+	Nom de l'hôte
+	asset-000001.example.invalid
+	ID de l'hôte
+	Mode FIPS
+	linux
+	Balises
+	otelcol-contrib
+	Fonctionnalités du collecteur
+	ReportsAvailableComponents
+	ReportsEffectiveConfig
+	ReportsHealth
+	ReportsStatus
+	Santé des composants
+	Statut du collecteur :
+	Sain
+	<svg role=presentation /> <!-- SVG content collapsed -->
+	Extensions
+	Composants
+	Extension: opamp
+	Extension: health_check
+	<svg role=presentation /> <!-- SVG content collapsed -->
+	Pipeline: logs
+	Composants
+	Processor: batch
+	Processor: resource
+	Processor: attributes
+	Receiver: filelog
+	Processor: filter/drop_health_noise
+	Processor: memory_limiter
+	Receiver: otlp
+	Exporter: otlphttp/elastic
+[281]<div />
+*[3672]<div />
+*[3673]<div />
+	*[3698]<div />
+	*[3695]<div role=dialog />
+		*[3691]<button aria-label=Fermer cette boîte de dialogue />
+		Configuration "asset-000001.example.invalid" effective
+		|scroll element|<div /> (0.0 pages above, 1.6 pages below)
+			*[4781]<pre />
+				connectors
+				extensions
+				*[3736]<span />
+					opamp
+				ppid_poll_interval
+				5s
+				*[3740]<span />
+					server
+				*[3742]<span />
+					http
+				polling_interval
+				0s
+				capabilities
+				reports_available_components
+				*[3750]<span />
+					true
+				reports_effective_config
+				*[3753]<span />
+					true
+				reports_health
+				*[3756]<span />
+					true
+				accepts_restart_command
+				*[3759]<span />
+					false
+				agent_description
+				non_identifying_attributes
+				service.instance.id
+				otel
+				fleet
+				host
+				*[3769]<span />
+					001
+				service.name
+				otelcol
+				contrib
+				fleet
+				service.version
+				0.151.0
+				deployment.ring
+				fleet
+				otel
+				only
+				telemetry.distro.name
+				otelcol
+				contrib
+				host.name
+				asset
+				000001.example.invalid
+				fleet.scenario.name
+				elastic
+				fleet
+				otel
+				only
+				deployment.environment
+				lab
+				include_resource_attributes
+				*[3795]<span />
+					false
+				instance_uid
+				*[3798]<span />
+					""
+				*[3799]<span />
+					ppid
+				health_check
+				*[3804]<span />
+					cors
+				*[3806]<span />
+					null
+				response_body
+				*[3809]<span />
+					null
+				transport
+				tcp
+				read_header_timeout
+				0s
+				*[3814]<span />
+					grpc
+				*[3816]<span />
+					null
+				*[3817]<span />
+					path
+				endpoint
+				127.0.0.1
+				*[3822]<span />
+					14133
+				write_timeout
+				0s
+				component_health
+				*[3827]<span />
+					null
+				*[3828]<span />
+					http
+				*[3830]<span />
+					null
+				*[3831]<span />
+					tls
+				*[3833]<span />
+					null
+				idle_timeout
+				0s
+				check_collector_pipeline
+				exporter_failure_threshold
+				interval
+				5m
+				enabled
+				*[3845]<span />
+					false
+				*[3846]<span />
+					use_v2
+				*[3848]<span />
+					false
+				receivers
+				filelog
+				include
+				/var/log/opamp
+				poc/synthetic.log
+				force_flush_period
+				500ms
+				resource
+				max_concurrent_files
+				*[3865]<span />
+					1024
+				fingerprint_size
+				*[3868]<span />
+					1000
+				on_truncate
+				ignore
+				storage
+				*[3873]<span />
+					null
+				encoding
+				utf
+				start_at
+				beginning
+				*[3880]<span />
+					type
+				file_input
+				max_log_size_behavior
+				split
+				*[3884]<span />
+					output
+				poll_interval
+				200ms
+				exclude_older_than
+				0s
+				max_log_size
+				1048576
+				operators
+				builder
+				*[3900]<span />
+					output
+				on_error
+				send
+				*[3906]<span />
+					from
+				fieldinterface
+				*[3910]<span />
+					keys
+				log.file.path
+				*[3913]<span />
+					id
+				move
+				*[3915]<span />
+					to
+				fieldinterface
+				*[3919]<span />
+					keys
+				log.file.path
+				*[3922]<span />
+					type
+				move
+				*[3924]<span />
+					if
+				*[3926]<span />
+					""
+				include_file_name
+				*[3929]<span />
+					true
+				attributes
+				*[3934]<span />
+					id
+				file_input
+				initial_buffer_size
+				*[3938]<span />
+					16384
+				include_file_path
+				*[3941]<span />
+					true
+				retry_on_failure
+				initial_interval
+				1s
+				max_elapsed_time
+				5m0s
+				max_interval
+				30s
+				enabled
+				*[3952]<span />
+					false
+				*[3953]<span />
+					otlp
+				protocols
+				*[3957]<span />
+					http
+				metrics_url_path
+				/v1/metrics
+				endpoint
+				127.0.0.1
+				*[3964]<span />
+					14318
+				*[3965]<span />
+					cors
+				*[3967]<span />
+					null
+				traces_url_path
+				/v1/traces
+				keep_alives_enabled
+				*[3972]<span />
+					true
+				write_timeout
+				0s
+				*[3975]<span />
+					tls
+				*[3977]<span />
+					null
+				idle_timeout
+				0s
+				logs_url_path
+				/v1/logs
+				transport
+				tcp
+				read_header_timeout
+				0s
+				*[3986]<span />
+					grpc
+				endpoint
+				127.0.0.1
+				*[3991]<span />
+					14317
+				keepalive
+				server_parameters
+				enforcement_policy
+				read_buffer_size
+				*[4004]<span />
+					524288
+				transport
+				tcp
+				service
+				extensions
+				health_check
+				opamp
+				pipelines
+				*[4015]<span />
+					logs
+				receivers
+				filelog
+				otlp
+				processors
+				memory_limiter
+				resource
+				attributes
+				filter/drop_health_noise
+				batch
+				exporters
+				otlphttp/elastic
+				telemetry
+				resource
+				schema_url
+				https
+				//opentelemetry.io/schemas/1.40.0
+				metrics
+				*[4040]<span />
+					level
+				Normal
+				readers
+				*[4045]<span />
+					pull
+				exporter
+				prometheus
+				without_type_suffix
+				*[4053]<span />
+					true
+				*[4054]<span />
+					port
+				*[4056]<span />
+					8888
+				*[4057]<span />
+					host
+				localhost
+				without_scope_info
+				*[4061]<span />
+					true
+				without_units
+				*[4064]<span />
+					true
+				*[4065]<span />
+					logs
+				error_output_paths
+				stderr
+				*[4070]<span />
+					level
+				info
+				output_paths
+				stderr
+				sampling
+				initial
+				*[4079]<span />
+					10
+				thereafter
+				*[4082]<span />
+					100
+				*[4083]<span />
+					tick
+				10s
+				enabled
+				*[4087]<span />
+					true
+				encoding
+				console
+				processors
+				filter/drop_health_noise
+				*[4094]<span />
+					spans
+				include
+				*[4098]<span />
+					null
+				exclude
+				*[4101]<span />
+					null
+				metric_conditions
+				profile_conditions
+				profiles
+				resource
+				profile
+				*[4120]<span />
+					traces
+				resource
+				spanevent
+				*[4130]<span />
+					span
+				error_mode
+				ignore
+				trace_conditions
+				metrics
+				include
+				*[4144]<span />
+					null
+				*[4145]<span />
+					regexp
+				*[4147]<span />
+					null
+				datapoint
+				*[4152]<span />
+					metric
+				resource
+				exclude
+				*[4162]<span />
+					null
+				*[4163]<span />
+					logs
+				include
+				*[4167]<span />
+					null
+				resource
+			*[6294]<div />
+				*[6293]<div />
+					*[6291]<span id=i<redacted-uuid>-wrapper />
+						*[6290]<button aria-label=Copier />
+		*[3683]<button />
+			Fermer
+		*[3686]<button />
+			Télécharger la configuration
+	*[3700]<div />

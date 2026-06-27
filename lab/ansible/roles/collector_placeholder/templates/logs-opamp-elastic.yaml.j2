@@ -1,0 +1,58 @@
+extensions:
+  health_check:
+    endpoint: 0.0.0.0:13133
+
+  opamp:
+    server:
+      ws:
+        endpoint: "{{ collector_opamp_endpoint }}"
+        headers:
+          Authorization: "Bearer ${env:OPAMP_AUTH_TOKEN}"
+    agent:
+      executable: "{{ collector_supervised_bin }}"
+      config_files:
+        - "{{ collector_supervised_config }}"
+    capabilities:
+      reports_effective_config: true
+      reports_own_logs: true
+      reports_own_metrics: true
+      accepts_remote_config: true
+      reports_remote_config: true
+
+receivers:
+  filelog:
+    include:
+      - "{{ synthetic_log_path }}"
+    start_at: beginning
+    include_file_path: true
+    include_file_name: true
+
+processors:
+  memory_limiter:
+    check_interval: 1s
+    limit_mib: 128
+    spike_limit_mib: 32
+  resource:
+    attributes:
+      - key: service.name
+        value: opamp-poc-host-logs
+        action: upsert
+      - key: deployment.ring
+        value: "{{ collector_opamp_ring }}"
+        action: upsert
+  batch: {}
+
+exporters:
+  otlphttp/elastic:
+    endpoint: "${env:ELASTIC_OTLP_ENDPOINT}"
+    headers:
+      Authorization: "ApiKey ${env:ELASTIC_API_KEY}"
+    compression: gzip
+
+service:
+  extensions: [health_check, opamp]
+  pipelines:
+    logs:
+      receivers: [filelog]
+      processors: [memory_limiter, resource, batch]
+      exporters: [otlphttp/elastic]

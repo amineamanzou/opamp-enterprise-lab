@@ -1,0 +1,9 @@
+---
+- name: Reload systemd
+  ansible.builtin.systemd:
+    daemon_reload: true
+
+- name: Restart opampsupervisor-logs
+  ansible.builtin.systemd:
+    name: "{{ collector_supervisor_service_name }}"
+    state: restarted

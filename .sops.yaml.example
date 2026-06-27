@@ -1,0 +1,5 @@
+creation_rules:
+  - path_regex: secrets\.encrypted/.*\.sops\.ya?ml$
+    age: >-
+      age1replacewithoperatorrecipientxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx,
+      age1replacewithbackuprecipientxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx

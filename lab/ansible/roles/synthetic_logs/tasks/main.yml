@@ -1,0 +1,54 @@
+---
+- name: Create synthetic log user
+  ansible.builtin.user:
+    name: "{{ synthetic_log_user }}"
+    system: true
+    shell: /usr/sbin/nologin
+    create_home: false
+
+- name: Create synthetic log directory
+  ansible.builtin.file:
+    path: "{{ synthetic_log_path | dirname }}"
+    state: directory
+    owner: "{{ synthetic_log_user }}"
+    group: "{{ synthetic_log_user }}"
+    mode: "0755"
+
+- name: Install synthetic log generator
+  ansible.builtin.template:
+    src: synthetic-log-generator.py.j2
+    dest: /usr/local/bin/synthetic-log-generator
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Install synthetic log generator service placeholder
+  ansible.builtin.copy:
+    dest: /etc/systemd/system/synthetic-log-generator.service
+    owner: root
+    group: root
+    mode: "0644"
+    content: |
+      [Unit]
+      Description=OpAMP POC synthetic log generator
+      After=network-online.target
+
+      [Service]
+      Type=simple
+      User={{ synthetic_log_user }}
+      ExecStart=/usr/local/bin/synthetic-log-generator --path {{ synthetic_log_path }} --rate {{ synthetic_log_rate_per_second }}
+      Restart=always
+      RestartSec=5
+
+      [Install]
+      WantedBy=multi-user.target
+
+- name: Reload systemd after synthetic log service changes
+  ansible.builtin.systemd:
+    daemon_reload: true
+
+- name: Keep synthetic log generator disabled by default
+  ansible.builtin.systemd:
+    name: synthetic-log-generator.service
+    enabled: false
+    state: stopped

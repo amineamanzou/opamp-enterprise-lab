@@ -1,0 +1,120 @@
+{
+  "captured_at_utc": "2026-06-19T23:00:14Z",
+  "window": "now-24h",
+  "total": {
+    "value": 10000,
+    "relation": "gte"
+  },
+  "first_seen": "2026-06-18T23:00:14.220Z",
+  "last_seen": "2026-06-19T22:59:48.621Z",
+  "datasets": [
+    {
+      "dataset": "fleet_agent_status",
+      "count": 196
+    },
+    {
+      "dataset": "opamp_connections",
+      "count": 7
+    },
+    {
+      "dataset": "opamp_events",
+      "count": 106
+    },
+    {
+      "dataset": "opamp_inventory",
+      "count": 40052
+    },
+    {
+      "dataset": "opamp_server_metrics",
+      "count": 7
+    },
+    {
+      "dataset": "synthetic_app_logs",
+      "count": 433515
+    }
+  ],
+  "events_by_action": [
+    {
+      "action": "inventory_snapshot",
+      "count": 40052
+    },
+    {
+      "action": "agent.config_offered",
+      "count": 80
+    },
+    {
+      "action": "agent.connected",
+      "count": 10
+    },
+    {
+      "action": "agent.health_changed",
+      "count": 10
+    },
+    {
+      "action": "connection_snapshot",
+      "count": 7
+    },
+    {
+      "action": "agent.config_status_changed",
+      "count": 4
+    },
+    {
+      "action": "agent.disconnected",
+      "count": 2
+    }
+  ],
+  "services": [
+    {
+      "service": "opamp-poc-host-logs",
+      "count": 5432958
+    },
+    {
+      "service": "otelcol-contrib-fleet",
+      "count": 3000421
+    },
+    {
+      "service": "synthetic-otel-app",
+      "count": 442916
+    },
+    {
+      "service": "opamp-poc-k8s-host",
+      "count": 357311
+    },
+    {
+      "service": "k3s-apiserver-audit",
+      "count": 352271
+    },
+    {
+      "service": "opamp-poc-k8s-logs",
+      "count": 302927
+    },
+    {
+      "service": "opamp-poc-k8s-cluster",
+      "count": 266340
+    },
+    {
+      "service": "opamp-poc-k8s-kubeletstats",
+      "count": 253231
+    },
+    {
+      "service": "otelcol-logs-opamp",
+      "count": 230407
+    },
+    {
+      "service": "opamp-poc-k8s-node",
+      "count": 176491
+    },
+    {
+      "service": "opamp-poc-host",
+      "count": 138747
+    },
+    {
+      "service": "otelcol-app-opamp",
+      "count": 32532
+    },
+    {
+      "service": "otelcol-logs-opamp-bindplane-custom",
+      "count": 418
+    }
+  ]
+}

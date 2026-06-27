@@ -1,0 +1,307 @@
+version: "3"
+
+silent: false
+
+vars:
+  EVIDENCE_DIR: docs/evidence/runs
+
+tasks:
+  study:check:
+    desc: Validate Markdown, sources, and anonymization guardrails.
+    cmds:
+      - ./scripts/study-check.sh
+
+  infra:validate:
+    desc: Validate Terraform lab files without contacting cloud APIs.
+    dir: lab/infra/hcloud
+    cmds:
+      - ../../../scripts/infra-validate.sh
+
+  infra:inventory:
+    desc: Render an Ansible inventory from Terraform outputs.
+    dir: lab/infra/hcloud
+    cmds:
+      - ../../../scripts/infra-inventory.sh
+
+  infra:plan:
+    desc: Run Terraform plan for the Hetzner lab.
+    dir: lab/infra/hcloud
+    cmds:
+      - terraform init
+      - terraform plan
+
+  infra:apply:
+    desc: Apply the Hetzner lab Terraform stack.
+    dir: lab/infra/hcloud
+    cmds:
+      - terraform apply
+
+  infra:destroy:
+    desc: Destroy the Hetzner lab Terraform stack.
+    dir: lab/infra/hcloud
+    cmds:
+      - terraform destroy
+
+  ansible:bootstrap:
+    desc: Bootstrap lab hosts with Ansible.
+    dir: lab/ansible
+    cmds:
+      - ansible-playbook -i inventory/hosts.ini playbooks/bootstrap.yml
+
+  collector:env:
+    desc: Render a local ignored env file for host collector deployment.
+    cmds:
+      - ./scripts/collector-host-env.sh
+
+  ansible:collector:host:
+    desc: Deploy the OCB OpAMP collector on host log agents.
+    dir: lab/ansible
+    cmds:
+      - ansible-playbook -i inventory/hosts.ini playbooks/ocb_collector_host.yml
+
+  ansible:collector:supervisor:
+    desc: Deploy opampsupervisor managing the OCB collector on host log agents.
+    dir: lab/ansible
+    cmds:
+      - ansible-playbook -i inventory/hosts.ini playbooks/opamp_supervisor_host.yml
+
+  ansible:collector:supervisor:version:
+    desc: Deploy opampsupervisor with a versioned OCB collector binary, e.g. task ansible:collector:supervisor:version VERSION=0.150.0.
+    dir: lab/ansible
+    cmds:
+      - ansible-playbook -i inventory/hosts.ini playbooks/opamp_supervisor_host.yml -e ocb_collector_binary_local_path=../../../dist/otelcol-logs-opamp-{{.VERSION}}/otelcol-logs-opamp-{{.VERSION}}
+
+  ansible:k3s:
+    desc: Install the k3s lab cluster and fetch kubeconfig.
+    dir: lab/ansible
+    cmds:
+      - ../../scripts/k3s-download-artifacts.sh
+      - ansible-playbook -i inventory/hosts.ini playbooks/k3s_install.yml
+
+  ansible:k3s:audit:
+    desc: Enable regulated Metadata-level Kubernetes audit logs on k3s servers.
+    dir: lab/ansible
+    cmds:
+      - ansible-playbook -i inventory/hosts.ini playbooks/k3s_audit.yml
+
+  ansible:k3s:reset:
+    desc: Remove k3s from lab nodes before reinstalling the cluster.
+    dir: lab/ansible
+    cmds:
+      - ansible-playbook -i inventory/hosts.ini playbooks/k3s_reset.yml
+
+  k8s:operator:install:
+    desc: Install cert-manager and the OpenTelemetry Operator on the k3s lab cluster.
+    cmds:
+      - ./scripts/k8s-operator-install.sh
+
+  k8s:logs:install:
+    desc: Deploy Kubernetes synthetic logs and an OpAMP-enabled Collector DaemonSet.
+    cmds:
+      - ./scripts/k8s-logs-export-install.sh
+
+  k8s:app:install:
+    desc: Deploy namespace-scoped application OTel collector and synthetic app.
+    cmds:
+      - ./scripts/k8s-app-otel-install.sh
+
+  ansible:lint:
+    desc: Run dependency-light Ansible checks, or ansible-lint when installed.
+    dir: lab/ansible
+    cmds:
+      - ../../scripts/ansible-lint.sh
+
+  secrets:check:
+    desc: Check that required secret environment variables are present for cloud runs.
+    cmds:
+      - ./scripts/secrets-check.sh
+
+  secrets:render:
+    desc: Render local env files from SOPS-encrypted secrets.
+    cmds:
+      - ./scripts/secrets-render.sh
+
+  secrets:encrypt:hcloud:
+    desc: Encrypt secrets/hcloud.env to secrets.encrypted/hcloud.sops.yaml.
+    cmds:
+      - ./scripts/encrypt-env-to-sops.sh secrets/hcloud.env secrets.encrypted/hcloud.sops.yaml
+
+  secrets:encrypt:elastic:
+    desc: Encrypt secrets/elastic-cloud.env to secrets.encrypted/elastic-cloud.sops.yaml.
+    cmds:
+      - ./scripts/encrypt-env-to-sops.sh secrets/elastic-cloud.env secrets.encrypted/elastic-cloud.sops.yaml
+
+  secrets:encrypt:opamp:
+    desc: Encrypt secrets/opamp.env to secrets.encrypted/opamp.sops.yaml.
+    cmds:
+      - ./scripts/encrypt-env-to-sops.sh secrets/opamp.env secrets.encrypted/opamp.sops.yaml
+
+  ocb:build:
+    desc: Validate OCB manifests and build if ocb is installed.
+    cmds:
+      - ./scripts/ocb-build.sh
+
+  ocb:build:version:
+    desc: Build an OpAMP-enabled OCB collector for VERSION, e.g. task ocb:build:version VERSION=0.150.0.
+    cmds:
+      - ./scripts/ocb-build-version.sh {{.VERSION}}
+
+  ocb:measure:
+    desc: Create a local OCB measurement evidence skeleton.
+    cmds:
+      - ./scripts/ocb-measure.sh
+
+  opamp:ops:pre-sweep:
+    desc: Run the VM host-agent pre-sweep at 1k/5k/10k logs per second.
+    cmds:
+      - ./scripts/opamp-pre-sweep.sh
+
+  opamp:test:
+    desc: Run the minimal OpAMP POC server tests.
+    dir: lab/opamp-server
+    cmds:
+      - GOCACHE=/tmp/opamp-poc-go-cache GOMODCACHE=/tmp/opamp-poc-go-mod-cache go test ./...
+
+  opamp:build:
+    desc: Build the OpAMP POC server binary.
+    cmds:
+      - ./scripts/opamp-build.sh
+
+  opamp:agent-swarm:build:
+    desc: Build the mock OpAMP agent swarm binary for lab scale tests.
+    cmds:
+      - ./scripts/opamp-agent-swarm-build.sh
+
+  opamp:scale:agents:
+    desc: Run the OpAMP mock-agent scale scenario from the host-agent VM.
+    cmds:
+      - ./scripts/opamp-agent-scale.sh
+
+  opamp:smoke:extension:
+    desc: Run a local smoke scenario for the OTel Collector OpAMP extension path.
+    cmds:
+      - ./scripts/opamp-smoke.sh extension
+
+  opamp:supervisor:build:
+    desc: Download the upstream opampsupervisor release binary.
+    cmds:
+      - ./scripts/opamp-supervisor-build.sh
+
+  opamp:supervisor:build:linux:
+    desc: Download the upstream Linux amd64 opampsupervisor release binary for lab hosts.
+    cmds:
+      - OPAMP_SUPERVISOR_OS=linux OPAMP_SUPERVISOR_ARCH=amd64 ./scripts/opamp-supervisor-build.sh
+
+  opamp:smoke:supervisor:
+    desc: Create and validate a local smoke scenario for the opampsupervisor path.
+    cmds:
+      - ./scripts/opamp-smoke.sh supervisor
+
+  elastic:verify:
+    desc: Verify Elastic Cloud OTLP endpoint variables and optionally probe connectivity.
+    cmds:
+      - ./scripts/elastic-verify.sh
+
+  elastic:regulated:verify:
+    desc: Verify regulated observability datasets in Elastic.
+    cmds:
+      - ./scripts/elastic-regulated-verify.sh
+
+  elastic:visibility:check:
+    desc: Preflight Elasticsearch and Kibana API access for as-code visibility setup.
+    cmds:
+      - ./scripts/elastic-visibility-check.sh
+
+  elastic:visibility:setup:
+    desc: Install OpAMP lab Elastic templates, Kibana objects, and in-app Security rules via API.
+    cmds:
+      - ./scripts/elastic-visibility-setup.sh
+
+  elastic:opamp:snapshot:
+    desc: Index current vanilla OpAMP inventory, stats, and connection snapshots into Elastic.
+    cmds:
+      - ./scripts/elastic-opamp-snapshot.sh
+
+  elastic:opamp:watch:
+    desc: Continuously index OpAMP stats, events, and periodic inventory into Elastic during experiments.
+    cmds:
+      - ./scripts/elastic-opamp-watch.sh
+
+  elastic:visibility:verify:
+    desc: Verify OpAMP lab Elastic templates, datasets, saved objects, and Security rules.
+    cmds:
+      - ./scripts/elastic-visibility-verify.sh
+
+  kibana:regulated:setup:
+    desc: Import regulated observability Kibana data views and dashboard skeleton when Kibana env vars are set.
+    cmds:
+      - ./scripts/kibana-regulated-setup.sh
+
+  evidence:smoke:
+    desc: Create a smoke evidence run directory.
+    cmds:
+      - ./scripts/evidence-run.sh smoke
+
+  evidence:scale:
+    desc: Create a scale evidence run directory.
+    cmds:
+      - ./scripts/evidence-run.sh scale
+
+  evidence:opamp-cloud:
+    desc: Create an OpAMP cloud evidence run directory.
+    cmds:
+      - ./scripts/evidence-opamp-cloud.sh
+
+  evidence:vanilla-ui:
+    desc: Create a vanilla OpAMP UI evidence run directory.
+    cmds:
+      - ./scripts/evidence-vanilla-ui.sh
+
+  evidence:ops-experience:
+    desc: Create an OpAMP operations experience evidence run directory.
+    cmds:
+      - ./scripts/evidence-ops-experience.sh
+
+  evidence:agent-scale:
+    desc: Create an OpAMP mock-agent scale evidence run directory.
+    cmds:
+      - ./scripts/evidence-agent-scale.sh
+
+  evidence:regulated-observability:
+    desc: Capture evidence for regulated infra, SIEM, host metrics, and collector self-observability export.
+    cmds:
+      - ./scripts/evidence-regulated-observability.sh
+
+  evidence:elastic-fleet-otel-only:
+    desc: Create an Elastic Fleet OpenTelemetry Collector-only evidence run directory.
+    cmds:
+      - ./scripts/evidence-elastic-fleet-otel-only.sh
+
+  evidence:bindplane-otel:
+    desc: Create a Bindplane OpenTelemetry Collector evidence run directory.
+    cmds:
+      - ./scripts/evidence-bindplane-otel.sh
+
+  evidence:openlit-opamp:
+    desc: Create an OpenLit OpAMP OpenTelemetry Collector evidence run directory.
+    cmds:
+      - ./scripts/evidence-openlit-opamp.sh
+
+  evidence:exit-drill-secrets-outage:
+    desc: Create exit drill, secrets, and control-plane outage evidence run directory.
+    cmds:
+      - ./scripts/evidence-exit-drill-secrets-outage.sh
+
+  evidence:log-export:
+    desc: Capture live evidence for VM and Kubernetes log export through OpAMP-managed collectors.
+    cmds:
+      - ./scripts/evidence-log-export.sh
+
+  ci:local:
+    desc: Run the same high-level checks as GitHub Actions.
+    cmds:
+      - task: study:check
+      - task: opamp:test
+      - task: ocb:build
+      - task: infra:validate
+      - task: ansible:lint

@@ -1,0 +1,471 @@
+2026-06-19T20:04:27Z
+133260 timeout 180s /opt/elastic-fleet-otel-only/otelcol-contrib --config /opt/elastic-fleet-otel-only/scale-10c/collector-01.yaml
+133263 timeout 180s /opt/elastic-fleet-otel-only/otelcol-contrib --config /opt/elastic-fleet-otel-only/scale-10c/collector-02.yaml
+133265 /opt/elastic-fleet-otel-only/otelcol-contrib --config /opt/elastic-fleet-otel-only/scale-10c/collector-01.yaml
+133267 /opt/elastic-fleet-otel-only/otelcol-contrib --config /opt/elastic-fleet-otel-only/scale-10c/collector-02.yaml
+133268 timeout 180s /opt/elastic-fleet-otel-only/otelcol-contrib --config /opt/elastic-fleet-otel-only/scale-10c/collector-03.yaml
+133270 /opt/elastic-fleet-otel-only/otelcol-contrib --config /opt/elastic-fleet-otel-only/scale-10c/collector-03.yaml
+133272 timeout 180s /opt/elastic-fleet-otel-only/otelcol-contrib --config /opt/elastic-fleet-otel-only/scale-10c/collector-04.yaml
+133278 /opt/elastic-fleet-otel-only/otelcol-contrib --config /opt/elastic-fleet-otel-only/scale-10c/collector-04.yaml
+133279 timeout 180s /opt/elastic-fleet-otel-only/otelcol-contrib --config /opt/elastic-fleet-otel-only/scale-10c/collector-05.yaml
+133282 /opt/elastic-fleet-otel-only/otelcol-contrib --config /opt/elastic-fleet-otel-only/scale-10c/collector-05.yaml
+133286 timeout 180s /opt/elastic-fleet-otel-only/otelcol-contrib --config /opt/elastic-fleet-otel-only/scale-10c/collector-06.yaml
+133292 /opt/elastic-fleet-otel-only/otelcol-contrib --config /opt/elastic-fleet-otel-only/scale-10c/collector-06.yaml
+133293 timeout 180s /opt/elastic-fleet-otel-only/otelcol-contrib --config /opt/elastic-fleet-otel-only/scale-10c/collector-07.yaml
+133298 /opt/elastic-fleet-otel-only/otelcol-contrib --config /opt/elastic-fleet-otel-only/scale-10c/collector-07.yaml
+133299 timeout 180s /opt/elastic-fleet-otel-only/otelcol-contrib --config /opt/elastic-fleet-otel-only/scale-10c/collector-08.yaml
+133303 /opt/elastic-fleet-otel-only/otelcol-contrib --config /opt/elastic-fleet-otel-only/scale-10c/collector-08.yaml
+133307 timeout 180s /opt/elastic-fleet-otel-only/otelcol-contrib --config /opt/elastic-fleet-otel-only/scale-10c/collector-09.yaml
+133309 /opt/elastic-fleet-otel-only/otelcol-contrib --config /opt/elastic-fleet-otel-only/scale-10c/collector-09.yaml
+133313 timeout 180s /opt/elastic-fleet-otel-only/otelcol-contrib --config /opt/elastic-fleet-otel-only/scale-10c/collector-10.yaml
+133318 /opt/elastic-fleet-otel-only/otelcol-contrib --config /opt/elastic-fleet-otel-only/scale-10c/collector-10.yaml
+--- collector-01.log
+2026-06-19T20:03:00.036Z	error	opampextension@v0.151.0/logger.go:26	invalid response from server: 401	{"resource": {"service.instance.id": "0d3cd42f-0eb1-402b-8214-39a7752de1d1", "service.name": "otelcol-contrib", "service.version": "0.151.0"}, "otelcol.component.id": "opamp", "otelcol.component.kind": "extension", "client": "http"}
+github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension.(*opAMPLogger).Errorf
+	github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension@v0.151.0/logger.go:26
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).makeOneRequestRoundtrip
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:196
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).Run
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:151
+github.com/open-telemetry/opamp-go/client.(*httpClient).runUntilStopped
+	github.com/open-telemetry/opamp-go@v0.23.0/client/httpclient.go:145
+github.com/open-telemetry/opamp-go/client/internal.(*ClientCommon).StartConnectAndRun.func1
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/clientcommon.go:249
+2026-06-19T20:03:00.042Z	error	opampextension@v0.151.0/logger.go:26	invalid response from server: 401	{"resource": {"service.instance.id": "0d3cd42f-0eb1-402b-8214-39a7752de1d1", "service.name": "otelcol-contrib", "service.version": "0.151.0"}, "otelcol.component.id": "opamp", "otelcol.component.kind": "extension", "client": "http"}
+github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension.(*opAMPLogger).Errorf
+	github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension@v0.151.0/logger.go:26
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).makeOneRequestRoundtrip
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:196
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).Run
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:151
+github.com/open-telemetry/opamp-go/client.(*httpClient).runUntilStopped
+	github.com/open-telemetry/opamp-go@v0.23.0/client/httpclient.go:145
+github.com/open-telemetry/opamp-go/client/internal.(*ClientCommon).StartConnectAndRun.func1
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/clientcommon.go:249
+2026-06-19T20:03:30.049Z	error	opampextension@v0.151.0/logger.go:26	invalid response from server: 401	{"resource": {"service.instance.id": "0d3cd42f-0eb1-402b-8214-39a7752de1d1", "service.name": "otelcol-contrib", "service.version": "0.151.0"}, "otelcol.component.id": "opamp", "otelcol.component.kind": "extension", "client": "http"}
+github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension.(*opAMPLogger).Errorf
+	github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension@v0.151.0/logger.go:26
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).makeOneRequestRoundtrip
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:196
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).Run
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:151
+github.com/open-telemetry/opamp-go/client.(*httpClient).runUntilStopped
+	github.com/open-telemetry/opamp-go@v0.23.0/client/httpclient.go:145
+github.com/open-telemetry/opamp-go/client/internal.(*ClientCommon).StartConnectAndRun.func1
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/clientcommon.go:249
+2026-06-19T20:04:00.055Z	error	opampextension@v0.151.0/logger.go:26	invalid response from server: 401	{"resource": {"service.instance.id": "0d3cd42f-0eb1-402b-8214-39a7752de1d1", "service.name": "otelcol-contrib", "service.version": "0.151.0"}, "otelcol.component.id": "opamp", "otelcol.component.kind": "extension", "client": "http"}
+github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension.(*opAMPLogger).Errorf
+	github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension@v0.151.0/logger.go:26
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).makeOneRequestRoundtrip
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:196
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).Run
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:151
+github.com/open-telemetry/opamp-go/client.(*httpClient).runUntilStopped
+	github.com/open-telemetry/opamp-go@v0.23.0/client/httpclient.go:145
+github.com/open-telemetry/opamp-go/client/internal.(*ClientCommon).StartConnectAndRun.func1
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/clientcommon.go:249
+--- collector-02.log
+2026-06-19T20:03:00.019Z	error	opampextension@v0.151.0/logger.go:26	invalid response from server: 401	{"resource": {"service.instance.id": "d781d2b4-e96e-442c-82cc-9aa9b1323e59", "service.name": "otelcol-contrib", "service.version": "0.151.0"}, "otelcol.component.id": "opamp", "otelcol.component.kind": "extension", "client": "http"}
+github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension.(*opAMPLogger).Errorf
+	github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension@v0.151.0/logger.go:26
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).makeOneRequestRoundtrip
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:196
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).Run
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:151
+github.com/open-telemetry/opamp-go/client.(*httpClient).runUntilStopped
+	github.com/open-telemetry/opamp-go@v0.23.0/client/httpclient.go:145
+github.com/open-telemetry/opamp-go/client/internal.(*ClientCommon).StartConnectAndRun.func1
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/clientcommon.go:249
+2026-06-19T20:03:00.025Z	error	opampextension@v0.151.0/logger.go:26	invalid response from server: 401	{"resource": {"service.instance.id": "d781d2b4-e96e-442c-82cc-9aa9b1323e59", "service.name": "otelcol-contrib", "service.version": "0.151.0"}, "otelcol.component.id": "opamp", "otelcol.component.kind": "extension", "client": "http"}
+github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension.(*opAMPLogger).Errorf
+	github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension@v0.151.0/logger.go:26
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).makeOneRequestRoundtrip
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:196
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).Run
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:151
+github.com/open-telemetry/opamp-go/client.(*httpClient).runUntilStopped
+	github.com/open-telemetry/opamp-go@v0.23.0/client/httpclient.go:145
+github.com/open-telemetry/opamp-go/client/internal.(*ClientCommon).StartConnectAndRun.func1
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/clientcommon.go:249
+2026-06-19T20:03:30.032Z	error	opampextension@v0.151.0/logger.go:26	invalid response from server: 401	{"resource": {"service.instance.id": "d781d2b4-e96e-442c-82cc-9aa9b1323e59", "service.name": "otelcol-contrib", "service.version": "0.151.0"}, "otelcol.component.id": "opamp", "otelcol.component.kind": "extension", "client": "http"}
+github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension.(*opAMPLogger).Errorf
+	github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension@v0.151.0/logger.go:26
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).makeOneRequestRoundtrip
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:196
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).Run
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:151
+github.com/open-telemetry/opamp-go/client.(*httpClient).runUntilStopped
+	github.com/open-telemetry/opamp-go@v0.23.0/client/httpclient.go:145
+github.com/open-telemetry/opamp-go/client/internal.(*ClientCommon).StartConnectAndRun.func1
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/clientcommon.go:249
+2026-06-19T20:04:00.041Z	error	opampextension@v0.151.0/logger.go:26	invalid response from server: 401	{"resource": {"service.instance.id": "d781d2b4-e96e-442c-82cc-9aa9b1323e59", "service.name": "otelcol-contrib", "service.version": "0.151.0"}, "otelcol.component.id": "opamp", "otelcol.component.kind": "extension", "client": "http"}
+github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension.(*opAMPLogger).Errorf
+	github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension@v0.151.0/logger.go:26
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).makeOneRequestRoundtrip
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:196
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).Run
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:151
+github.com/open-telemetry/opamp-go/client.(*httpClient).runUntilStopped
+	github.com/open-telemetry/opamp-go@v0.23.0/client/httpclient.go:145
+github.com/open-telemetry/opamp-go/client/internal.(*ClientCommon).StartConnectAndRun.func1
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/clientcommon.go:249
+--- collector-03.log
+2026-06-19T20:03:00.019Z	error	opampextension@v0.151.0/logger.go:26	invalid response from server: 401	{"resource": {"service.instance.id": "ea78be19-9111-4883-a477-0dd79ae67f86", "service.name": "otelcol-contrib", "service.version": "0.151.0"}, "otelcol.component.id": "opamp", "otelcol.component.kind": "extension", "client": "http"}
+github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension.(*opAMPLogger).Errorf
+	github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension@v0.151.0/logger.go:26
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).makeOneRequestRoundtrip
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:196
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).Run
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:151
+github.com/open-telemetry/opamp-go/client.(*httpClient).runUntilStopped
+	github.com/open-telemetry/opamp-go@v0.23.0/client/httpclient.go:145
+github.com/open-telemetry/opamp-go/client/internal.(*ClientCommon).StartConnectAndRun.func1
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/clientcommon.go:249
+2026-06-19T20:03:00.025Z	error	opampextension@v0.151.0/logger.go:26	invalid response from server: 401	{"resource": {"service.instance.id": "ea78be19-9111-4883-a477-0dd79ae67f86", "service.name": "otelcol-contrib", "service.version": "0.151.0"}, "otelcol.component.id": "opamp", "otelcol.component.kind": "extension", "client": "http"}
+github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension.(*opAMPLogger).Errorf
+	github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension@v0.151.0/logger.go:26
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).makeOneRequestRoundtrip
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:196
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).Run
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:151
+github.com/open-telemetry/opamp-go/client.(*httpClient).runUntilStopped
+	github.com/open-telemetry/opamp-go@v0.23.0/client/httpclient.go:145
+github.com/open-telemetry/opamp-go/client/internal.(*ClientCommon).StartConnectAndRun.func1
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/clientcommon.go:249
+2026-06-19T20:03:30.032Z	error	opampextension@v0.151.0/logger.go:26	invalid response from server: 401	{"resource": {"service.instance.id": "ea78be19-9111-4883-a477-0dd79ae67f86", "service.name": "otelcol-contrib", "service.version": "0.151.0"}, "otelcol.component.id": "opamp", "otelcol.component.kind": "extension", "client": "http"}
+github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension.(*opAMPLogger).Errorf
+	github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension@v0.151.0/logger.go:26
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).makeOneRequestRoundtrip
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:196
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).Run
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:151
+github.com/open-telemetry/opamp-go/client.(*httpClient).runUntilStopped
+	github.com/open-telemetry/opamp-go@v0.23.0/client/httpclient.go:145
+github.com/open-telemetry/opamp-go/client/internal.(*ClientCommon).StartConnectAndRun.func1
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/clientcommon.go:249
+2026-06-19T20:04:00.040Z	error	opampextension@v0.151.0/logger.go:26	invalid response from server: 401	{"resource": {"service.instance.id": "ea78be19-9111-4883-a477-0dd79ae67f86", "service.name": "otelcol-contrib", "service.version": "0.151.0"}, "otelcol.component.id": "opamp", "otelcol.component.kind": "extension", "client": "http"}
+github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension.(*opAMPLogger).Errorf
+	github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension@v0.151.0/logger.go:26
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).makeOneRequestRoundtrip
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:196
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).Run
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:151
+github.com/open-telemetry/opamp-go/client.(*httpClient).runUntilStopped
+	github.com/open-telemetry/opamp-go@v0.23.0/client/httpclient.go:145
+github.com/open-telemetry/opamp-go/client/internal.(*ClientCommon).StartConnectAndRun.func1
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/clientcommon.go:249
+--- collector-04.log
+2026-06-19T20:03:00.035Z	error	opampextension@v0.151.0/logger.go:26	invalid response from server: 401	{"resource": {"service.instance.id": "3099b352-bb35-4d7c-ab9e-c31056a02934", "service.name": "otelcol-contrib", "service.version": "0.151.0"}, "otelcol.component.id": "opamp", "otelcol.component.kind": "extension", "client": "http"}
+github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension.(*opAMPLogger).Errorf
+	github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension@v0.151.0/logger.go:26
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).makeOneRequestRoundtrip
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:196
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).Run
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:151
+github.com/open-telemetry/opamp-go/client.(*httpClient).runUntilStopped
+	github.com/open-telemetry/opamp-go@v0.23.0/client/httpclient.go:145
+github.com/open-telemetry/opamp-go/client/internal.(*ClientCommon).StartConnectAndRun.func1
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/clientcommon.go:249
+2026-06-19T20:03:00.043Z	error	opampextension@v0.151.0/logger.go:26	invalid response from server: 401	{"resource": {"service.instance.id": "3099b352-bb35-4d7c-ab9e-c31056a02934", "service.name": "otelcol-contrib", "service.version": "0.151.0"}, "otelcol.component.id": "opamp", "otelcol.component.kind": "extension", "client": "http"}
+github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension.(*opAMPLogger).Errorf
+	github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension@v0.151.0/logger.go:26
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).makeOneRequestRoundtrip
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:196
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).Run
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:151
+github.com/open-telemetry/opamp-go/client.(*httpClient).runUntilStopped
+	github.com/open-telemetry/opamp-go@v0.23.0/client/httpclient.go:145
+github.com/open-telemetry/opamp-go/client/internal.(*ClientCommon).StartConnectAndRun.func1
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/clientcommon.go:249
+2026-06-19T20:03:30.050Z	error	opampextension@v0.151.0/logger.go:26	invalid response from server: 401	{"resource": {"service.instance.id": "3099b352-bb35-4d7c-ab9e-c31056a02934", "service.name": "otelcol-contrib", "service.version": "0.151.0"}, "otelcol.component.id": "opamp", "otelcol.component.kind": "extension", "client": "http"}
+github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension.(*opAMPLogger).Errorf
+	github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension@v0.151.0/logger.go:26
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).makeOneRequestRoundtrip
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:196
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).Run
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:151
+github.com/open-telemetry/opamp-go/client.(*httpClient).runUntilStopped
+	github.com/open-telemetry/opamp-go@v0.23.0/client/httpclient.go:145
+github.com/open-telemetry/opamp-go/client/internal.(*ClientCommon).StartConnectAndRun.func1
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/clientcommon.go:249
+2026-06-19T20:04:00.057Z	error	opampextension@v0.151.0/logger.go:26	invalid response from server: 401	{"resource": {"service.instance.id": "3099b352-bb35-4d7c-ab9e-c31056a02934", "service.name": "otelcol-contrib", "service.version": "0.151.0"}, "otelcol.component.id": "opamp", "otelcol.component.kind": "extension", "client": "http"}
+github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension.(*opAMPLogger).Errorf
+	github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension@v0.151.0/logger.go:26
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).makeOneRequestRoundtrip
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:196
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).Run
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:151
+github.com/open-telemetry/opamp-go/client.(*httpClient).runUntilStopped
+	github.com/open-telemetry/opamp-go@v0.23.0/client/httpclient.go:145
+github.com/open-telemetry/opamp-go/client/internal.(*ClientCommon).StartConnectAndRun.func1
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/clientcommon.go:249
+--- collector-05.log
+2026-06-19T20:03:00.024Z	error	opampextension@v0.151.0/logger.go:26	invalid response from server: 401	{"resource": {"service.instance.id": "a24310f2-8367-4708-b7ec-3508d6eea531", "service.name": "otelcol-contrib", "service.version": "0.151.0"}, "otelcol.component.id": "opamp", "otelcol.component.kind": "extension", "client": "http"}
+github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension.(*opAMPLogger).Errorf
+	github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension@v0.151.0/logger.go:26
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).makeOneRequestRoundtrip
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:196
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).Run
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:151
+github.com/open-telemetry/opamp-go/client.(*httpClient).runUntilStopped
+	github.com/open-telemetry/opamp-go@v0.23.0/client/httpclient.go:145
+github.com/open-telemetry/opamp-go/client/internal.(*ClientCommon).StartConnectAndRun.func1
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/clientcommon.go:249
+2026-06-19T20:03:00.031Z	error	opampextension@v0.151.0/logger.go:26	invalid response from server: 401	{"resource": {"service.instance.id": "a24310f2-8367-4708-b7ec-3508d6eea531", "service.name": "otelcol-contrib", "service.version": "0.151.0"}, "otelcol.component.id": "opamp", "otelcol.component.kind": "extension", "client": "http"}
+github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension.(*opAMPLogger).Errorf
+	github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension@v0.151.0/logger.go:26
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).makeOneRequestRoundtrip
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:196
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).Run
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:151
+github.com/open-telemetry/opamp-go/client.(*httpClient).runUntilStopped
+	github.com/open-telemetry/opamp-go@v0.23.0/client/httpclient.go:145
+github.com/open-telemetry/opamp-go/client/internal.(*ClientCommon).StartConnectAndRun.func1
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/clientcommon.go:249
+2026-06-19T20:03:30.038Z	error	opampextension@v0.151.0/logger.go:26	invalid response from server: 401	{"resource": {"service.instance.id": "a24310f2-8367-4708-b7ec-3508d6eea531", "service.name": "otelcol-contrib", "service.version": "0.151.0"}, "otelcol.component.id": "opamp", "otelcol.component.kind": "extension", "client": "http"}
+github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension.(*opAMPLogger).Errorf
+	github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension@v0.151.0/logger.go:26
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).makeOneRequestRoundtrip
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:196
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).Run
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:151
+github.com/open-telemetry/opamp-go/client.(*httpClient).runUntilStopped
+	github.com/open-telemetry/opamp-go@v0.23.0/client/httpclient.go:145
+github.com/open-telemetry/opamp-go/client/internal.(*ClientCommon).StartConnectAndRun.func1
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/clientcommon.go:249
+2026-06-19T20:04:00.045Z	error	opampextension@v0.151.0/logger.go:26	invalid response from server: 401	{"resource": {"service.instance.id": "a24310f2-8367-4708-b7ec-3508d6eea531", "service.name": "otelcol-contrib", "service.version": "0.151.0"}, "otelcol.component.id": "opamp", "otelcol.component.kind": "extension", "client": "http"}
+github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension.(*opAMPLogger).Errorf
+	github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension@v0.151.0/logger.go:26
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).makeOneRequestRoundtrip
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:196
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).Run
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:151
+github.com/open-telemetry/opamp-go/client.(*httpClient).runUntilStopped
+	github.com/open-telemetry/opamp-go@v0.23.0/client/httpclient.go:145
+github.com/open-telemetry/opamp-go/client/internal.(*ClientCommon).StartConnectAndRun.func1
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/clientcommon.go:249
+--- collector-06.log
+2026-06-19T20:03:00.036Z	error	opampextension@v0.151.0/logger.go:26	invalid response from server: 401	{"resource": {"service.instance.id": "19bac11d-781b-4754-83b8-6b07ddc2c13c", "service.name": "otelcol-contrib", "service.version": "0.151.0"}, "otelcol.component.id": "opamp", "otelcol.component.kind": "extension", "client": "http"}
+github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension.(*opAMPLogger).Errorf
+	github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension@v0.151.0/logger.go:26
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).makeOneRequestRoundtrip
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:196
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).Run
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:151
+github.com/open-telemetry/opamp-go/client.(*httpClient).runUntilStopped
+	github.com/open-telemetry/opamp-go@v0.23.0/client/httpclient.go:145
+github.com/open-telemetry/opamp-go/client/internal.(*ClientCommon).StartConnectAndRun.func1
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/clientcommon.go:249
+2026-06-19T20:03:00.044Z	error	opampextension@v0.151.0/logger.go:26	invalid response from server: 401	{"resource": {"service.instance.id": "19bac11d-781b-4754-83b8-6b07ddc2c13c", "service.name": "otelcol-contrib", "service.version": "0.151.0"}, "otelcol.component.id": "opamp", "otelcol.component.kind": "extension", "client": "http"}
+github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension.(*opAMPLogger).Errorf
+	github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension@v0.151.0/logger.go:26
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).makeOneRequestRoundtrip
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:196
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).Run
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:151
+github.com/open-telemetry/opamp-go/client.(*httpClient).runUntilStopped
+	github.com/open-telemetry/opamp-go@v0.23.0/client/httpclient.go:145
+github.com/open-telemetry/opamp-go/client/internal.(*ClientCommon).StartConnectAndRun.func1
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/clientcommon.go:249
+2026-06-19T20:03:30.051Z	error	opampextension@v0.151.0/logger.go:26	invalid response from server: 401	{"resource": {"service.instance.id": "19bac11d-781b-4754-83b8-6b07ddc2c13c", "service.name": "otelcol-contrib", "service.version": "0.151.0"}, "otelcol.component.id": "opamp", "otelcol.component.kind": "extension", "client": "http"}
+github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension.(*opAMPLogger).Errorf
+	github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension@v0.151.0/logger.go:26
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).makeOneRequestRoundtrip
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:196
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).Run
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:151
+github.com/open-telemetry/opamp-go/client.(*httpClient).runUntilStopped
+	github.com/open-telemetry/opamp-go@v0.23.0/client/httpclient.go:145
+github.com/open-telemetry/opamp-go/client/internal.(*ClientCommon).StartConnectAndRun.func1
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/clientcommon.go:249
+2026-06-19T20:04:00.057Z	error	opampextension@v0.151.0/logger.go:26	invalid response from server: 401	{"resource": {"service.instance.id": "19bac11d-781b-4754-83b8-6b07ddc2c13c", "service.name": "otelcol-contrib", "service.version": "0.151.0"}, "otelcol.component.id": "opamp", "otelcol.component.kind": "extension", "client": "http"}
+github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension.(*opAMPLogger).Errorf
+	github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension@v0.151.0/logger.go:26
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).makeOneRequestRoundtrip
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:196
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).Run
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:151
+github.com/open-telemetry/opamp-go/client.(*httpClient).runUntilStopped
+	github.com/open-telemetry/opamp-go@v0.23.0/client/httpclient.go:145
+github.com/open-telemetry/opamp-go/client/internal.(*ClientCommon).StartConnectAndRun.func1
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/clientcommon.go:249
+--- collector-07.log
+2026-06-19T20:03:00.018Z	error	opampextension@v0.151.0/logger.go:26	invalid response from server: 401	{"resource": {"service.instance.id": "4af3eb4d-798b-41fa-88c5-8416940422f0", "service.name": "otelcol-contrib", "service.version": "0.151.0"}, "otelcol.component.id": "opamp", "otelcol.component.kind": "extension", "client": "http"}
+github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension.(*opAMPLogger).Errorf
+	github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension@v0.151.0/logger.go:26
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).makeOneRequestRoundtrip
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:196
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).Run
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:151
+github.com/open-telemetry/opamp-go/client.(*httpClient).runUntilStopped
+	github.com/open-telemetry/opamp-go@v0.23.0/client/httpclient.go:145
+github.com/open-telemetry/opamp-go/client/internal.(*ClientCommon).StartConnectAndRun.func1
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/clientcommon.go:249
+2026-06-19T20:03:00.025Z	error	opampextension@v0.151.0/logger.go:26	invalid response from server: 401	{"resource": {"service.instance.id": "4af3eb4d-798b-41fa-88c5-8416940422f0", "service.name": "otelcol-contrib", "service.version": "0.151.0"}, "otelcol.component.id": "opamp", "otelcol.component.kind": "extension", "client": "http"}
+github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension.(*opAMPLogger).Errorf
+	github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension@v0.151.0/logger.go:26
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).makeOneRequestRoundtrip
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:196
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).Run
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:151
+github.com/open-telemetry/opamp-go/client.(*httpClient).runUntilStopped
+	github.com/open-telemetry/opamp-go@v0.23.0/client/httpclient.go:145
+github.com/open-telemetry/opamp-go/client/internal.(*ClientCommon).StartConnectAndRun.func1
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/clientcommon.go:249
+2026-06-19T20:03:30.032Z	error	opampextension@v0.151.0/logger.go:26	invalid response from server: 401	{"resource": {"service.instance.id": "4af3eb4d-798b-41fa-88c5-8416940422f0", "service.name": "otelcol-contrib", "service.version": "0.151.0"}, "otelcol.component.id": "opamp", "otelcol.component.kind": "extension", "client": "http"}
+github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension.(*opAMPLogger).Errorf
+	github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension@v0.151.0/logger.go:26
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).makeOneRequestRoundtrip
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:196
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).Run
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:151
+github.com/open-telemetry/opamp-go/client.(*httpClient).runUntilStopped
+	github.com/open-telemetry/opamp-go@v0.23.0/client/httpclient.go:145
+github.com/open-telemetry/opamp-go/client/internal.(*ClientCommon).StartConnectAndRun.func1
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/clientcommon.go:249
+2026-06-19T20:04:00.040Z	error	opampextension@v0.151.0/logger.go:26	invalid response from server: 401	{"resource": {"service.instance.id": "4af3eb4d-798b-41fa-88c5-8416940422f0", "service.name": "otelcol-contrib", "service.version": "0.151.0"}, "otelcol.component.id": "opamp", "otelcol.component.kind": "extension", "client": "http"}
+github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension.(*opAMPLogger).Errorf
+	github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension@v0.151.0/logger.go:26
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).makeOneRequestRoundtrip
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:196
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).Run
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:151
+github.com/open-telemetry/opamp-go/client.(*httpClient).runUntilStopped
+	github.com/open-telemetry/opamp-go@v0.23.0/client/httpclient.go:145
+github.com/open-telemetry/opamp-go/client/internal.(*ClientCommon).StartConnectAndRun.func1
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/clientcommon.go:249
+--- collector-08.log
+2026-06-19T20:03:00.027Z	error	opampextension@v0.151.0/logger.go:26	invalid response from server: 401	{"resource": {"service.instance.id": "1d69d128-91d2-4431-84d7-09cfdabbaba2", "service.name": "otelcol-contrib", "service.version": "0.151.0"}, "otelcol.component.id": "opamp", "otelcol.component.kind": "extension", "client": "http"}
+github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension.(*opAMPLogger).Errorf
+	github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension@v0.151.0/logger.go:26
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).makeOneRequestRoundtrip
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:196
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).Run
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:151
+github.com/open-telemetry/opamp-go/client.(*httpClient).runUntilStopped
+	github.com/open-telemetry/opamp-go@v0.23.0/client/httpclient.go:145
+github.com/open-telemetry/opamp-go/client/internal.(*ClientCommon).StartConnectAndRun.func1
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/clientcommon.go:249
+2026-06-19T20:03:00.034Z	error	opampextension@v0.151.0/logger.go:26	invalid response from server: 401	{"resource": {"service.instance.id": "1d69d128-91d2-4431-84d7-09cfdabbaba2", "service.name": "otelcol-contrib", "service.version": "0.151.0"}, "otelcol.component.id": "opamp", "otelcol.component.kind": "extension", "client": "http"}
+github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension.(*opAMPLogger).Errorf
+	github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension@v0.151.0/logger.go:26
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).makeOneRequestRoundtrip
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:196
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).Run
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:151
+github.com/open-telemetry/opamp-go/client.(*httpClient).runUntilStopped
+	github.com/open-telemetry/opamp-go@v0.23.0/client/httpclient.go:145
+github.com/open-telemetry/opamp-go/client/internal.(*ClientCommon).StartConnectAndRun.func1
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/clientcommon.go:249
+2026-06-19T20:03:30.041Z	error	opampextension@v0.151.0/logger.go:26	invalid response from server: 401	{"resource": {"service.instance.id": "1d69d128-91d2-4431-84d7-09cfdabbaba2", "service.name": "otelcol-contrib", "service.version": "0.151.0"}, "otelcol.component.id": "opamp", "otelcol.component.kind": "extension", "client": "http"}
+github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension.(*opAMPLogger).Errorf
+	github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension@v0.151.0/logger.go:26
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).makeOneRequestRoundtrip
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:196
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).Run
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:151
+github.com/open-telemetry/opamp-go/client.(*httpClient).runUntilStopped
+	github.com/open-telemetry/opamp-go@v0.23.0/client/httpclient.go:145
+github.com/open-telemetry/opamp-go/client/internal.(*ClientCommon).StartConnectAndRun.func1
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/clientcommon.go:249
+2026-06-19T20:04:00.048Z	error	opampextension@v0.151.0/logger.go:26	invalid response from server: 401	{"resource": {"service.instance.id": "1d69d128-91d2-4431-84d7-09cfdabbaba2", "service.name": "otelcol-contrib", "service.version": "0.151.0"}, "otelcol.component.id": "opamp", "otelcol.component.kind": "extension", "client": "http"}
+github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension.(*opAMPLogger).Errorf
+	github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension@v0.151.0/logger.go:26
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).makeOneRequestRoundtrip
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:196
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).Run
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:151
+github.com/open-telemetry/opamp-go/client.(*httpClient).runUntilStopped
+	github.com/open-telemetry/opamp-go@v0.23.0/client/httpclient.go:145
+github.com/open-telemetry/opamp-go/client/internal.(*ClientCommon).StartConnectAndRun.func1
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/clientcommon.go:249
+--- collector-09.log
+2026-06-19T20:03:00.038Z	error	opampextension@v0.151.0/logger.go:26	invalid response from server: 401	{"resource": {"service.instance.id": "f49aef23-2dd0-47bd-8ecd-c542e3ff5602", "service.name": "otelcol-contrib", "service.version": "0.151.0"}, "otelcol.component.id": "opamp", "otelcol.component.kind": "extension", "client": "http"}
+github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension.(*opAMPLogger).Errorf
+	github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension@v0.151.0/logger.go:26
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).makeOneRequestRoundtrip
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:196
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).Run
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:151
+github.com/open-telemetry/opamp-go/client.(*httpClient).runUntilStopped
+	github.com/open-telemetry/opamp-go@v0.23.0/client/httpclient.go:145
+github.com/open-telemetry/opamp-go/client/internal.(*ClientCommon).StartConnectAndRun.func1
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/clientcommon.go:249
+2026-06-19T20:03:00.044Z	error	opampextension@v0.151.0/logger.go:26	invalid response from server: 401	{"resource": {"service.instance.id": "f49aef23-2dd0-47bd-8ecd-c542e3ff5602", "service.name": "otelcol-contrib", "service.version": "0.151.0"}, "otelcol.component.id": "opamp", "otelcol.component.kind": "extension", "client": "http"}
+github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension.(*opAMPLogger).Errorf
+	github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension@v0.151.0/logger.go:26
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).makeOneRequestRoundtrip
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:196
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).Run
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:151
+github.com/open-telemetry/opamp-go/client.(*httpClient).runUntilStopped
+	github.com/open-telemetry/opamp-go@v0.23.0/client/httpclient.go:145
+github.com/open-telemetry/opamp-go/client/internal.(*ClientCommon).StartConnectAndRun.func1
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/clientcommon.go:249
+2026-06-19T20:03:30.050Z	error	opampextension@v0.151.0/logger.go:26	invalid response from server: 401	{"resource": {"service.instance.id": "f49aef23-2dd0-47bd-8ecd-c542e3ff5602", "service.name": "otelcol-contrib", "service.version": "0.151.0"}, "otelcol.component.id": "opamp", "otelcol.component.kind": "extension", "client": "http"}
+github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension.(*opAMPLogger).Errorf
+	github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension@v0.151.0/logger.go:26
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).makeOneRequestRoundtrip
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:196
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).Run
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:151
+github.com/open-telemetry/opamp-go/client.(*httpClient).runUntilStopped
+	github.com/open-telemetry/opamp-go@v0.23.0/client/httpclient.go:145
+github.com/open-telemetry/opamp-go/client/internal.(*ClientCommon).StartConnectAndRun.func1
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/clientcommon.go:249
+2026-06-19T20:04:00.057Z	error	opampextension@v0.151.0/logger.go:26	invalid response from server: 401	{"resource": {"service.instance.id": "f49aef23-2dd0-47bd-8ecd-c542e3ff5602", "service.name": "otelcol-contrib", "service.version": "0.151.0"}, "otelcol.component.id": "opamp", "otelcol.component.kind": "extension", "client": "http"}
+github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension.(*opAMPLogger).Errorf
+	github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension@v0.151.0/logger.go:26
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).makeOneRequestRoundtrip
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:196
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).Run
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:151
+github.com/open-telemetry/opamp-go/client.(*httpClient).runUntilStopped
+	github.com/open-telemetry/opamp-go@v0.23.0/client/httpclient.go:145
+github.com/open-telemetry/opamp-go/client/internal.(*ClientCommon).StartConnectAndRun.func1
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/clientcommon.go:249
+--- collector-10.log
+2026-06-19T20:03:00.036Z	error	opampextension@v0.151.0/logger.go:26	invalid response from server: 401	{"resource": {"service.instance.id": "3d32af54-2090-4a2b-ae39-60fdc59b6d2e", "service.name": "otelcol-contrib", "service.version": "0.151.0"}, "otelcol.component.id": "opamp", "otelcol.component.kind": "extension", "client": "http"}
+github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension.(*opAMPLogger).Errorf
+	github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension@v0.151.0/logger.go:26
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).makeOneRequestRoundtrip
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:196
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).Run
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:151
+github.com/open-telemetry/opamp-go/client.(*httpClient).runUntilStopped
+	github.com/open-telemetry/opamp-go@v0.23.0/client/httpclient.go:145
+github.com/open-telemetry/opamp-go/client/internal.(*ClientCommon).StartConnectAndRun.func1
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/clientcommon.go:249
+2026-06-19T20:03:00.043Z	error	opampextension@v0.151.0/logger.go:26	invalid response from server: 401	{"resource": {"service.instance.id": "3d32af54-2090-4a2b-ae39-60fdc59b6d2e", "service.name": "otelcol-contrib", "service.version": "0.151.0"}, "otelcol.component.id": "opamp", "otelcol.component.kind": "extension", "client": "http"}
+github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension.(*opAMPLogger).Errorf
+	github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension@v0.151.0/logger.go:26
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).makeOneRequestRoundtrip
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:196
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).Run
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:151
+github.com/open-telemetry/opamp-go/client.(*httpClient).runUntilStopped
+	github.com/open-telemetry/opamp-go@v0.23.0/client/httpclient.go:145
+github.com/open-telemetry/opamp-go/client/internal.(*ClientCommon).StartConnectAndRun.func1
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/clientcommon.go:249
+2026-06-19T20:03:30.049Z	error	opampextension@v0.151.0/logger.go:26	invalid response from server: 401	{"resource": {"service.instance.id": "3d32af54-2090-4a2b-ae39-60fdc59b6d2e", "service.name": "otelcol-contrib", "service.version": "0.151.0"}, "otelcol.component.id": "opamp", "otelcol.component.kind": "extension", "client": "http"}
+github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension.(*opAMPLogger).Errorf
+	github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension@v0.151.0/logger.go:26
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).makeOneRequestRoundtrip
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:196
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).Run
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:151
+github.com/open-telemetry/opamp-go/client.(*httpClient).runUntilStopped
+	github.com/open-telemetry/opamp-go@v0.23.0/client/httpclient.go:145
+github.com/open-telemetry/opamp-go/client/internal.(*ClientCommon).StartConnectAndRun.func1
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/clientcommon.go:249
+2026-06-19T20:04:00.056Z	error	opampextension@v0.151.0/logger.go:26	invalid response from server: 401	{"resource": {"service.instance.id": "3d32af54-2090-4a2b-ae39-60fdc59b6d2e", "service.name": "otelcol-contrib", "service.version": "0.151.0"}, "otelcol.component.id": "opamp", "otelcol.component.kind": "extension", "client": "http"}
+github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension.(*opAMPLogger).Errorf
+	github.com/open-telemetry/opentelemetry-collector-contrib/extension/opampextension@v0.151.0/logger.go:26
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).makeOneRequestRoundtrip
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:196
+github.com/open-telemetry/opamp-go/client/internal.(*HTTPSender).Run
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/httpsender.go:151
+github.com/open-telemetry/opamp-go/client.(*httpClient).runUntilStopped
+	github.com/open-telemetry/opamp-go@v0.23.0/client/httpclient.go:145
+github.com/open-telemetry/opamp-go/client/internal.(*ClientCommon).StartConnectAndRun.func1
+	github.com/open-telemetry/opamp-go@v0.23.0/client/internal/clientcommon.go:249

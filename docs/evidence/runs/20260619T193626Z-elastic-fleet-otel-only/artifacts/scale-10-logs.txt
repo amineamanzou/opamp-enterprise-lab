@@ -1,0 +1,31 @@
+2026-06-19T20:00:00Z
+--- collector-01.log
+Error: invalid configuration: no receiver configuration specified in config
+service::pipelines: service must have at least one pipeline
+--- collector-02.log
+Error: invalid configuration: no receiver configuration specified in config
+service::pipelines: service must have at least one pipeline
+--- collector-03.log
+Error: invalid configuration: no receiver configuration specified in config
+service::pipelines: service must have at least one pipeline
+--- collector-04.log
+Error: invalid configuration: no receiver configuration specified in config
+service::pipelines: service must have at least one pipeline
+--- collector-05.log
+Error: invalid configuration: no receiver configuration specified in config
+service::pipelines: service must have at least one pipeline
+--- collector-06.log
+Error: invalid configuration: no receiver configuration specified in config
+service::pipelines: service must have at least one pipeline
+--- collector-07.log
+Error: invalid configuration: no receiver configuration specified in config
+service::pipelines: service must have at least one pipeline
+--- collector-08.log
+Error: invalid configuration: no receiver configuration specified in config
+service::pipelines: service must have at least one pipeline
+--- collector-09.log
+Error: invalid configuration: no receiver configuration specified in config
+service::pipelines: service must have at least one pipeline
+--- collector-10.log
+Error: invalid configuration: no receiver configuration specified in config
+service::pipelines: service must have at least one pipeline

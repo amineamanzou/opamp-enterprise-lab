@@ -1,0 +1,3 @@
+## scenario/elastic-fleet-otel-only-experience
+?? data/
+?? lab/opamp-server-py-src/

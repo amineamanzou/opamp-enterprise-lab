@@ -1,0 +1,561 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: opamp-logs-poc
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: otelcol-logs-opamp
+  namespace: opamp-logs-poc
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: otelcol-logs-opamp-kubeletstats
+rules:
+  - apiGroups: [""]
+    resources: ["nodes", "nodes/stats", "namespaces", "pods", "replicationcontrollers", "resourcequotas", "services"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["apps"]
+    resources: ["daemonsets", "deployments", "replicasets", "statefulsets"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["batch"]
+    resources: ["jobs", "cronjobs"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["autoscaling"]
+    resources: ["horizontalpodautoscalers"]
+    verbs: ["get", "list", "watch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: otelcol-logs-opamp-kubeletstats
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: otelcol-logs-opamp-kubeletstats
+subjects:
+  - kind: ServiceAccount
+    name: otelcol-logs-opamp
+    namespace: opamp-logs-poc
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: otelcol-logs-opamp-config
+  namespace: opamp-logs-poc
+data:
+  collector.yaml: |
+    extensions:
+      health_check:
+        endpoint: "${env:OTEL_HEALTH_CHECK_ENDPOINT}"
+
+      opamp:
+        server:
+          ws:
+            endpoint: "${env:OPAMP_SERVER_WS_ENDPOINT}"
+            tls:
+              insecure_skip_verify: true
+            headers:
+              Authorization: "Bearer ${env:OPAMP_AUTH_TOKEN}"
+        capabilities:
+          reports_effective_config: true
+          reports_health: true
+          reports_available_components: true
+        agent_description:
+          non_identifying_attributes:
+            service.instance.id: "${env:SERVICE_INSTANCE_ID}"
+            service.name: "${env:SERVICE_NAME}"
+            service.version: "${env:COLLECTOR_VERSION}"
+            host.name: "${env:NODE_NAME}"
+            deployment.environment: "${env:DEPLOYMENT_ENVIRONMENT}"
+            deployment.ring: "${env:OPAMP_RING}"
+
+    receivers:
+      filelog/k8s_containers:
+        include: ["/var/log/pods/*/*/*.log"]
+        exclude: ["/var/log/pods/opamp-logs-poc_otelcol-logs-opamp-*/*/*.log"]
+        start_at: beginning
+        include_file_path: true
+        include_file_name: true
+        operators:
+          - type: container
+
+      filelog/k8s_collector:
+        include: ["/var/log/pods/opamp-logs-poc_otelcol-logs-opamp-*/*/*.log"]
+        start_at: beginning
+        include_file_path: true
+        include_file_name: true
+        operators:
+          - type: container
+
+      filelog/k8s_audit:
+        include: ["/var/lib/rancher/k3s/server/logs/audit.log"]
+        start_at: beginning
+        include_file_path: true
+        include_file_name: true
+        operators:
+          - type: json_parser
+            parse_from: body
+            parse_to: attributes
+
+      hostmetrics/k8s:
+        root_path: /hostfs
+        collection_interval: 30s
+        scrapers:
+          cpu:
+            metrics:
+              system.cpu.utilization:
+                enabled: true
+          memory:
+            metrics:
+              system.memory.utilization:
+                enabled: true
+          load:
+          filesystem:
+          disk:
+          network:
+          paging:
+          processes:
+
+      kubeletstats:
+        collection_interval: 30s
+        auth_type: serviceAccount
+        endpoint: "https://${env:NODE_IP}:10250"
+        insecure_skip_verify: true
+        metric_groups: [node, pod, container]
+
+      k8s_cluster:
+        collection_interval: 30s
+        node_conditions_to_report: [Ready, MemoryPressure, DiskPressure, PIDPressure, NetworkUnavailable]
+        allocatable_types_to_report: [cpu, memory, ephemeral-storage, storage]
+
+      prometheus/collector:
+        config:
+          scrape_configs:
+            - job_name: otelcol-k8s-self
+              scrape_interval: 30s
+              static_configs:
+                - targets: ["${env:OTEL_SELF_METRICS_HOST}:${env:OTEL_SELF_METRICS_PORT}"]
+
+    processors:
+      memory_limiter:
+        check_interval: 1s
+        limit_mib: ${env:OTEL_MEMORY_LIMIT_MIB}
+        spike_limit_mib: ${env:OTEL_MEMORY_SPIKE_LIMIT_MIB}
+
+      resource/base:
+        attributes:
+          - key: service.version
+            value: "${env:COLLECTOR_VERSION}"
+            action: upsert
+          - key: service.instance.id
+            value: "${env:SERVICE_INSTANCE_ID}"
+            action: upsert
+          - key: host.name
+            value: "${env:NODE_NAME}"
+            action: upsert
+          - key: host.id
+            value: "${env:NODE_NAME}"
+            action: upsert
+          - key: k8s.cluster.name
+            value: "${env:K8S_CLUSTER_NAME}"
+            action: upsert
+          - key: k8s.node.name
+            value: "${env:NODE_NAME}"
+            action: upsert
+          - key: orchestrator.type
+            value: kubernetes
+            action: upsert
+          - key: deployment.environment
+            value: "${env:DEPLOYMENT_ENVIRONMENT}"
+            action: upsert
+          - key: telemetry.distro.name
+            value: otelcol-contrib
+            action: upsert
+          - key: onboarding.id
+            value: "${env:ELASTIC_ONBOARDING_ID}"
+            action: upsert
+          - key: data_stream.namespace
+            value: lab
+            action: upsert
+
+      resource/k8s_infra:
+        attributes:
+          - key: service.name
+            value: opamp-poc-k8s-logs
+            action: upsert
+          - key: data_stream.type
+            value: logs
+            action: upsert
+          - key: data_stream.dataset
+            value: infra.kubernetes
+            action: upsert
+          - key: event.dataset
+            value: infra.kubernetes
+            action: upsert
+          - key: elastic.poc.path
+            value: kubernetes-pod-logs
+            action: upsert
+
+      resource/k8s_audit:
+        attributes:
+          - key: service.name
+            value: k3s-apiserver-audit
+            action: upsert
+          - key: data_stream.type
+            value: logs
+            action: upsert
+          - key: data_stream.dataset
+            value: security.kubernetes_audit
+            action: upsert
+          - key: event.dataset
+            value: security.kubernetes_audit
+            action: upsert
+          - key: elastic.poc.path
+            value: kubernetes-audit
+            action: upsert
+
+      resource/host_metrics:
+        attributes:
+          - key: service.name
+            value: opamp-poc-k8s-host
+            action: upsert
+          - key: data_stream.type
+            value: metrics
+            action: upsert
+          - key: data_stream.dataset
+            value: hostmetricsreceiver
+            action: upsert
+          - key: elastic.poc.path
+            value: kubernetes-host-metrics
+            action: upsert
+
+      resource/kubeletstats_metrics:
+        attributes:
+          - key: service.name
+            value: opamp-poc-k8s-kubeletstats
+            action: upsert
+          - key: data_stream.type
+            value: metrics
+            action: upsert
+          - key: data_stream.dataset
+            value: kubeletstatsreceiver
+            action: upsert
+          - key: elastic.poc.path
+            value: kubernetes-node-metrics
+            action: upsert
+
+      resource/k8s_cluster_metrics:
+        attributes:
+          - key: service.name
+            value: opamp-poc-k8s-cluster
+            action: upsert
+          - key: data_stream.type
+            value: metrics
+            action: upsert
+          - key: data_stream.dataset
+            value: k8sclusterreceiver
+            action: upsert
+          - key: elastic.poc.path
+            value: kubernetes-state-metrics
+            action: upsert
+
+      resource/collector:
+        attributes:
+          - key: service.name
+            value: otelcol-logs-opamp
+            action: upsert
+          - key: collector.role
+            value: kubernetes-daemonset
+            action: upsert
+          - key: telemetry.source
+            value: collector-self
+            action: upsert
+
+      resource/collector_logs:
+        attributes:
+          - key: data_stream.type
+            value: logs
+            action: upsert
+          - key: data_stream.dataset
+            value: observability.collector
+            action: upsert
+          - key: event.dataset
+            value: observability.collector
+            action: upsert
+          - key: elastic.poc.path
+            value: collector-self-logs
+            action: upsert
+
+      resource/collector_metrics:
+        attributes:
+          - key: data_stream.type
+            value: metrics
+            action: upsert
+          - key: data_stream.dataset
+            value: metrics.collector
+            action: upsert
+          - key: elastic.poc.path
+            value: collector-self-metrics
+            action: upsert
+
+      attributes/base:
+        actions:
+          - key: elastic.poc.name
+            value: "${env:POC_NAME}"
+            action: upsert
+
+      attributes/audit:
+        actions:
+          - key: event.category
+            value: configuration
+            action: upsert
+          - key: event.type
+            value: access
+            action: upsert
+          - key: event.kind
+            value: event
+            action: upsert
+
+      attributes/collector_logs:
+        actions:
+          - key: event.category
+            value: observability
+            action: upsert
+          - key: event.type
+            value: info
+            action: upsert
+
+      batch:
+        timeout: "${env:OTEL_BATCH_TIMEOUT}"
+        send_batch_size: ${env:OTEL_BATCH_SEND_SIZE}
+        send_batch_max_size: ${env:OTEL_BATCH_SEND_MAX_SIZE}
+
+    exporters:
+      otlphttp/elastic:
+        endpoint: "${env:ELASTIC_OTLP_ENDPOINT}"
+        headers:
+          Authorization: "ApiKey ${env:ELASTIC_API_KEY}"
+        compression: gzip
+        timeout: "${env:ELASTIC_EXPORT_TIMEOUT}"
+        retry_on_failure:
+          enabled: true
+          initial_interval: 1s
+          max_interval: 30s
+          max_elapsed_time: 300s
+        sending_queue:
+          enabled: true
+          num_consumers: ${env:OTEL_EXPORT_QUEUE_CONSUMERS}
+          queue_size: ${env:OTEL_EXPORT_QUEUE_SIZE}
+
+    service:
+      telemetry:
+        logs:
+          level: "${env:OTEL_LOG_LEVEL}"
+        metrics:
+          readers:
+            - pull:
+                exporter:
+                  prometheus:
+                    host: "${env:OTEL_SELF_METRICS_HOST}"
+                    port: ${env:OTEL_SELF_METRICS_PORT}
+      extensions: [health_check, opamp]
+      pipelines:
+        logs/infra:
+          receivers: [filelog/k8s_containers]
+          processors: [memory_limiter, resource/base, resource/k8s_infra, attributes/base, batch]
+          exporters: [otlphttp/elastic]
+        logs/security:
+          receivers: [filelog/k8s_audit]
+          processors: [memory_limiter, resource/base, resource/k8s_audit, attributes/base, attributes/audit, batch]
+          exporters: [otlphttp/elastic]
+        logs/collector:
+          receivers: [filelog/k8s_collector]
+          processors: [memory_limiter, resource/base, resource/collector, resource/collector_logs, attributes/base, attributes/collector_logs, batch]
+          exporters: [otlphttp/elastic]
+        metrics/host:
+          receivers: [hostmetrics/k8s]
+          processors: [memory_limiter, resource/base, resource/host_metrics, attributes/base, batch]
+          exporters: [otlphttp/elastic]
+        metrics/kubeletstats:
+          receivers: [kubeletstats]
+          processors: [memory_limiter, resource/base, resource/kubeletstats_metrics, attributes/base, batch]
+          exporters: [otlphttp/elastic]
+        metrics/k8s_cluster:
+          receivers: [k8s_cluster]
+          processors: [memory_limiter, resource/base, resource/k8s_cluster_metrics, attributes/base, batch]
+          exporters: [otlphttp/elastic]
+        metrics/collector:
+          receivers: [prometheus/collector]
+          processors: [memory_limiter, resource/base, resource/collector, resource/collector_metrics, attributes/base, batch]
+          exporters: [otlphttp/elastic]
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: otelcol-logs-opamp
+  namespace: opamp-logs-poc
+  labels:
+    app.kubernetes.io/name: otelcol-logs-opamp
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: otelcol-logs-opamp
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: otelcol-logs-opamp
+    spec:
+      serviceAccountName: otelcol-logs-opamp
+      tolerations:
+        - operator: Exists
+      containers:
+        - name: otelcol
+          image: otel/opentelemetry-collector-contrib:0.151.0
+          imagePullPolicy: IfNotPresent
+          securityContext:
+            runAsUser: 0
+            runAsGroup: 0
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: ["ALL"]
+          args: ["--config=/etc/otelcol/collector.yaml"]
+          ports:
+            - name: health
+              containerPort: 13133
+            - name: self-metrics
+              containerPort: 8888
+          env:
+            - name: ELASTIC_OTLP_ENDPOINT
+              valueFrom:
+                secretKeyRef:
+                  name: elastic-otlp
+                  key: endpoint
+            - name: ELASTIC_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: elastic-otlp
+                  key: api-key
+            - name: OPAMP_AUTH_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: opamp-auth
+                  key: token
+            - name: OPAMP_SERVER_WS_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: otelcol-logs-opamp-env
+                  key: opamp-server-ws-endpoint
+            - name: OTEL_HEALTH_CHECK_ENDPOINT
+              value: 0.0.0.0:13133
+            - name: OTEL_SELF_METRICS_HOST
+              value: 127.0.0.1
+            - name: OTEL_SELF_METRICS_PORT
+              value: "8888"
+            - name: SERVICE_NAME
+              value: opamp-poc-k8s-logs
+            - name: COLLECTOR_VERSION
+              value: "0.151.0"
+            - name: NODE_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+            - name: NODE_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.hostIP
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: SERVICE_INSTANCE_ID
+              value: "$(NODE_NAME)/$(POD_NAME)"
+            - name: DEPLOYMENT_ENVIRONMENT
+              value: lab
+            - name: POC_NAME
+              value: opamp-fleet-logs
+            - name: ELASTIC_ONBOARDING_ID
+              value: 00000000-0000-0000-0000-000000000000
+            - name: K8S_CLUSTER_NAME
+              value: opamp-poc-k3s
+            - name: OPAMP_RING
+              value: k8s
+            - name: OTEL_LOG_LEVEL
+              value: info
+            - name: OTEL_MEMORY_LIMIT_MIB
+              value: "768"
+            - name: OTEL_MEMORY_SPIKE_LIMIT_MIB
+              value: "256"
+            - name: OTEL_BATCH_TIMEOUT
+              value: 1s
+            - name: OTEL_BATCH_SEND_SIZE
+              value: "1024"
+            - name: OTEL_BATCH_SEND_MAX_SIZE
+              value: "2048"
+            - name: ELASTIC_EXPORT_TIMEOUT
+              value: 30s
+            - name: OTEL_EXPORT_QUEUE_CONSUMERS
+              value: "4"
+            - name: OTEL_EXPORT_QUEUE_SIZE
+              value: "8192"
+          volumeMounts:
+            - name: config
+              mountPath: /etc/otelcol
+            - name: varlogpods
+              mountPath: /var/log/pods
+              readOnly: true
+            - name: k3s-audit-logs
+              mountPath: /var/lib/rancher/k3s/server/logs
+              readOnly: true
+            - name: hostfs
+              mountPath: /hostfs
+              readOnly: true
+      volumes:
+        - name: config
+          configMap:
+            name: otelcol-logs-opamp-config
+        - name: varlogpods
+          hostPath:
+            path: /var/log/pods
+        - name: k3s-audit-logs
+          hostPath:
+            path: /var/lib/rancher/k3s/server/logs
+            type: DirectoryOrCreate
+        - name: hostfs
+          hostPath:
+            path: /
+            type: Directory
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: synthetic-k8s-logs
+  namespace: opamp-logs-poc
+  labels:
+    app.kubernetes.io/name: synthetic-k8s-logs
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: synthetic-k8s-logs
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: synthetic-k8s-logs
+    spec:
+      containers:
+        - name: loggen
+          image: busybox:1.37
+          imagePullPolicy: IfNotPresent
+          command:
+            - /bin/sh
+            - -c
+            - |
+              i=0
+              while true; do
+                i=$((i + 1))
+                printf '{"event":"opamp-poc-k8s-log","sequence":%s,"pod":"%s","ts":"%s"}\n' "$i" "$HOSTNAME" "$(date -Iseconds)"
+                sleep 1
+              done

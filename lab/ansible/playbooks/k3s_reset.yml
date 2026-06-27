@@ -1,0 +1,26 @@
+---
+- name: Reset k3s workers
+  hosts: k3s_workers
+  become: true
+  tasks:
+    - name: Check k3s agent uninstall script
+      ansible.builtin.stat:
+        path: /usr/local/bin/k3s-agent-uninstall.sh
+      register: k3s_agent_uninstall
+
+    - name: Uninstall k3s agent
+      ansible.builtin.command: /usr/local/bin/k3s-agent-uninstall.sh
+      when: k3s_agent_uninstall.stat.exists
+
+- name: Reset k3s servers
+  hosts: k3s_servers
+  become: true
+  tasks:
+    - name: Check k3s server uninstall script
+      ansible.builtin.stat:
+        path: /usr/local/bin/k3s-uninstall.sh
+      register: k3s_server_uninstall
+
+    - name: Uninstall k3s server
+      ansible.builtin.command: /usr/local/bin/k3s-uninstall.sh
+      when: k3s_server_uninstall.stat.exists

@@ -1,0 +1,10 @@
+---
+- name: Deploy OpAMP supervisor on host log agents
+  hosts: host_agents
+  become: true
+  vars:
+    collector_supervisor_config: /etc/otelcol/supervisor.yaml
+    collector_supervisor_storage_dir: /var/lib/opamp-poc/opampsupervisor
+    collector_supervisor_service_name: opampsupervisor-logs
+  roles:
+    - opamp_supervisor_host

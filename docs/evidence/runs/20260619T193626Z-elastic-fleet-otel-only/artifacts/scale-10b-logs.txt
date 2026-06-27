@@ -1,0 +1,271 @@
+2026-06-19T20:01:59Z
+--- collector-01.log
+2026-06-19T20:00:31.986Z	error	service@v0.151.0/service.go:165	error found during service initialization	{"resource": {"service.instance.id": "093bb476-b49e-446d-9d70-46ccd16e0934", "service.name": "otelcol-contrib", "service.version": "0.151.0"}, "error": "failed to create meter provider: binding address localhost:8888 for Prometheus exporter: listen tcp 127.0.0.1:8888: bind: address already in use"}
+go.opentelemetry.io/collector/service.New.func2
+	go.opentelemetry.io/collector/service@v0.151.0/service.go:165
+go.opentelemetry.io/collector/service.New
+	go.opentelemetry.io/collector/service@v0.151.0/service.go:232
+go.opentelemetry.io/collector/otelcol.(*Collector).setupConfigurationComponents
+	go.opentelemetry.io/collector/otelcol@v0.151.0/collector.go:213
+go.opentelemetry.io/collector/otelcol.(*Collector).Run
+	go.opentelemetry.io/collector/otelcol@v0.151.0/collector.go:346
+go.opentelemetry.io/collector/otelcol.NewCommand.func1
+	go.opentelemetry.io/collector/otelcol@v0.151.0/command.go:41
+github.com/spf13/cobra.(*Command).execute
+	github.com/spf13/cobra@v1.10.2/command.go:1015
+github.com/spf13/cobra.(*Command).ExecuteC
+	github.com/spf13/cobra@v1.10.2/command.go:1148
+github.com/spf13/cobra.(*Command).Execute
+	github.com/spf13/cobra@v1.10.2/command.go:1071
+main.runInteractive
+	github.com/open-telemetry/opentelemetry-collector-releases/contrib/main.go:72
+main.run
+	github.com/open-telemetry/opentelemetry-collector-releases/contrib/main_others.go:10
+main.main
+	github.com/open-telemetry/opentelemetry-collector-releases/contrib/main.go:63
+runtime.main
+	runtime/proc.go:290
+Error: failed to create meter provider: binding address localhost:8888 for Prometheus exporter: listen tcp 127.0.0.1:8888: bind: address already in use
+--- collector-02.log
+2026-06-19T20:00:32.012Z	error	service@v0.151.0/service.go:165	error found during service initialization	{"resource": {"service.instance.id": "b6031540-5b6d-44c6-8d59-0f10f5fc981f", "service.name": "otelcol-contrib", "service.version": "0.151.0"}, "error": "failed to create meter provider: binding address localhost:8888 for Prometheus exporter: listen tcp 127.0.0.1:8888: bind: address already in use"}
+go.opentelemetry.io/collector/service.New.func2
+	go.opentelemetry.io/collector/service@v0.151.0/service.go:165
+go.opentelemetry.io/collector/service.New
+	go.opentelemetry.io/collector/service@v0.151.0/service.go:232
+go.opentelemetry.io/collector/otelcol.(*Collector).setupConfigurationComponents
+	go.opentelemetry.io/collector/otelcol@v0.151.0/collector.go:213
+go.opentelemetry.io/collector/otelcol.(*Collector).Run
+	go.opentelemetry.io/collector/otelcol@v0.151.0/collector.go:346
+go.opentelemetry.io/collector/otelcol.NewCommand.func1
+	go.opentelemetry.io/collector/otelcol@v0.151.0/command.go:41
+github.com/spf13/cobra.(*Command).execute
+	github.com/spf13/cobra@v1.10.2/command.go:1015
+github.com/spf13/cobra.(*Command).ExecuteC
+	github.com/spf13/cobra@v1.10.2/command.go:1148
+github.com/spf13/cobra.(*Command).Execute
+	github.com/spf13/cobra@v1.10.2/command.go:1071
+main.runInteractive
+	github.com/open-telemetry/opentelemetry-collector-releases/contrib/main.go:72
+main.run
+	github.com/open-telemetry/opentelemetry-collector-releases/contrib/main_others.go:10
+main.main
+	github.com/open-telemetry/opentelemetry-collector-releases/contrib/main.go:63
+runtime.main
+	runtime/proc.go:290
+Error: failed to create meter provider: binding address localhost:8888 for Prometheus exporter: listen tcp 127.0.0.1:8888: bind: address already in use
+--- collector-03.log
+2026-06-19T20:00:32.101Z	error	service@v0.151.0/service.go:165	error found during service initialization	{"resource": {"service.instance.id": "bc335c73-5fcd-429a-b982-ef5a9d3c6897", "service.name": "otelcol-contrib", "service.version": "0.151.0"}, "error": "failed to create meter provider: binding address localhost:8888 for Prometheus exporter: listen tcp 127.0.0.1:8888: bind: address already in use"}
+go.opentelemetry.io/collector/service.New.func2
+	go.opentelemetry.io/collector/service@v0.151.0/service.go:165
+go.opentelemetry.io/collector/service.New
+	go.opentelemetry.io/collector/service@v0.151.0/service.go:232
+go.opentelemetry.io/collector/otelcol.(*Collector).setupConfigurationComponents
+	go.opentelemetry.io/collector/otelcol@v0.151.0/collector.go:213
+go.opentelemetry.io/collector/otelcol.(*Collector).Run
+	go.opentelemetry.io/collector/otelcol@v0.151.0/collector.go:346
+go.opentelemetry.io/collector/otelcol.NewCommand.func1
+	go.opentelemetry.io/collector/otelcol@v0.151.0/command.go:41
+github.com/spf13/cobra.(*Command).execute
+	github.com/spf13/cobra@v1.10.2/command.go:1015
+github.com/spf13/cobra.(*Command).ExecuteC
+	github.com/spf13/cobra@v1.10.2/command.go:1148
+github.com/spf13/cobra.(*Command).Execute
+	github.com/spf13/cobra@v1.10.2/command.go:1071
+main.runInteractive
+	github.com/open-telemetry/opentelemetry-collector-releases/contrib/main.go:72
+main.run
+	github.com/open-telemetry/opentelemetry-collector-releases/contrib/main_others.go:10
+main.main
+	github.com/open-telemetry/opentelemetry-collector-releases/contrib/main.go:63
+runtime.main
+	runtime/proc.go:290
+Error: failed to create meter provider: binding address localhost:8888 for Prometheus exporter: listen tcp 127.0.0.1:8888: bind: address already in use
+--- collector-04.log
+2026-06-19T20:00:31.974Z	error	service@v0.151.0/service.go:165	error found during service initialization	{"resource": {"service.instance.id": "0c844aa6-f59e-4ec4-a086-0b1eed456e8f", "service.name": "otelcol-contrib", "service.version": "0.151.0"}, "error": "failed to create meter provider: binding address localhost:8888 for Prometheus exporter: listen tcp 127.0.0.1:8888: bind: address already in use"}
+go.opentelemetry.io/collector/service.New.func2
+	go.opentelemetry.io/collector/service@v0.151.0/service.go:165
+go.opentelemetry.io/collector/service.New
+	go.opentelemetry.io/collector/service@v0.151.0/service.go:232
+go.opentelemetry.io/collector/otelcol.(*Collector).setupConfigurationComponents
+	go.opentelemetry.io/collector/otelcol@v0.151.0/collector.go:213
+go.opentelemetry.io/collector/otelcol.(*Collector).Run
+	go.opentelemetry.io/collector/otelcol@v0.151.0/collector.go:346
+go.opentelemetry.io/collector/otelcol.NewCommand.func1
+	go.opentelemetry.io/collector/otelcol@v0.151.0/command.go:41
+github.com/spf13/cobra.(*Command).execute
+	github.com/spf13/cobra@v1.10.2/command.go:1015
+github.com/spf13/cobra.(*Command).ExecuteC
+	github.com/spf13/cobra@v1.10.2/command.go:1148
+github.com/spf13/cobra.(*Command).Execute
+	github.com/spf13/cobra@v1.10.2/command.go:1071
+main.runInteractive
+	github.com/open-telemetry/opentelemetry-collector-releases/contrib/main.go:72
+main.run
+	github.com/open-telemetry/opentelemetry-collector-releases/contrib/main_others.go:10
+main.main
+	github.com/open-telemetry/opentelemetry-collector-releases/contrib/main.go:63
+runtime.main
+	runtime/proc.go:290
+Error: failed to create meter provider: binding address localhost:8888 for Prometheus exporter: listen tcp 127.0.0.1:8888: bind: address already in use
+--- collector-05.log
+2026-06-19T20:00:32.133Z	error	service@v0.151.0/service.go:165	error found during service initialization	{"resource": {"service.instance.id": "1407bfb8-9163-44b8-a680-09a768cd2682", "service.name": "otelcol-contrib", "service.version": "0.151.0"}, "error": "failed to create meter provider: binding address localhost:8888 for Prometheus exporter: listen tcp 127.0.0.1:8888: bind: address already in use"}
+go.opentelemetry.io/collector/service.New.func2
+	go.opentelemetry.io/collector/service@v0.151.0/service.go:165
+go.opentelemetry.io/collector/service.New
+	go.opentelemetry.io/collector/service@v0.151.0/service.go:232
+go.opentelemetry.io/collector/otelcol.(*Collector).setupConfigurationComponents
+	go.opentelemetry.io/collector/otelcol@v0.151.0/collector.go:213
+go.opentelemetry.io/collector/otelcol.(*Collector).Run
+	go.opentelemetry.io/collector/otelcol@v0.151.0/collector.go:346
+go.opentelemetry.io/collector/otelcol.NewCommand.func1
+	go.opentelemetry.io/collector/otelcol@v0.151.0/command.go:41
+github.com/spf13/cobra.(*Command).execute
+	github.com/spf13/cobra@v1.10.2/command.go:1015
+github.com/spf13/cobra.(*Command).ExecuteC
+	github.com/spf13/cobra@v1.10.2/command.go:1148
+github.com/spf13/cobra.(*Command).Execute
+	github.com/spf13/cobra@v1.10.2/command.go:1071
+main.runInteractive
+	github.com/open-telemetry/opentelemetry-collector-releases/contrib/main.go:72
+main.run
+	github.com/open-telemetry/opentelemetry-collector-releases/contrib/main_others.go:10
+main.main
+	github.com/open-telemetry/opentelemetry-collector-releases/contrib/main.go:63
+runtime.main
+	runtime/proc.go:290
+Error: failed to create meter provider: binding address localhost:8888 for Prometheus exporter: listen tcp 127.0.0.1:8888: bind: address already in use
+--- collector-06.log
+2026-06-19T20:00:32.100Z	error	service@v0.151.0/service.go:165	error found during service initialization	{"resource": {"service.instance.id": "8e84f011-f096-4809-86a1-67c7fd71464f", "service.name": "otelcol-contrib", "service.version": "0.151.0"}, "error": "failed to create meter provider: binding address localhost:8888 for Prometheus exporter: listen tcp 127.0.0.1:8888: bind: address already in use"}
+go.opentelemetry.io/collector/service.New.func2
+	go.opentelemetry.io/collector/service@v0.151.0/service.go:165
+go.opentelemetry.io/collector/service.New
+	go.opentelemetry.io/collector/service@v0.151.0/service.go:232
+go.opentelemetry.io/collector/otelcol.(*Collector).setupConfigurationComponents
+	go.opentelemetry.io/collector/otelcol@v0.151.0/collector.go:213
+go.opentelemetry.io/collector/otelcol.(*Collector).Run
+	go.opentelemetry.io/collector/otelcol@v0.151.0/collector.go:346
+go.opentelemetry.io/collector/otelcol.NewCommand.func1
+	go.opentelemetry.io/collector/otelcol@v0.151.0/command.go:41
+github.com/spf13/cobra.(*Command).execute
+	github.com/spf13/cobra@v1.10.2/command.go:1015
+github.com/spf13/cobra.(*Command).ExecuteC
+	github.com/spf13/cobra@v1.10.2/command.go:1148
+github.com/spf13/cobra.(*Command).Execute
+	github.com/spf13/cobra@v1.10.2/command.go:1071
+main.runInteractive
+	github.com/open-telemetry/opentelemetry-collector-releases/contrib/main.go:72
+main.run
+	github.com/open-telemetry/opentelemetry-collector-releases/contrib/main_others.go:10
+main.main
+	github.com/open-telemetry/opentelemetry-collector-releases/contrib/main.go:63
+runtime.main
+	runtime/proc.go:290
+Error: failed to create meter provider: binding address localhost:8888 for Prometheus exporter: listen tcp 127.0.0.1:8888: bind: address already in use
+--- collector-07.log
+2026-06-19T20:00:32.147Z	error	service@v0.151.0/service.go:165	error found during service initialization	{"resource": {"service.instance.id": "e0092033-f053-4ee7-a60d-204a488da363", "service.name": "otelcol-contrib", "service.version": "0.151.0"}, "error": "failed to create meter provider: binding address localhost:8888 for Prometheus exporter: listen tcp 127.0.0.1:8888: bind: address already in use"}
+go.opentelemetry.io/collector/service.New.func2
+	go.opentelemetry.io/collector/service@v0.151.0/service.go:165
+go.opentelemetry.io/collector/service.New
+	go.opentelemetry.io/collector/service@v0.151.0/service.go:232
+go.opentelemetry.io/collector/otelcol.(*Collector).setupConfigurationComponents
+	go.opentelemetry.io/collector/otelcol@v0.151.0/collector.go:213
+go.opentelemetry.io/collector/otelcol.(*Collector).Run
+	go.opentelemetry.io/collector/otelcol@v0.151.0/collector.go:346
+go.opentelemetry.io/collector/otelcol.NewCommand.func1
+	go.opentelemetry.io/collector/otelcol@v0.151.0/command.go:41
+github.com/spf13/cobra.(*Command).execute
+	github.com/spf13/cobra@v1.10.2/command.go:1015
+github.com/spf13/cobra.(*Command).ExecuteC
+	github.com/spf13/cobra@v1.10.2/command.go:1148
+github.com/spf13/cobra.(*Command).Execute
+	github.com/spf13/cobra@v1.10.2/command.go:1071
+main.runInteractive
+	github.com/open-telemetry/opentelemetry-collector-releases/contrib/main.go:72
+main.run
+	github.com/open-telemetry/opentelemetry-collector-releases/contrib/main_others.go:10
+main.main
+	github.com/open-telemetry/opentelemetry-collector-releases/contrib/main.go:63
+runtime.main
+	runtime/proc.go:290
+Error: failed to create meter provider: binding address localhost:8888 for Prometheus exporter: listen tcp 127.0.0.1:8888: bind: address already in use
+--- collector-08.log
+2026-06-19T20:00:32.128Z	error	service@v0.151.0/service.go:165	error found during service initialization	{"resource": {"service.instance.id": "06801708-e681-4c4f-80af-b1685b9063e4", "service.name": "otelcol-contrib", "service.version": "0.151.0"}, "error": "failed to create meter provider: binding address localhost:8888 for Prometheus exporter: listen tcp 127.0.0.1:8888: bind: address already in use"}
+go.opentelemetry.io/collector/service.New.func2
+	go.opentelemetry.io/collector/service@v0.151.0/service.go:165
+go.opentelemetry.io/collector/service.New
+	go.opentelemetry.io/collector/service@v0.151.0/service.go:232
+go.opentelemetry.io/collector/otelcol.(*Collector).setupConfigurationComponents
+	go.opentelemetry.io/collector/otelcol@v0.151.0/collector.go:213
+go.opentelemetry.io/collector/otelcol.(*Collector).Run
+	go.opentelemetry.io/collector/otelcol@v0.151.0/collector.go:346
+go.opentelemetry.io/collector/otelcol.NewCommand.func1
+	go.opentelemetry.io/collector/otelcol@v0.151.0/command.go:41
+github.com/spf13/cobra.(*Command).execute
+	github.com/spf13/cobra@v1.10.2/command.go:1015
+github.com/spf13/cobra.(*Command).ExecuteC
+	github.com/spf13/cobra@v1.10.2/command.go:1148
+github.com/spf13/cobra.(*Command).Execute
+	github.com/spf13/cobra@v1.10.2/command.go:1071
+main.runInteractive
+	github.com/open-telemetry/opentelemetry-collector-releases/contrib/main.go:72
+main.run
+	github.com/open-telemetry/opentelemetry-collector-releases/contrib/main_others.go:10
+main.main
+	github.com/open-telemetry/opentelemetry-collector-releases/contrib/main.go:63
+runtime.main
+	runtime/proc.go:290
+Error: failed to create meter provider: binding address localhost:8888 for Prometheus exporter: listen tcp 127.0.0.1:8888: bind: address already in use
+--- collector-09.log
+2026-06-19T20:00:32.155Z	error	service@v0.151.0/service.go:165	error found during service initialization	{"resource": {"service.instance.id": "83808ec1-f015-411d-a488-3c3f3cbf295e", "service.name": "otelcol-contrib", "service.version": "0.151.0"}, "error": "failed to create meter provider: binding address localhost:8888 for Prometheus exporter: listen tcp 127.0.0.1:8888: bind: address already in use"}
+go.opentelemetry.io/collector/service.New.func2
+	go.opentelemetry.io/collector/service@v0.151.0/service.go:165
+go.opentelemetry.io/collector/service.New
+	go.opentelemetry.io/collector/service@v0.151.0/service.go:232
+go.opentelemetry.io/collector/otelcol.(*Collector).setupConfigurationComponents
+	go.opentelemetry.io/collector/otelcol@v0.151.0/collector.go:213
+go.opentelemetry.io/collector/otelcol.(*Collector).Run
+	go.opentelemetry.io/collector/otelcol@v0.151.0/collector.go:346
+go.opentelemetry.io/collector/otelcol.NewCommand.func1
+	go.opentelemetry.io/collector/otelcol@v0.151.0/command.go:41
+github.com/spf13/cobra.(*Command).execute
+	github.com/spf13/cobra@v1.10.2/command.go:1015
+github.com/spf13/cobra.(*Command).ExecuteC
+	github.com/spf13/cobra@v1.10.2/command.go:1148
+github.com/spf13/cobra.(*Command).Execute
+	github.com/spf13/cobra@v1.10.2/command.go:1071
+main.runInteractive
+	github.com/open-telemetry/opentelemetry-collector-releases/contrib/main.go:72
+main.run
+	github.com/open-telemetry/opentelemetry-collector-releases/contrib/main_others.go:10
+main.main
+	github.com/open-telemetry/opentelemetry-collector-releases/contrib/main.go:63
+runtime.main
+	runtime/proc.go:290
+Error: failed to create meter provider: binding address localhost:8888 for Prometheus exporter: listen tcp 127.0.0.1:8888: bind: address already in use
+--- collector-10.log
+2026-06-19T20:00:32.141Z	error	service@v0.151.0/service.go:165	error found during service initialization	{"resource": {"service.instance.id": "17007ad2-ad7e-4e95-8397-1c6f965c5cf8", "service.name": "otelcol-contrib", "service.version": "0.151.0"}, "error": "failed to create meter provider: binding address localhost:8888 for Prometheus exporter: listen tcp 127.0.0.1:8888: bind: address already in use"}
+go.opentelemetry.io/collector/service.New.func2
+	go.opentelemetry.io/collector/service@v0.151.0/service.go:165
+go.opentelemetry.io/collector/service.New
+	go.opentelemetry.io/collector/service@v0.151.0/service.go:232
+go.opentelemetry.io/collector/otelcol.(*Collector).setupConfigurationComponents
+	go.opentelemetry.io/collector/otelcol@v0.151.0/collector.go:213
+go.opentelemetry.io/collector/otelcol.(*Collector).Run
+	go.opentelemetry.io/collector/otelcol@v0.151.0/collector.go:346
+go.opentelemetry.io/collector/otelcol.NewCommand.func1
+	go.opentelemetry.io/collector/otelcol@v0.151.0/command.go:41
+github.com/spf13/cobra.(*Command).execute
+	github.com/spf13/cobra@v1.10.2/command.go:1015
+github.com/spf13/cobra.(*Command).ExecuteC
+	github.com/spf13/cobra@v1.10.2/command.go:1148
+github.com/spf13/cobra.(*Command).Execute
+	github.com/spf13/cobra@v1.10.2/command.go:1071
+main.runInteractive
+	github.com/open-telemetry/opentelemetry-collector-releases/contrib/main.go:72
+main.run
+	github.com/open-telemetry/opentelemetry-collector-releases/contrib/main_others.go:10
+main.main
+	github.com/open-telemetry/opentelemetry-collector-releases/contrib/main.go:63
+runtime.main
+	runtime/proc.go:290
+Error: failed to create meter provider: binding address localhost:8888 for Prometheus exporter: listen tcp 127.0.0.1:8888: bind: address already in use

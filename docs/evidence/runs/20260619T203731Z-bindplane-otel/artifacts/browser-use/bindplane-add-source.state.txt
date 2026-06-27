@@ -1,0 +1,198 @@
+viewport: 1924x1987
+page: 1924x1987
+scroll: (0, 0)
+Overview
+Agents
+Fleets
+Configurations
+Library
+Blueprints
+<org-redacted>
+Default Project
+Configurations
+<svg /> <!-- SVG content collapsed -->
+New
+Details
+Specify some basic settings for the platform you'll be shipping logs and/or metrics from.
+Add Sources
+A source is a combination of receivers and processors
+Add Destination
+A destination is a combination of an exporter and processors
+Add Sources from which you'd like to collect telemetry.
+A Source is a combination of OpenTelemetry receivers and processors that allows you to collect telemetry from a specific technology. Ensuring the right combination of these components is one of the most challenging aspects of building an OpenTelemetry configuration file. With
+Bindplane
+, we handle that all for you.
+Add Source
+Back
+Next
+*[3205]<div />
+*[3206]<div />
+*[3207]<div role=dialog />
+	Add Source
+	*[2305]<div />
+		*[2303]<button aria-label=Close Resource Dialog />
+	*[3200]<div />
+		*[2320]<div />
+			*[2317]<div />
+				<svg /> <!-- SVG content collapsed -->
+			|SHADOW(open)|*[2318]<input id=:r4c: placeholder=Search for a technology... type=search />
+	|scroll element|<div /> (0.0 pages above, 2.1 pages below)
+		*[3112]<button />
+			Aerospike
+			logs
+			metrics
+		*[3113]<button />
+			Apache Combined
+			logs
+		*[3114]<button />
+			Apache Common
+			logs
+		*[3115]<button />
+			Apache HTTP
+			logs
+			metrics
+		*[3116]<button />
+			Apache Spark
+			metrics
+		*[3117]<button />
+			AWS CloudWatch
+			logs
+			metrics
+		*[3118]<button />
+			AWS S3 Event
+			logs
+		*[3119]<button />
+			AWS S3 Rehydration
+			logs
+			metrics
+			traces
+		*[3120]<button />
+			Azure Blob
+			logs
+			traces
+		*[3121]<button />
+			Azure Blob Polling
+			logs
+			metrics
+			traces
+		*[3122]<button />
+			Azure Blob Rehydration
+			logs
+			metrics
+			traces
+		*[3123]<button />
+			Azure Event Hub
+			logs
+			metrics
+		*[3124]<button />
+			Bindplane
+			logs
+		*[3125]<button />
+			Bindplane Agent
+			logs
+			metrics
+		*[3126]<button />
+			Bindplane Audit Logs
+			logs
+		*[3127]<button />
+			Bindplane Gateway
+			logs
+			metrics
+			traces
+		*[3128]<button />
+			Cassandra
+			logs
+			metrics
+		*[3129]<button />
+			Cisco ASA
+			logs
+		*[3130]<button />
+			Cisco Catalyst
+			logs
+		*[3131]<button />
+			Cisco Meraki
+			logs
+		*[3132]<button />
+			Cloudflare
+			logs
+		*[3133]<button />
+			CockroachDB
+			logs
+			metrics
+		*[3134]<button />
+			Common Event Format
+			logs
+		*[3135]<button />
+			Couchbase
+			logs
+			metrics
+		*[3136]<button />
+			CouchDB
+			logs
+			metrics
+		*[3137]<button />
+			CrowdStrike FDR
+			logs
+		*[3138]<button />
+			CSV
+			logs
+		*[3139]<button />
+			Custom
+			logs
+			metrics
+			traces
+		*[3140]<button />
+			Elasticsearch
+			logs
+			metrics
+		*[3141]<button />
+			File
+			logs
+		*[3142]<button />
+			File Stats
+			metrics
+		*[3143]<button />
+			Fluent Forward
+			logs
+		*[3144]<button />
+			Google Cloud Pub/Sub
+			Beta
+			logs
+			metrics
+			traces
+		*[3145]<button />
+			Google Cloud Pub/Sub Event
+			logs
+		*[3146]<button />
+			Google Cloud Pub/Sub Push
+			logs
+		*[3147]<button />
+			Google Cloud Storage Rehydration
+			logs
+			metrics
+			traces
+		*[3148]<button />
+			Hadoop
+			logs
+			metrics
+		*[3149]<button />
+			HAProxy
+			logs
+		*[3150]<button />
+			HBase
+			logs
+			metrics
+		*[3151]<button />
+			Host
+			metrics
+		*[3152]<button />
+			HTTP
+			logs
+		*[3153]<button />
+			HTTP Check
+			metrics
+		*[3154]<button />
+			Jboss
+			logs
+		*[3155]<button />
+*[3208]<div />

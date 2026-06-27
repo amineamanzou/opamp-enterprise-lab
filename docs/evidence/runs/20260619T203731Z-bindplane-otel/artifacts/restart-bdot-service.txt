@@ -1,0 +1,13 @@
+Fri Jun 19 20:45:34 UTC 2026
+active
+● observiq-otel-collector.service - observIQ's distribution of the OpenTelemetry collector
+     Loaded: loaded (/usr/lib/systemd/system/observiq-otel-collector.service; enabled; preset: enabled)
+     Active: active (running) since Fri 2026-06-19 20:45:34 UTC; 5s ago
+   Main PID: 137215 (observiq-otel-c)
+      Tasks: 7 (limit: 4538)
+     Memory: 33.0M (peak: 33.4M)
+        CPU: 267ms
+     CGroup: /system.slice/observiq-otel-collector.service
+             └─137215 /opt/observiq-otel-collector/observiq-otel-collector --config config.yaml
+
+Jun 19 20:45:34 opamp-poc-agent systemd[1]: Started observiq-otel-collector.service - observIQ's distribution of the OpenTelemetry collector.

@@ -1,0 +1,187 @@
+viewport: 1924x1987
+page: 1924x1987
+scroll: (0, 0)
+*[1]<div id=root />
+	*[16039]<a />
+	*[16021]<a />
+		Overview
+	*[16022]<a />
+		Agents
+	*[16023]<a />
+		Fleets
+	*[16024]<a />
+		Configurations
+	*[16025]<a />
+		Library
+	*[16026]<a />
+		Blueprints
+	<org-redacted>
+	Default Project
+	*[16037]<button aria-label=Open Notifications Menu />
+	*[16038]<button aria-label=Open Settings Menu />
+	Agents
+	Monitor, configure, and manage your OpenTelemetry agents.
+	*[16068]<button />
+		Install Agent
+	Quick Start Guide
+	*[16073]<span />
+	👋 Welcome to
+	Bindplane
+	! Start shipping telemetry to understand, control, and optimize your data pipeline.
+	*[16075]<a />
+		Learn more.
+	*[16079]<div />
+		<svg /> <!-- SVG content collapsed -->
+	Install an agent
+	Start sending data by setting up your first OpenTelemetry agent.
+	*[16088]<div />
+		<svg /> <!-- SVG content collapsed -->
+	Set up a configuration
+	Tell your agents how to collect and route telemetry by building your first pipeline.
+	*[16085]<button />
+		Start
+	*[16097]<div />
+		<svg /> <!-- SVG content collapsed -->
+	Roll out your configuration
+	Get telemetry flowing by assigning and rolling out your configuration to agents.
+	*[16094]<button disabled=true />
+		Go to Configuration
+	*[16104]<button />
+		Dismiss
+	*[16115]<button />
+		Filters
+	*[16116]<div role=separator />
+	*[16119]<div aria-label=Filter by field or label />
+		|SHADOW(open)|*[16114]<input autocomplete=list id=:rre: placeholder=Filter by field or label type=text aria-autocomplete=list role=combobox expanded=false />
+	*[16157]<div role=grid multiselectable=true />
+		|scroll element|<div role=presentation /> (horizontal 0%)
+			*[16125]<div role=row />
+				*[16520]<div role=columnheader />
+					*[16207]<div />
+						*[16206]<span />
+							*[16205]<svg /> <!-- SVG content collapsed -->
+					*[16212]<div />
+						*[16210]<svg /> <!-- SVG content collapsed -->
+				*[16521]<div role=columnheader />
+					*[16227]<div role=presentation />
+						*[16223]<div role=presentation />
+							*[16218]<div />
+								*[16213]<div />
+									Name
+					*[16228]<div />
+						*[16226]<svg /> <!-- SVG content collapsed -->
+				*[16522]<div role=columnheader />
+					*[16243]<div role=presentation />
+						*[16239]<div role=presentation />
+							*[16234]<div />
+								*[16229]<div />
+									Status
+							*[16232]<button aria-label=Sort />
+					*[16244]<div />
+						*[16242]<svg /> <!-- SVG content collapsed -->
+				*[16523]<div role=columnheader />
+					*[16259]<div role=presentation />
+						*[16255]<div role=presentation />
+							*[16250]<div />
+								*[16245]<div />
+									Type
+					*[16260]<div />
+						*[16258]<svg /> <!-- SVG content collapsed -->
+				*[16524]<div role=columnheader />
+					*[16275]<div role=presentation />
+						*[16271]<div role=presentation />
+							*[16266]<div />
+								*[16261]<div />
+									Version
+					*[16276]<div />
+						*[16274]<svg /> <!-- SVG content collapsed -->
+				*[16525]<div role=columnheader />
+					*[16291]<div role=presentation />
+						*[16287]<div role=presentation />
+							*[16282]<div />
+								*[16277]<div />
+									Fleet
+					*[16292]<div />
+						*[16290]<svg /> <!-- SVG content collapsed -->
+				*[16526]<div role=columnheader />
+					*[16307]<div role=presentation />
+						*[16303]<div role=presentation />
+							*[16298]<div />
+								*[16293]<div />
+									Configuration
+					*[16308]<div />
+						*[16306]<svg /> <!-- SVG content collapsed -->
+				*[16527]<div role=columnheader />
+					*[16323]<div role=presentation />
+						*[16319]<div role=presentation />
+							*[16314]<div />
+								*[16309]<div />
+									Logs
+					*[16324]<div />
+						*[16322]<svg /> <!-- SVG content collapsed -->
+				*[16528]<div role=columnheader />
+					*[16339]<div role=presentation />
+						*[16335]<div role=presentation />
+							*[16330]<div />
+								*[16325]<div />
+									Metrics
+					*[16340]<div />
+						*[16338]<svg /> <!-- SVG content collapsed -->
+				*[16529]<div role=columnheader />
+					*[16355]<div role=presentation />
+						*[16351]<div role=presentation />
+							*[16346]<div />
+								*[16341]<div />
+									Traces
+					*[16356]<div />
+						*[16354]<svg /> <!-- SVG content collapsed -->
+				*[16530]<div role=columnheader />
+					*[16371]<div role=presentation />
+						*[16367]<div role=presentation />
+							*[16362]<div />
+								*[16357]<div />
+									Operating System
+					*[16372]<div />
+						*[16370]<svg /> <!-- SVG content collapsed -->
+				*[16531]<div role=columnheader />
+					*[16387]<div role=presentation />
+						*[16383]<div role=presentation />
+							*[16378]<div />
+								*[16373]<div />
+									Labels
+					*[16388]<div />
+						*[16386]<svg /> <!-- SVG content collapsed -->
+			*[17427]<div role=row selected=false />
+				*[17414]<div role=gridcell />
+					*[17406]<span />
+						*[17405]<svg /> <!-- SVG content collapsed -->
+				*[17415]<div role=gridcell />
+					*[17407]<a />
+						opamp-poc-agent
+				*[17416]<div role=gridcell />
+					*[17409]<div />
+						Connected
+				*[17417]<div role=gridcell title=BDOT 1.x (Stable) />
+					BDOT 1.x (Stable)
+				*[17418]<div role=gridcell title=v1.101.2 />
+					v1.101.2
+				*[17419]<div role=gridcell />
+					*[17410]<a />
+				*[17420]<div role=gridcell />
+					*[17411]<a />
+				*[17421]<div role=gridcell />
+				*[17422]<div role=gridcell />
+				*[17423]<div role=gridcell />
+				*[17424]<div role=gridcell title=Ubuntu 24.04 />
+					Ubuntu 24.04
+				*[17425]<div role=gridcell />
+	*[16150]<p id=:rrh: />
+		Rows per page:
+	*[16151]<div />
+		*[16140]<div role=combobox id=:rrg: expanded=false />
+			100
+		*[16142]<svg /> <!-- SVG content collapsed -->
+	1–1 of 1
+	*[16147]<button aria-label=Go to previous page title=Go to previous page disabled=true />
+	*[16148]<button aria-label=Go to next page title=Go to next page disabled=true />
+	*[16052]<a aria-label=help />

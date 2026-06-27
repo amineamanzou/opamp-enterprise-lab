@@ -1,0 +1,66 @@
+viewport: 1924x1987
+page: 1924x1987
+scroll: (0, 0)
+[1]<div id=root />
+	[1726]<a />
+	[1708]<a />
+		Overview
+	[1709]<a />
+		Agents
+	[1710]<a />
+		Fleets
+	[1711]<a />
+		Configurations
+	[1712]<a />
+		Library
+	[1713]<a />
+		Blueprints
+	<org-redacted>
+	Default Project
+	[1724]<button aria-label=Open Notifications Menu />
+	[1725]<button aria-label=Open Settings Menu />
+	[1750]<a />
+		Agents
+	[1755]<li />
+		<svg /> <!-- SVG content collapsed -->
+	opamp-poc-agent
+	Details
+	Name
+	[1776]<div />
+		<svg /> <!-- SVG content collapsed -->
+	opamp-poc-agent
+	Status
+	[1782]<div />
+		Disconnected
+	Type
+	BDOT 1.x (Stable)
+	Version
+	v1.101.2
+	Host Name
+	opamp-poc-agent
+	Platform
+	linux amd64
+	Operating System
+	Ubuntu 24.04
+	Agent ID
+	<agent-id-redacted>
+	Remote Address
+	<ip-redacted>
+	MAC Address
+	<mac-redacted>
+	Fleet
+	Configuration
+	Disconnected
+	Jun 19 2026 22:45
+	Labels
+	[1829]<div />
+		[1827]<div />
+			[1826]<button />
+				edit
+	[1842]<button role=tab selected=false />
+		Health
+	[1843]<button role=tab selected=true />
+		Configuration
+	[2017]<button />
+		Create Configuration
+	[1735]<a aria-label=help />

@@ -1,0 +1,6 @@
+---
+- name: Record k3s and RKE2 deployment notes
+  hosts: k3s_servers:k3s_workers
+  become: true
+  roles:
+    - k3s_notes

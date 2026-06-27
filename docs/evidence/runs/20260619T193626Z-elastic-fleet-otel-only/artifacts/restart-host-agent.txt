@@ -1,0 +1,9 @@
+2026-06-19T19:48:29Z
+active
+2026-06-19T19:48:40Z
+Jun 19 19:44:17 opamp-poc-agent systemd[1]: Started otelcol-fleet-opamp.service - OpenTelemetry Collector Fleet OpAMP OTel-only scenario.
+Jun 19 19:48:29 opamp-poc-agent systemd[1]: Stopping otelcol-fleet-opamp.service - OpenTelemetry Collector Fleet OpAMP OTel-only scenario...
+Jun 19 19:48:30 opamp-poc-agent systemd[1]: otelcol-fleet-opamp.service: Deactivated successfully.
+Jun 19 19:48:30 opamp-poc-agent systemd[1]: Stopped otelcol-fleet-opamp.service - OpenTelemetry Collector Fleet OpAMP OTel-only scenario.
+Jun 19 19:48:30 opamp-poc-agent systemd[1]: otelcol-fleet-opamp.service: Consumed 25.889s CPU time.
+Jun 19 19:48:30 opamp-poc-agent systemd[1]: Started otelcol-fleet-opamp.service - OpenTelemetry Collector Fleet OpAMP OTel-only scenario.

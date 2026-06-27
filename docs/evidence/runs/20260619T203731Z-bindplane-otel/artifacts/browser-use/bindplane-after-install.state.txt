@@ -1,0 +1,105 @@
+viewport: 1924x1987
+page: 1924x1987
+scroll: (0, 0)
+Overview
+Agents
+Fleets
+Configurations
+Library
+Blueprints
+<org-redacted>
+Default Project
+Agents
+Monitor, configure, and manage your OpenTelemetry agents.
+Install Agent
+Quick Start Guide
+👋 Welcome to
+Bindplane
+! Start shipping telemetry to understand, control, and optimize your data pipeline.
+Learn more.
+<svg /> <!-- SVG content collapsed -->
+Install an agent
+Start sending data by setting up your first OpenTelemetry agent.
+<svg /> <!-- SVG content collapsed -->
+Set up a configuration
+Tell your agents how to collect and route telemetry by building your first pipeline.
+Start
+<svg /> <!-- SVG content collapsed -->
+Roll out your configuration
+Get telemetry flowing by assigning and rolling out your configuration to agents.
+Go to Configuration
+Dismiss
+Filters
+|scroll element|<div role=presentation /> (horizontal 0%)
+	<svg /> <!-- SVG content collapsed -->
+	<svg /> <!-- SVG content collapsed -->
+	Name
+	<svg /> <!-- SVG content collapsed -->
+	Status
+	<svg /> <!-- SVG content collapsed -->
+	Type
+	<svg /> <!-- SVG content collapsed -->
+	Version
+	<svg /> <!-- SVG content collapsed -->
+	Fleet
+	<svg /> <!-- SVG content collapsed -->
+	Configuration
+	<svg /> <!-- SVG content collapsed -->
+	Logs
+	<svg /> <!-- SVG content collapsed -->
+	Metrics
+	<svg /> <!-- SVG content collapsed -->
+	Traces
+	<svg /> <!-- SVG content collapsed -->
+	Operating System
+	<svg /> <!-- SVG content collapsed -->
+	Labels
+	<svg /> <!-- SVG content collapsed -->
+	<svg /> <!-- SVG content collapsed -->
+	opamp-poc-agent
+	Connected
+	BDOT 1.x (Stable)
+	v1.101.2
+	Ubuntu 24.04
+Rows per page:
+100
+<svg /> <!-- SVG content collapsed -->
+1–1 of 1
+[220]<div />
+[221]<div />
+[222]<div role=dialog />
+	[217]<button aria-label=Close />
+	Now it's time to get some Agents added to your environment!
+	For
+	Linux
+	, Agents run directly on the host. The command below will download and execute the Agent installation script.
+	Run the following command on each
+	Linux
+	host you want to ship telemetry from.
+	[343]<button />
+		Hide Secret
+	[342]<button />
+		Copy
+	sudo sh -c "$(curl -fsSlL 'https://bdot.bindplane.com/v1.101.2/install_unix.sh')" install_unix.sh -e 'wss://app.bindplane.com/v1/opamp' -s '<bindplane-secret-redacted>' -v '1.101.2'
+	Agents will appear below after they are installed and start up.
+	[350]<tr />
+		Agent Name
+		Status
+		Version
+	*[395]<tr />
+		*[392]<td />
+			opamp-poc-agent
+		*[393]<td />
+			*[391]<div />
+				Connected
+		*[394]<td />
+			v1.101.2
+	[353]<tr />
+		[352]<td />
+	[364]<button />
+		Back
+	[362]<button />
+		Done
+	[363]<a />
+		Create a Configuration
+[223]<div />

@@ -1,0 +1,82 @@
+# Placeholder upstream OpenTelemetry Collector Contrib baseline. Pin the image
+# tag to the same Collector version as the OCB manifests before measuring.
+extensions:
+  health_check:
+    endpoint: "${env:OTEL_HEALTH_CHECK_ENDPOINT}"
+
+receivers:
+  filelog:
+    include: ["${env:LOG_FILE_PATHS}"]
+    start_at: beginning
+    include_file_path: true
+    include_file_name: true
+
+  otlp:
+    protocols:
+      grpc:
+        endpoint: "${env:OTEL_OTLP_GRPC_ENDPOINT}"
+      http:
+        endpoint: "${env:OTEL_OTLP_HTTP_ENDPOINT}"
+
+processors:
+  memory_limiter:
+    check_interval: 1s
+    limit_mib: "${env:OTEL_MEMORY_LIMIT_MIB}"
+    spike_limit_mib: "${env:OTEL_MEMORY_SPIKE_LIMIT_MIB}"
+
+  resource:
+    attributes:
+      - key: service.name
+        value: "${env:SERVICE_NAME}"
+        action: upsert
+      - key: deployment.environment
+        value: "${env:DEPLOYMENT_ENVIRONMENT}"
+        action: upsert
+      - key: telemetry.distro.name
+        value: otelcol-contrib
+        action: upsert
+
+  attributes:
+    actions:
+      - key: elastic.poc.name
+        value: "${env:POC_NAME}"
+        action: upsert
+
+  filter/drop_health_noise:
+    error_mode: ignore
+    logs:
+      log_record:
+        - 'IsMatch(body, ".*health(check)? ok.*")'
+
+  batch:
+    timeout: "${env:OTEL_BATCH_TIMEOUT}"
+    send_batch_size: "${env:OTEL_BATCH_SEND_SIZE}"
+    send_batch_max_size: "${env:OTEL_BATCH_SEND_MAX_SIZE}"
+
+exporters:
+  otlphttp/elastic:
+    endpoint: "${env:ELASTIC_OTLP_ENDPOINT}"
+    headers:
+      Authorization: "ApiKey ${env:ELASTIC_API_KEY}"
+    compression: gzip
+    timeout: "${env:ELASTIC_EXPORT_TIMEOUT}"
+    retry_on_failure:
+      enabled: true
+      initial_interval: 1s
+      max_interval: 30s
+      max_elapsed_time: 300s
+    sending_queue:
+      enabled: true
+      num_consumers: "${env:OTEL_EXPORT_QUEUE_CONSUMERS}"
+      queue_size: "${env:OTEL_EXPORT_QUEUE_SIZE}"
+
+service:
+  telemetry:
+    logs:
+      level: "${env:OTEL_LOG_LEVEL}"
+  extensions: [health_check]
+  pipelines:
+    logs:
+      receivers: [filelog, otlp]
+      processors: [memory_limiter, resource, attributes, filter/drop_health_noise, batch]
+      exporters: [otlphttp/elastic]

@@ -1,0 +1,9 @@
+---
+- name: Reload systemd
+  ansible.builtin.systemd:
+    daemon_reload: true
+
+- name: Restart otelcol-logs-opamp
+  ansible.builtin.systemd:
+    name: otelcol-logs-opamp
+    state: restarted

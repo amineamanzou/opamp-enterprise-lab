@@ -1,0 +1,7 @@
+## scenario/exit-drill-secrets-outage
+ M Taskfile.yml
+ M scripts/evidence-run.sh
+?? data/
+?? docs/runbooks/exit-drill-secrets-outage.md
+?? lab/opamp-server-py-src/
+?? scripts/evidence-exit-drill-secrets-outage.sh

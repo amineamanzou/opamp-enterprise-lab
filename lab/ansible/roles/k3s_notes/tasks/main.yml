@@ -1,0 +1,24 @@
+---
+- name: Create Kubernetes notes directory
+  ansible.builtin.file:
+    path: "{{ k3s_notes_dir }}"
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Write k3s and RKE2 notes
+  ansible.builtin.copy:
+    dest: "{{ k3s_notes_dir }}/README"
+    owner: root
+    group: root
+    mode: "0644"
+    content: |
+      Kubernetes host reserved for {{ k3s_distribution }} experiments.
+
+      This role intentionally does not install k3s or RKE2 yet.
+      Future deployment notes:
+      - keep kubeconfig and node tokens outside git
+      - use one server host and one worker host for the frugal lab
+      - deploy collectors as a DaemonSet for node logs and a Deployment for gateway mode
+      - point collectors at the OpAMP server only after enrollment secret handling is defined

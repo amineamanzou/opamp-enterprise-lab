@@ -1,0 +1,46 @@
+viewport: 1924x1987
+page: 1924x1987
+scroll: (0, 0)
+[1]<div id=root />
+	[2050]<a />
+	[2032]<a />
+		Overview
+	[2033]<a />
+		Agents
+	[2034]<a />
+		Fleets
+	[2035]<a />
+		Configurations
+	[2036]<a />
+		Library
+	[2037]<a />
+		Blueprints
+	<org-redacted>
+	Default Project
+	[2048]<button aria-label=Open Notifications Menu />
+	[2049]<button aria-label=Open Settings Menu />
+	[2077]<a />
+		Configurations
+	[2082]<li />
+		<svg /> <!-- SVG content collapsed -->
+	[2083]<li level=1 />
+		[2080]<p />
+			New
+	[2087]<span />
+	Details
+	Specify some basic settings for the platform you'll be shipping logs and/or metrics from.
+	[2094]<span />
+	Add Sources
+	A source is a combination of receivers and processors
+	[2101]<span />
+	Add Destination
+	A destination is a combination of an exporter and processors
+	Add a destination where you'd like to send your telemetry.
+	A destination simply represents where you'd like to send your telemetry data. You can configure that here. Depending on the destination you choose, we'll configure specific OpenTelemetry processors for you, ensuring your data shows up in a useful state.
+	*[4144]<button />
+		Add Destination
+	*[4147]<button />
+		Back
+	*[4148]<button />
+		Save
+	[2063]<a aria-label=help />

@@ -1,0 +1,11 @@
+{
+  "size": 0,
+  "query": {
+    "bool": {
+      "filter": [
+        { "range": { "@timestamp": { "gte": "now-15m" } } },
+        { "match_phrase": { "service.name": "synthetic-log-source" } }
+      ]
+    }
+  }
+}

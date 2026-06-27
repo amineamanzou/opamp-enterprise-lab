@@ -1,0 +1,6 @@
+---
+- name: Lay down collector deployment placeholders
+  hosts: collectors
+  become: true
+  roles:
+    - collector_placeholder

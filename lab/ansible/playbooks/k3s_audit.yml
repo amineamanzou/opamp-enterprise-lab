@@ -1,0 +1,45 @@
+---
+- name: Enable regulated Kubernetes audit logs on k3s servers
+  hosts: k3s_servers
+  become: true
+  tasks:
+    - name: Create k3s config drop-in directory
+      ansible.builtin.file:
+        path: /etc/rancher/k3s/config.yaml.d
+        state: directory
+        owner: root
+        group: root
+        mode: "0755"
+
+    - name: Create k3s audit log directory
+      ansible.builtin.file:
+        path: /var/lib/rancher/k3s/server/logs
+        state: directory
+        owner: root
+        group: root
+        mode: "0750"
+
+    - name: Install regulated audit policy
+      ansible.builtin.template:
+        src: ../templates/k3s-audit-policy.yaml.j2
+        dest: /etc/rancher/k3s/audit-policy.yaml
+        owner: root
+        group: root
+        mode: "0640"
+      notify: Restart k3s
+
+    - name: Install k3s audit config drop-in
+      ansible.builtin.template:
+        src: ../templates/k3s-audit-config.yaml.j2
+        dest: /etc/rancher/k3s/config.yaml.d/90-audit.yaml
+        owner: root
+        group: root
+        mode: "0640"
+      notify: Restart k3s
+
+  handlers:
+    - name: Restart k3s
+      ansible.builtin.systemd:
+        name: k3s
+        state: restarted
+        daemon_reload: true

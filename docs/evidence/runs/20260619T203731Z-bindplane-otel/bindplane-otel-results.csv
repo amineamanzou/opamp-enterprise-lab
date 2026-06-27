@@ -1,0 +1,10 @@
+scenario,result,collector_count,ui_actions,visible_status,remote_config_editable,logs_visible,recovery_seconds,pricing_limit,notes
+first_connection,pass,1,,Connected,not-tested,n/a,,,BDOT 1.101.2 installed and visible without Elastic Agent.
+custom_ocb_connection,blocked,1,,not visible,no,n/a,,,Lab OCB service started but Bindplane OpAMP returned 403 Forbidden during WebSocket handshake.
+remote_config,partial,1,,Connected,partial,n/a,,,Draft builder tested; File source saved; destination and rollout not completed.
+bad_config,not-tested,1,,n/a,partial,n/a,,,Requires known-good rollout first.
+restart,pass,1,,Connected,n/a,n/a,,,systemd restart returned active and UI remained Connected.
+disconnect,pass,1,,Disconnected then Connected,n/a,n/a,~8,,Stop for 25s showed Disconnected; start returned Connected.
+upgrade,not-tested,1,,n/a,n/a,n/a,,,Upgrade/downgrade controls not yet inspected.
+downgrade,not-tested,1,,n/a,n/a,n/a,,,Upgrade/downgrade controls not yet inspected.
+scale,not-tested,1,,n/a,n/a,n/a,,,Paliers not run; first run stayed at one real BDOT collector.

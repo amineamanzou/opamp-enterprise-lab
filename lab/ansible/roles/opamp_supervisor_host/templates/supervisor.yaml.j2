@@ -1,0 +1,33 @@
+server:
+  endpoint: "${env:OPAMP_SERVER_WS_ENDPOINT}"
+  headers:
+    Authorization: "Bearer ${env:OPAMP_AUTH_TOKEN}"
+  tls:
+    insecure_skip_verify: ${env:OPAMP_TLS_INSECURE_SKIP_VERIFY}
+
+storage:
+  directory: "{{ collector_supervisor_storage_dir }}"
+
+agent:
+  executable: "${env:OPAMP_SUPERVISED_COLLECTOR}"
+  config_files:
+    - "${env:OPAMP_SUPERVISED_CONFIG}"
+    - "$OPAMP_EXTENSION_CONFIG"
+    - "$REMOTE_CONFIG"
+  description:
+    non_identifying_attributes:
+      service.instance.id: "${env:SERVICE_INSTANCE_ID}"
+      service.name: "${env:SERVICE_NAME}"
+      service.version: "${env:COLLECTOR_VERSION}"
+      host.name: "${env:HOST_NAME}"
+      deployment.environment: "${env:DEPLOYMENT_ENVIRONMENT}"
+      deployment.ring: "${env:OPAMP_RING}"
+
+capabilities:
+  accepts_remote_config: true
+  reports_remote_config: true
+  reports_effective_config: true
+  accepts_restart_command: true
+  reports_health: true
+  reports_heartbeat: true
+  reports_available_components: true

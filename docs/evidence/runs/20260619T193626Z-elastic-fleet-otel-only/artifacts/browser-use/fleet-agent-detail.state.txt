@@ -1,0 +1,239 @@
+viewport: 1924x1987
+page: 1924x1987
+scroll: (0, 0)
+[291]<div id=kibana-body />
+	[343]<div />
+		[338]<span />
+			[335]<a />
+				*[3116]<svg role=img aria-label=Logo Elastic /> <!-- SVG content collapsed -->
+	[417]<div />
+		[380]<div />
+			[466]<div id=spcMenuPopover />
+				[465]<button aria-label=Navigation dans les espaces title=Default expanded=false />
+					[813]<div aria-label=Default role=img title=Default />
+	[418]<div />
+	[383]<button title=<redacted-observability-project> expanded=false />
+		<redacted-observability-project>
+		[488]<svg role=img aria-label=- Cliquer sur ce bouton affiche/masque une fenêtre contextuelle. /> <!-- SVG content collapsed -->
+	[420]<li level=1 />
+		*[3613]<a title=Fleet />
+			Fleet
+	*[3611]<a title=Agents />
+		Agents
+	asset-000001.example.invalid
+	[352]<div />
+		[421]<div />
+			[403]<div />
+				[445]<button aria-label=Affichez la barre de recherche />
+	[353]<div />
+		[351]<div id=headerHelpMenu />
+			[350]<button aria-label=Menu d'aide expanded=false />
+	[423]<div />
+		[406]<div />
+			[776]<span id=i<redacted-uuid>-wrapper />
+				[775]<button />
+					[1017]<svg role=img aria-label=Submit feedback /> <!-- SVG content collapsed -->
+	[407]<div />
+		<svg /> <!-- SVG content collapsed -->
+		[798]<button />
+			Agent IA
+	[426]<div />
+		[416]<div />
+			[415]<div />
+				[414]<div />
+					[413]<button aria-label=Menu Compte expanded=false />
+						[490]<div aria-label=<redacted-email> role=img title=<redacted-email> />
+	[494]<a id=observability_project_nav aria-label=Observability page d’accueil />
+		Observability
+	[498]<a id=discover />
+		Discover
+	[503]<a id=dashboards />
+		Tableaux de bord
+	[508]<a id=workflows />
+		Workflows
+	[516]<a id=observability-overview:alerts />
+		Alertes
+	[521]<a id=observability-overview:cases />
+		Cas
+	[526]<a id=slo />
+		Slo
+	[531]<a id=streams />
+		Flux
+	[536]<a id=applications expanded=false />
+		Applications
+	[542]<a id=metrics expanded=false />
+		Infrastructure
+	[548]<a id=agent_builder />
+		Agents
+	[553]<a id=machine_learning-landing expanded=false />
+		Machine Learning
+	[559]<a id=otherTools expanded=false />
+		Autres outils
+	[576]<div />
+		[575]<a aria-label=Ajouter des données />
+	[581]<div />
+		[580]<a aria-label=Outils de développeur />
+	[585]<a aria-label=Gestion des données expanded=false />
+	[592]<div />
+		[590]<a aria-label=Administration et paramètres expanded=false />
+		[811]<svg /> <!-- SVG content collapsed -->
+	[603]<hr />
+	[604]<div />
+		[598]<span id=:r1m:euiToolTipAnchor />
+			[597]<button aria-label=Réduire le menu de navigation pressed=true expanded=true />
+	Gestion des données
+	Ingestion et intégrations
+	[614]<a id=integrations />
+		Intégrations
+	[618]<a id=fleet />
+		Fleet
+	[622]<a id=management:ingest_pipelines />
+		Pipelines d'ingestion
+	[626]<a id=management:pipelines />
+		Pipelines logstash
+	[630]<a id=management:content_connectors />
+		Content Connectors
+	Index et flux de données
+	[641]<a id=management:index_management />
+		Gestion des index
+	[645]<a id=management:transform />
+		Transformations
+	[649]<a id=management:data_quality />
+		Qualité de l’ensemble de données
+	[653]<a id=management:data_usage />
+		Utilisation des données
+	[1342]<div />
+		[1349]<button />
+			Donner un retour
+	[301]<div />
+		*[3122]<a aria-label=View all agents />
+			Afficher tous les agents
+		asset-000001.example.invalid
+		*[3627]<button expanded=false />
+			Actions
+		*[3138]<a role=tab id=details name=Détails de l'agent selected=true />
+			Détails de l'agent
+		*[3139]<a role=tab id=logs name=Logs selected=false />
+			Logs
+		*[3140]<a role=tab id=diagnostics name=Diagnostics selected=false />
+			Diagnostics
+		*[3141]<a role=tab id=settings name=Paramètres selected=false />
+			Paramètres
+		Aperçu
+		*[3178]<span id=i<redacted-uuid>-wrapper />
+			*[3177]<span />
+				CPU
+				*[3176]<svg /> <!-- SVG content collapsed -->
+		*[3186]<div />
+			*[3180]<div />
+				N/A
+		*[3187]<div />
+			*[3185]<span id=i<redacted-uuid>-wrapper />
+				*[3184]<svg role=img aria-label=Infos /> <!-- SVG content collapsed -->
+		*[3197]<span />
+			Mémoire
+			*[3196]<svg /> <!-- SVG content collapsed -->
+		*[3206]<div />
+			*[3200]<div />
+				N/A
+		*[3207]<div />
+			*[3205]<span id=i<redacted-uuid>-wrapper />
+				*[3204]<svg role=img aria-label=Infos /> <!-- SVG content collapsed -->
+		Afficher plus d'indicateurs d'agent
+		*[3221]<button />
+			Voir la configuration du collecteur
+		Statut
+		*[3231]<span id=i<redacted-uuid>-wrapper />
+			*[3230]<span title=Sain />
+				*[3229]<span />
+					*[3228]<span />
+						Sain
+		Dernière activité
+		19 juin 2026
+		21:45
+		Dernier message de vérification
+		StatusOK
+		ID d'agent
+		<redacted-uuid>
+		Politique d'agent
+		Version d'agent
+		*[3260]<div />
+			0.151.0
+		*[3261]<div />
+			*[3259]<span id=i<redacted-uuid>-wrapper />
+				*[3258]<svg role=img aria-label=Infos /> <!-- SVG content collapsed -->
+		Nom de l'hôte
+		asset-000001.example.invalid
+		ID de l'hôte
+		Mode FIPS
+		linux
+		Balises
+		otelcol-contrib
+		Fonctionnalités du collecteur
+		ReportsAvailableComponents
+		ReportsEffectiveConfig
+		ReportsHealth
+		ReportsStatus
+		Santé des composants
+		Statut du collecteur :
+		*[3318]<div />
+			*[3316]<span title=Sain />
+				*[3315]<span />
+					*[3314]<span />
+						Sain
+		*[3331]<div />
+			*[3328]<div />
+				*[3327]<div />
+					*[3325]<div />
+						*[3324]<svg role=presentation /> <!-- SVG content collapsed -->
+		Extensions
+		*[3337]<button aria-expanded=false />
+		*[3338]<button id=:r3e: expanded=false />
+			Composants
+		*[3352]<button id=extensions.extension:opamp />
+			*[3350]<span />
+			*[3342]<div />
+			Extension: opamp
+		Extension: health_check
+		*[3387]<div />
+			*[3384]<div />
+				*[3383]<div />
+					*[3381]<div />
+						*[3380]<svg role=presentation /> <!-- SVG content collapsed -->
+		Pipeline: logs
+		*[3393]<button aria-expanded=false />
+		*[3394]<button id=:r3f: expanded=false />
+			Composants
+		*[3408]<button id=pipeline:logs.processor:batch />
+			*[3406]<span />
+			*[3398]<div />
+			Processor: batch
+		*[3422]<button id=pipeline:logs.processor:resource />
+			*[3420]<span />
+			*[3412]<div />
+			Processor: resource
+		*[3436]<button id=pipeline:logs.processor:attributes />
+			*[3434]<span />
+			*[3426]<div />
+			Processor: attributes
+		*[3450]<button id=pipeline:logs.receiver:filelog />
+			*[3448]<span />
+			*[3440]<div />
+			Receiver: filelog
+		*[3464]<button id=pipeline:logs.processor:filter/drop_health_noise />
+			*[3462]<span />
+			*[3454]<div />
+			Processor: filter/drop_health_noise
+		*[3478]<button id=pipeline:logs.processor:memory_limiter />
+			*[3476]<span />
+			*[3468]<div />
+			Processor: memory_limiter
+		*[3492]<button id=pipeline:logs.receiver:otlp />
+			*[3490]<span />
+			*[3482]<div />
+			Receiver: otlp
+		*[3506]<button id=pipeline:logs.exporter:otlphttp/elastic />
+			*[3504]<span />
+			*[3496]<div />
+			Exporter: otlphttp/elastic
+[281]<div />

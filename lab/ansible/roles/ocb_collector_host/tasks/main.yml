@@ -1,0 +1,91 @@
+---
+- name: Check local OCB collector binary
+  ansible.builtin.stat:
+    path: "{{ ocb_collector_binary_local_path }}"
+  delegate_to: localhost
+  become: false
+  register: ocb_collector_binary
+
+- name: Require local OCB collector binary
+  ansible.builtin.fail:
+    msg: "Run task ocb:build before deploying the host collector."
+  when: not ocb_collector_binary.stat.exists
+
+- name: Check local collector environment file
+  ansible.builtin.stat:
+    path: "{{ collector_env_local_path }}"
+  delegate_to: localhost
+  become: false
+  register: collector_env_file
+
+- name: Require rendered collector environment file
+  ansible.builtin.fail:
+    msg: "Run task collector:env before deploying the host collector."
+  when: not collector_env_file.stat.exists
+
+- name: Create collector config directory
+  ansible.builtin.file:
+    path: "{{ collector_config_dir }}"
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Create collector log directory
+  ansible.builtin.file:
+    path: /var/log/opamp-poc
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Install OCB collector binary
+  ansible.builtin.copy:
+    src: "{{ ocb_collector_binary_local_path }}"
+    dest: "{{ ocb_collector_binary_remote_path }}"
+    owner: root
+    group: root
+    mode: "0755"
+  notify: Restart otelcol-logs-opamp
+
+- name: Install collector config
+  ansible.builtin.template:
+    src: logs-opamp-elastic.yaml.j2
+    dest: "{{ collector_supervised_config }}"
+    owner: root
+    group: root
+    mode: "0644"
+  notify: Restart otelcol-logs-opamp
+
+- name: Install collector environment file
+  ansible.builtin.copy:
+    src: "{{ collector_env_local_path }}"
+    dest: "{{ collector_env_remote_path }}"
+    owner: root
+    group: root
+    mode: "0600"
+  notify: Restart otelcol-logs-opamp
+
+- name: Install collector systemd unit
+  ansible.builtin.template:
+    src: otelcol-logs-opamp.service.j2
+    dest: /etc/systemd/system/otelcol-logs-opamp.service
+    owner: root
+    group: root
+    mode: "0644"
+  notify:
+    - Reload systemd
+    - Restart otelcol-logs-opamp
+
+- name: Enable and start collector service
+  ansible.builtin.systemd:
+    name: otelcol-logs-opamp
+    enabled: true
+    state: started
+    daemon_reload: true
+
+- name: Enable and start synthetic log generator
+  ansible.builtin.systemd:
+    name: synthetic-log-generator.service
+    enabled: true
+    state: started

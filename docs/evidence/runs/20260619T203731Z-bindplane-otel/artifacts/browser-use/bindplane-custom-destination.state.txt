@@ -1,0 +1,59 @@
+viewport: 1924x1987
+page: 1924x1987
+scroll: (0, 0)
+Overview
+Agents
+Fleets
+Configurations
+Library
+Blueprints
+<org-redacted>
+Default Project
+Configurations
+<svg /> <!-- SVG content collapsed -->
+New
+Details
+Specify some basic settings for the platform you'll be shipping logs and/or metrics from.
+Add Sources
+A source is a combination of receivers and processors
+Add Destination
+A destination is a combination of an exporter and processors
+Add a destination where you'd like to send your telemetry.
+A destination simply represents where you'd like to send your telemetry data. You can configure that here. Depending on the destination you choose, we'll configure specific OpenTelemetry processors for you, ensuring your data shows up in a useful state.
+Add Destination
+Back
+Save
+[4872]<div />
+[4873]<div />
+[4874]<div role=dialog />
+	*[6669]<div />
+		Add Destination: Custom
+		*[6581]<a aria-label=Open Resource Documentation />
+		Insert a custom OpenTelemetry exporter configuration.
+		*[6588]<div />
+			*[6586]<button aria-label=Close Resource Dialog />
+		Name
+		*[6598]<div />
+			|SHADOW(open)|*[6593]<input autocomplete=off id=:r72: name=name type=text maxlength=40 required=true />
+		Choose a name for the reusable resource in Bindplane.
+		Configure
+		Choose Telemetry Type
+		*[6603]<button value=Logs aria-label=Logs pressed=true />
+			Logs
+		*[6604]<button value=Metrics aria-label=Metrics pressed=true />
+			Metrics
+		*[6605]<button value=Traces aria-label=Traces pressed=true />
+			Traces
+		Configuration
+		*[6609]<span />
+		|SHADOW(open)|*[6614]<textarea autocomplete=off name=configuration required=true />
+		Enter any supported OpenTelemetry exporter and the YAML will be inserted into the configuration.
+		*[6617]<a />
+			Exporter Syntax
+		*[6628]<button expanded=false />
+			Advanced
+		*[6659]<button />
+			Cancel
+		*[6661]<button type=submit />
+			Save
+[4875]<div />

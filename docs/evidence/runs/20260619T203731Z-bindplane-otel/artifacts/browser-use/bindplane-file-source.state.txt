@@ -1,0 +1,71 @@
+viewport: 1924x1987
+page: 1924x1987
+scroll: (0, 0)
+Overview
+Agents
+Fleets
+Configurations
+Library
+Blueprints
+<org-redacted>
+Default Project
+Configurations
+<svg /> <!-- SVG content collapsed -->
+New
+Details
+Specify some basic settings for the platform you'll be shipping logs and/or metrics from.
+Add Sources
+A source is a combination of receivers and processors
+Add Destination
+A destination is a combination of an exporter and processors
+Add Sources from which you'd like to collect telemetry.
+A Source is a combination of OpenTelemetry receivers and processors that allows you to collect telemetry from a specific technology. Ensuring the right combination of these components is one of the most challenging aspects of building an OpenTelemetry configuration file. With
+Bindplane
+, we handle that all for you.
+Add Source
+Back
+Next
+[3205]<div />
+[3206]<div />
+[3207]<div role=dialog />
+	*[3927]<div />
+		Add Source: File
+		*[3512]<a aria-label=Open Resource Documentation />
+		Collect logs from generic log files.
+		*[3519]<div />
+			*[3517]<button aria-label=Close Resource Dialog />
+		Configure
+		Short Description
+		*[3528]<div />
+			|SHADOW(open)|*[3525]<input autocomplete=off id=:r4h: name=displayName type=text maxlength=40 />
+		A short description for the resource.
+		Logs
+		*[3542]<div />
+			File Path(s) *
+			*[3539]<div />
+				|SHADOW(open)|*[3535]<input autocomplete=list id=:r4i: type=text aria-autocomplete=list role=combobox expanded=false />
+			A list of file glob patterns that match the file paths to be read.
+		*[3553]<div />
+			Exclude File Path(s)
+			*[3550]<div />
+				|SHADOW(open)|*[3546]<input autocomplete=list id=:r4k: type=text aria-autocomplete=list role=combobox expanded=false />
+			A list of file glob patterns that match the file paths to exclude.
+		Log Type
+		*[3563]<div />
+			|SHADOW(open)|*[3558]<input autocomplete=off id=:r4m: name=log_type type=text value=file />
+		A friendly name that will be added to each log entry as an attribute.
+		Multiline Parsing
+		*[3589]<div />
+			|SHADOW(open)|*[3579]<select id=:r4o: name=multiline_parsing expanded=false compound_components=(name=Dropdown Toggle,role=button),(name=Options,role=listbox,count=3,options=none|specify line start|specify line end) />
+			*[3585]<svg /> <!-- SVG content collapsed -->
+		Enable multiline parsing options. Either specifying a regex for where a log starts or ends.
+		*[3597]<button expanded=false />
+			Advanced
+		Open Shadow
+			*|scroll element[3804]<div />
+		Shadow End
+		*[3889]<button />
+			Cancel
+		*[3891]<button type=submit />
+			Save
+[3208]<div />

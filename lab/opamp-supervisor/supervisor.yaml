@@ -1,0 +1,23 @@
+server:
+  endpoint: ${env:OPAMP_SERVER_WS_ENDPOINT}
+  headers:
+    Authorization: "Bearer ${env:OPAMP_AUTH_TOKEN}"
+
+agent:
+  executable: ${env:OPAMP_SUPERVISED_COLLECTOR}
+  arguments:
+    - --config=${env:OPAMP_SUPERVISED_CONFIG}
+  config_files:
+    - ${env:OPAMP_SUPERVISED_CONFIG}
+  description:
+    identifying_attributes:
+      service.name: otelcol-supervised
+      service.namespace: ${env:OPAMP_RING}
+      deployment.ring: ${env:OPAMP_RING}
+
+capabilities:
+  reports_effective_config: true
+  reports_own_logs: true
+  reports_own_metrics: true
+  accepts_remote_config: true
+  reports_remote_config: true

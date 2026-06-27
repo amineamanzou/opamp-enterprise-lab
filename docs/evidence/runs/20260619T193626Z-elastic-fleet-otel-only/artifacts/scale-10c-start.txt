@@ -1,0 +1,22 @@
+start=2026-06-19T20:02:59Z
+running_after_25s=20
+ 133260 timeout         timeout 180s /opt/elastic-fleet-otel-only/otelcol-contrib --config /opt/elastic-fleet-otel-only/scale-10c/collector-01.yaml
+ 133263 timeout         timeout 180s /opt/elastic-fleet-otel-only/otelcol-contrib --config /opt/elastic-fleet-otel-only/scale-10c/collector-02.yaml
+ 133265 otelcol-contrib /opt/elastic-fleet-otel-only/otelcol-contrib --config /opt/elastic-fleet-otel-only/scale-10c/collector-01.yaml
+ 133267 otelcol-contrib /opt/elastic-fleet-otel-only/otelcol-contrib --config /opt/elastic-fleet-otel-only/scale-10c/collector-02.yaml
+ 133268 timeout         timeout 180s /opt/elastic-fleet-otel-only/otelcol-contrib --config /opt/elastic-fleet-otel-only/scale-10c/collector-03.yaml
+ 133270 otelcol-contrib /opt/elastic-fleet-otel-only/otelcol-contrib --config /opt/elastic-fleet-otel-only/scale-10c/collector-03.yaml
+ 133272 timeout         timeout 180s /opt/elastic-fleet-otel-only/otelcol-contrib --config /opt/elastic-fleet-otel-only/scale-10c/collector-04.yaml
+ 133278 otelcol-contrib /opt/elastic-fleet-otel-only/otelcol-contrib --config /opt/elastic-fleet-otel-only/scale-10c/collector-04.yaml
+ 133279 timeout         timeout 180s /opt/elastic-fleet-otel-only/otelcol-contrib --config /opt/elastic-fleet-otel-only/scale-10c/collector-05.yaml
+ 133282 otelcol-contrib /opt/elastic-fleet-otel-only/otelcol-contrib --config /opt/elastic-fleet-otel-only/scale-10c/collector-05.yaml
+ 133286 timeout         timeout 180s /opt/elastic-fleet-otel-only/otelcol-contrib --config /opt/elastic-fleet-otel-only/scale-10c/collector-06.yaml
+ 133292 otelcol-contrib /opt/elastic-fleet-otel-only/otelcol-contrib --config /opt/elastic-fleet-otel-only/scale-10c/collector-06.yaml
+ 133293 timeout         timeout 180s /opt/elastic-fleet-otel-only/otelcol-contrib --config /opt/elastic-fleet-otel-only/scale-10c/collector-07.yaml
+ 133298 otelcol-contrib /opt/elastic-fleet-otel-only/otelcol-contrib --config /opt/elastic-fleet-otel-only/scale-10c/collector-07.yaml
+ 133299 timeout         timeout 180s /opt/elastic-fleet-otel-only/otelcol-contrib --config /opt/elastic-fleet-otel-only/scale-10c/collector-08.yaml
+ 133303 otelcol-contrib /opt/elastic-fleet-otel-only/otelcol-contrib --config /opt/elastic-fleet-otel-only/scale-10c/collector-08.yaml
+ 133307 timeout         timeout 180s /opt/elastic-fleet-otel-only/otelcol-contrib --config /opt/elastic-fleet-otel-only/scale-10c/collector-09.yaml
+ 133309 otelcol-contrib /opt/elastic-fleet-otel-only/otelcol-contrib --config /opt/elastic-fleet-otel-only/scale-10c/collector-09.yaml
+ 133313 timeout         timeout 180s /opt/elastic-fleet-otel-only/otelcol-contrib --config /opt/elastic-fleet-otel-only/scale-10c/collector-10.yaml
+ 133318 otelcol-contrib /opt/elastic-fleet-otel-only/otelcol-contrib --config /opt/elastic-fleet-otel-only/scale-10c/collector-10.yaml

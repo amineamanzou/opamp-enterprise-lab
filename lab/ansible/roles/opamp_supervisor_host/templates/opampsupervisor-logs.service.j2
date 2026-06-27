@@ -1,0 +1,19 @@
+[Unit]
+Description=OpAMP supervisor for logs collector
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+EnvironmentFile={{ collector_env_remote_path }}
+ExecStart={{ collector_supervisor_bin }} --config={{ collector_supervisor_config }}
+Restart=always
+RestartSec=5
+User=root
+Group=root
+LimitNOFILE=65536
+StandardOutput=append:/var/log/opamp-poc/opampsupervisor-logs.log
+StandardError=append:/var/log/opamp-poc/opampsupervisor-logs.log
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,54 @@
+viewport: 1924x1987
+page: 1924x1987
+scroll: (0, 0)
+Overview
+Agents
+Fleets
+Configurations
+Library
+Blueprints
+<org-redacted>
+Default Project
+Agents
+Monitor, configure, and manage your OpenTelemetry agents.
+Quick Start Guide
+👋 Welcome to
+Bindplane
+! Start shipping telemetry to understand, control, and optimize your data pipeline.
+Learn more.
+<svg /> <!-- SVG content collapsed -->
+Install an agent
+Start sending data by setting up your first OpenTelemetry agent.
+Install
+<svg /> <!-- SVG content collapsed -->
+Set up a configuration
+Tell your agents how to collect and route telemetry by building your first pipeline.
+Start
+<svg /> <!-- SVG content collapsed -->
+Roll out your configuration
+Get telemetry flowing by assigning and rolling out your configuration to agents.
+Go to Configuration
+Dismiss
+Your installed agents will show up here
+Agents collect, process, and ship telemetry according to the pipelines defined by your configurations. You can check agent status, manage labels, or perform upgrades from this page.
+Install Agent
+Read Docs
+*[220]<div />
+*[221]<div />
+*[222]<div role=dialog />
+	*[217]<button aria-label=Close />
+	Lets get some Agents installed.
+	First, choose the Agent Type to install and the platform you're shipping telemetry from.
+	*[239]<div />
+		Agent Type
+		*[237]<div />
+			|SHADOW(open)|*[233]<input autocomplete=list id=agent-type-select type=text aria-autocomplete=list role=combobox value=BDOT 1.x (Stable) expanded=false />
+			*[234]<div />
+				*[230]<button aria-label=Open title=Open />
+	*[248]<label id=platform-label />
+		Platform
+	*[249]<div />
+		*[244]<div role=combobox id=platform expanded=false />
+			*[240]<span />
+		*[246]<svg /> <!-- SVG content collapsed -->
+*[223]<div />

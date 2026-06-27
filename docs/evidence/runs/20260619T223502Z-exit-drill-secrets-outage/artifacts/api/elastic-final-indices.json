@@ -1,0 +1,97 @@
+{
+  "captured_at_utc": "2026-06-19T22:59:53Z",
+  "indices": [
+    {
+      "index": ".ds-logs-app.synthetic.otel-lab-2026.06.19-000001",
+      "docs": "433515"
+    },
+    {
+      "index": ".ds-logs-elastic_agent.status_change-default-2026.06.19-000001",
+      "docs": "14"
+    },
+    {
+      "index": ".ds-logs-generic.otel-default-2026.06.18-000001",
+      "docs": "4758093"
+    },
+    {
+      "index": ".ds-logs-infra.host.otel-lab-2026.06.19-000001",
+      "docs": "3692668"
+    },
+    {
+      "index": ".ds-logs-infra.kubernetes.otel-lab-2026.06.19-000001",
+      "docs": "254668"
+    },
+    {
+      "index": ".ds-logs-observability.collector.otel-lab-2026.06.19-000001",
+      "docs": "12025"
+    },
+    {
+      "index": ".ds-logs-opamp.connections-lab-2026.06.19-000001",
+      "docs": "7"
+    },
+    {
+      "index": ".ds-logs-opamp.events-lab-2026.06.19-000001",
+      "docs": "106"
+    },
+    {
+      "index": ".ds-logs-opamp.inventory-lab-2026.06.19-000001",
+      "docs": "40052"
+    },
+    {
+      "index": ".ds-logs-security.host.otel-lab-2026.06.19-000001",
+      "docs": "118264"
+    },
+    {
+      "index": ".ds-logs-security.kubernetes_audit.otel-lab-2026.06.19-000001",
+      "docs": "351269"
+    },
+    {
+      "index": ".ds-metrics-fleet_server.agent_status-default-2026.06.19-000001",
+      "docs": "196"
+    },
+    {
+      "index": ".ds-metrics-fleet_server.agent_versions-default-2026.06.19-000001",
+      "docs": "196"
+    },
+    {
+      "index": ".ds-metrics-hostmetricsreceiver.otel-lab-2026.06.19-000001",
+      "docs": "426095"
+    },
+    {
+      "index": ".ds-metrics-k8sclusterreceiver.otel-lab-2026.06.19-000001",
+      "docs": "265658"
+    },
+    {
+      "index": ".ds-metrics-kubeletstatsreceiver.otel-lab-2026.06.19-000001",
+      "docs": "252544"
+    },
+    {
+      "index": ".ds-metrics-metrics.application.otel-lab-2026.06.19-000001",
+      "docs": "8676"
+    },
+    {
+      "index": ".ds-metrics-metrics.collector.otel-lab-2026.06.19-000001",
+      "docs": "249205"
+    },
+    {
+      "index": ".ds-metrics-metrics.host.otel-lab-2026.06.19-000001",
+      "docs": "68688"
+    },
+    {
+      "index": ".ds-metrics-metrics.kubernetes_node.otel-lab-2026.06.19-000001",
+      "docs": "176176"
+    },
+    {
+      "index": ".ds-metrics-opamp.server-lab-2026.06.19-000001",
+      "docs": "7"
+    },
+    {
+      "index": ".ds-metrics-service_summary.1m.otel-default-2026.06.18-000001",
+      "docs": "1104"
+    },
+    {
+      "index": ".ds-metrics-service_summary.1m.otel-lab-2026.06.19-000001",
+      "docs": "8005"
+    }
+  ]
+}

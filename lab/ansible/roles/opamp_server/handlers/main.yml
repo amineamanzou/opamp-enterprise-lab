@@ -1,0 +1,10 @@
+---
+- name: Reload systemd
+  ansible.builtin.systemd:
+    daemon_reload: true
+
+- name: Restart opamp-poc-server
+  ansible.builtin.systemd:
+    name: opamp-poc-server
+    state: restarted
+  when: opamp_local_binary.stat.exists | default(false)

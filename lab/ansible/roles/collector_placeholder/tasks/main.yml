@@ -1,0 +1,41 @@
+---
+- name: Create collector config directory
+  ansible.builtin.file:
+    path: "{{ collector_config_dir }}"
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Write collector deployment placeholder
+  ansible.builtin.copy:
+    dest: "{{ collector_config_dir }}/README.opamp-poc"
+    owner: root
+    group: root
+    mode: "0644"
+    content: |
+      Collector deployment placeholder for the OpAMP fleet management POC.
+
+      Expected future work:
+      - install OpenTelemetry Collector or custom OCB artifact
+      - enroll collector with the OpAMP server
+      - ship host logs and synthetic logs
+      - add Kubernetes DaemonSet/Deployment manifests for k3s or RKE2
+
+      Keep enrollment tokens and TLS private keys outside this repository.
+
+- name: Write minimal collector config placeholder
+  ansible.builtin.template:
+    src: logs-opamp-elastic.yaml.j2
+    dest: "{{ collector_config_dir }}/logs-opamp-elastic.yaml"
+    owner: root
+    group: root
+    mode: "0644"
+
+- name: Write opampsupervisor config
+  ansible.builtin.template:
+    src: supervisor.yaml.j2
+    dest: "{{ collector_config_dir }}/supervisor.yaml"
+    owner: root
+    group: root
+    mode: "0640"

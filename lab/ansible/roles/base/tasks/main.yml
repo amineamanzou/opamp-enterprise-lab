@@ -1,0 +1,27 @@
+---
+- name: Refresh apt cache
+  ansible.builtin.apt:
+    update_cache: true
+    cache_valid_time: 3600
+  when: ansible_facts.os_family == "Debian"
+
+- name: Install base packages
+  ansible.builtin.package:
+    name: "{{ lab_base_packages }}"
+    state: present
+
+- name: Ensure lab marker directory exists
+  ansible.builtin.file:
+    path: /etc/opamp-poc
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Write non-secret lab marker
+  ansible.builtin.copy:
+    dest: /etc/opamp-poc/lab-role
+    content: "{{ group_names | sort | join(',') }}\n"
+    owner: root
+    group: root
+    mode: "0644"

@@ -1,0 +1,448 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: opamp-app-poc
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: otelcol-app-opamp
+  namespace: opamp-app-poc
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: otelcol-app-opamp-config
+  namespace: opamp-app-poc
+data:
+  collector.yaml: |
+    extensions:
+      health_check:
+        endpoint: "0.0.0.0:13133"
+
+      opamp:
+        server:
+          ws:
+            endpoint: "${env:OPAMP_SERVER_WS_ENDPOINT}"
+            tls:
+              insecure_skip_verify: true
+            headers:
+              Authorization: "Bearer ${env:OPAMP_AUTH_TOKEN}"
+        capabilities:
+          reports_effective_config: true
+          reports_health: true
+          reports_available_components: true
+        agent_description:
+          non_identifying_attributes:
+            service.instance.id: "${env:SERVICE_INSTANCE_ID}"
+            service.name: "${env:SERVICE_NAME}"
+            service.version: "${env:COLLECTOR_VERSION}"
+            host.name: "${env:POD_NAME}"
+            deployment.environment: lab
+            deployment.ring: app
+
+    receivers:
+      tcplog/app:
+        listen_address: "0.0.0.0:54525"
+        operators:
+          - type: json_parser
+            parse_from: body
+            parse_to: attributes
+          - type: move
+            from: attributes.message
+            to: body
+
+      prometheus/app:
+        config:
+          scrape_configs:
+            - job_name: synthetic-app
+              scrape_interval: 15s
+              static_configs:
+                - targets: ["synthetic-otel-app.opamp-app-poc.svc.cluster.local:8080"]
+
+      prometheus/collector:
+        config:
+          scrape_configs:
+            - job_name: otelcol-app-self
+              scrape_interval: 30s
+              static_configs:
+                - targets: ["127.0.0.1:8888"]
+
+    processors:
+      memory_limiter:
+        check_interval: 1s
+        limit_mib: 256
+        spike_limit_mib: 64
+
+      resource/base:
+        attributes:
+          - key: deployment.environment
+            value: lab
+            action: upsert
+          - key: k8s.cluster.name
+            value: opamp-poc-k3s
+            action: upsert
+          - key: k8s.namespace.name
+            value: opamp-app-poc
+            action: upsert
+          - key: orchestrator.type
+            value: kubernetes
+            action: upsert
+          - key: onboarding.id
+            value: "${env:ELASTIC_ONBOARDING_ID}"
+            action: upsert
+          - key: data_stream.namespace
+            value: lab
+            action: upsert
+
+      resource/app_logs:
+        attributes:
+          - key: service.name
+            value: synthetic-otel-app
+            action: upsert
+          - key: service.version
+            value: "${env:APP_VERSION}"
+            action: upsert
+          - key: data_stream.type
+            value: logs
+            action: upsert
+          - key: data_stream.dataset
+            value: app.synthetic
+            action: upsert
+          - key: event.dataset
+            value: app.synthetic
+            action: upsert
+          - key: telemetry.source
+            value: application
+            action: upsert
+          - key: elastic.poc.path
+            value: kubernetes-app-otlp
+            action: upsert
+
+      resource/app_metrics:
+        attributes:
+          - key: service.name
+            value: synthetic-otel-app
+            action: upsert
+          - key: service.version
+            value: "${env:APP_VERSION}"
+            action: upsert
+          - key: data_stream.type
+            value: metrics
+            action: upsert
+          - key: data_stream.dataset
+            value: metrics.application
+            action: upsert
+          - key: telemetry.source
+            value: application
+            action: upsert
+          - key: elastic.poc.path
+            value: kubernetes-app-metrics
+            action: upsert
+
+      resource/collector:
+        attributes:
+          - key: service.name
+            value: otelcol-app-opamp
+            action: upsert
+          - key: service.version
+            value: "${env:COLLECTOR_VERSION}"
+            action: upsert
+          - key: service.instance.id
+            value: "${env:SERVICE_INSTANCE_ID}"
+            action: upsert
+          - key: collector.role
+            value: kubernetes-app-namespace
+            action: upsert
+          - key: telemetry.source
+            value: collector-self
+            action: upsert
+          - key: data_stream.type
+            value: metrics
+            action: upsert
+          - key: data_stream.dataset
+            value: metrics.collector
+            action: upsert
+
+      attributes/app_logs:
+        actions:
+          - key: event.kind
+            value: event
+            action: upsert
+          - key: event.category
+            value: application
+            action: upsert
+          - key: event.type
+            value: info
+            action: upsert
+          - key: experiment.id
+            value: "${env:EXPERIMENT_ID}"
+            action: upsert
+
+      batch:
+        timeout: 1s
+        send_batch_size: 512
+        send_batch_max_size: 1024
+
+    exporters:
+      otlphttp/elastic:
+        endpoint: "${env:ELASTIC_OTLP_ENDPOINT}"
+        headers:
+          Authorization: "ApiKey ${env:ELASTIC_API_KEY}"
+        compression: gzip
+        timeout: 30s
+        retry_on_failure:
+          enabled: true
+          initial_interval: 1s
+          max_interval: 30s
+          max_elapsed_time: 300s
+        sending_queue:
+          enabled: true
+          num_consumers: 2
+          queue_size: 4096
+
+    service:
+      telemetry:
+        logs:
+          level: info
+        metrics:
+          readers:
+            - pull:
+                exporter:
+                  prometheus:
+                    host: 127.0.0.1
+                    port: 8888
+      extensions: [health_check, opamp]
+      pipelines:
+        logs/app:
+          receivers: [tcplog/app]
+          processors: [memory_limiter, resource/base, resource/app_logs, attributes/app_logs, batch]
+          exporters: [otlphttp/elastic]
+        metrics/app:
+          receivers: [prometheus/app]
+          processors: [memory_limiter, resource/base, resource/app_metrics, batch]
+          exporters: [otlphttp/elastic]
+        metrics/collector:
+          receivers: [prometheus/collector]
+          processors: [memory_limiter, resource/base, resource/collector, batch]
+          exporters: [otlphttp/elastic]
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: otelcol-app-opamp
+  namespace: opamp-app-poc
+spec:
+  selector:
+    app.kubernetes.io/name: otelcol-app-opamp
+  ports:
+    - name: app-logs
+      port: 54525
+      targetPort: app-logs
+    - name: health
+      port: 13133
+      targetPort: health
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: otelcol-app-opamp
+  namespace: opamp-app-poc
+  labels:
+    app.kubernetes.io/name: otelcol-app-opamp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: otelcol-app-opamp
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: otelcol-app-opamp
+    spec:
+      serviceAccountName: otelcol-app-opamp
+      containers:
+        - name: otelcol
+          image: otel/opentelemetry-collector-contrib:0.151.0
+          imagePullPolicy: IfNotPresent
+          args: ["--config=/etc/otelcol/collector.yaml"]
+          ports:
+            - name: app-logs
+              containerPort: 54525
+            - name: health
+              containerPort: 13133
+            - name: self-metrics
+              containerPort: 8888
+          env:
+            - name: ELASTIC_OTLP_ENDPOINT
+              valueFrom:
+                secretKeyRef:
+                  name: elastic-otlp
+                  key: endpoint
+            - name: ELASTIC_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: elastic-otlp
+                  key: api-key
+            - name: OPAMP_AUTH_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: opamp-auth
+                  key: token
+            - name: OPAMP_SERVER_WS_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: otelcol-app-opamp-env
+                  key: opamp-server-ws-endpoint
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: SERVICE_NAME
+              value: otelcol-app-opamp
+            - name: SERVICE_INSTANCE_ID
+              value: "opamp-app-poc/$(POD_NAME)"
+            - name: COLLECTOR_VERSION
+              value: "0.151.0"
+            - name: APP_VERSION
+              value: "1.0.0"
+            - name: EXPERIMENT_ID
+              value: "opamp-app-poc"
+            - name: ELASTIC_ONBOARDING_ID
+              value: 00000000-0000-0000-0000-000000000000
+          volumeMounts:
+            - name: config
+              mountPath: /etc/otelcol
+      volumes:
+        - name: config
+          configMap:
+            name: otelcol-app-opamp-config
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: synthetic-otel-app
+  namespace: opamp-app-poc
+data:
+  app.py: |
+    import json
+    import os
+    import random
+    import socket
+    import threading
+    import time
+    from http.server import BaseHTTPRequestHandler, HTTPServer
+
+    log_host = os.getenv("LOG_HOST", "otelcol-app-opamp.opamp-app-poc.svc.cluster.local")
+    log_port = int(os.getenv("LOG_PORT", "54525"))
+    rate = float(os.getenv("LOG_RATE_PER_SEC", "5"))
+    error_rate = float(os.getenv("ERROR_RATE", "0.03"))
+    version = os.getenv("SERVICE_VERSION", "1.0.0")
+    experiment_id = os.getenv("EXPERIMENT_ID", "opamp-app-poc")
+    sequence = 0
+    errors = 0
+
+    class Handler(BaseHTTPRequestHandler):
+      def do_GET(self):
+        if self.path != "/metrics":
+          self.send_response(404)
+          self.end_headers()
+          return
+        body = (
+          "# HELP synthetic_app_log_events_total Synthetic log events emitted\n"
+          "# TYPE synthetic_app_log_events_total counter\n"
+          f"synthetic_app_log_events_total{{service_version=\"{version}\",experiment_id=\"{experiment_id}\"}} {sequence}\n"
+          "# HELP synthetic_app_errors_total Synthetic app errors emitted\n"
+          "# TYPE synthetic_app_errors_total counter\n"
+          f"synthetic_app_errors_total{{service_version=\"{version}\",experiment_id=\"{experiment_id}\"}} {errors}\n"
+        ).encode()
+        self.send_response(200)
+        self.send_header("Content-Type", "text/plain; version=0.0.4")
+        self.send_header("Content-Length", str(len(body)))
+        self.end_headers()
+        self.wfile.write(body)
+
+      def log_message(self, fmt, *args):
+        return
+
+    def serve_metrics():
+      HTTPServer(("0.0.0.0", 8080), Handler).serve_forever()
+
+    threading.Thread(target=serve_metrics, daemon=True).start()
+
+    while True:
+      try:
+        with socket.create_connection((log_host, log_port), timeout=5) as sock:
+          while True:
+            sequence += 1
+            level = "error" if random.random() < error_rate else "info"
+            if level == "error":
+              errors += 1
+            event = {
+              "message": "synthetic application event",
+              "level": level,
+              "sequence": sequence,
+              "service_version": version,
+              "experiment_id": experiment_id,
+              "component": "fake-checkout",
+              "ts": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+            }
+            sock.sendall((json.dumps(event) + "\n").encode())
+            time.sleep(max(1 / rate, 0.001))
+      except Exception:
+        time.sleep(2)
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: synthetic-otel-app
+  namespace: opamp-app-poc
+spec:
+  selector:
+    app.kubernetes.io/name: synthetic-otel-app
+  ports:
+    - name: metrics
+      port: 8080
+      targetPort: metrics
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: synthetic-otel-app
+  namespace: opamp-app-poc
+  labels:
+    app.kubernetes.io/name: synthetic-otel-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: synthetic-otel-app
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: synthetic-otel-app
+    spec:
+      containers:
+        - name: app
+          image: python:3.12-alpine
+          imagePullPolicy: IfNotPresent
+          command: ["python", "/app/app.py"]
+          ports:
+            - name: metrics
+              containerPort: 8080
+          env:
+            - name: LOG_RATE_PER_SEC
+              value: "5"
+            - name: ERROR_RATE
+              value: "0.03"
+            - name: SERVICE_VERSION
+              value: "1.0.0"
+            - name: EXPERIMENT_ID
+              value: "opamp-app-poc"
+          volumeMounts:
+            - name: app
+              mountPath: /app
+      volumes:
+        - name: app
+          configMap:
+            name: synthetic-otel-app

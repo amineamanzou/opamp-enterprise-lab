@@ -1,0 +1,70 @@
+viewport: 1924x1987
+page: 1924x1987
+scroll: (0, 0)
+[1]<div id=root />
+	*[2050]<a />
+	*[2032]<a />
+		Overview
+	*[2033]<a />
+		Agents
+	*[2034]<a />
+		Fleets
+	*[2035]<a />
+		Configurations
+	*[2036]<a />
+		Library
+	*[2037]<a />
+		Blueprints
+	<org-redacted>
+	Default Project
+	*[2048]<button aria-label=Open Notifications Menu />
+	*[2049]<button aria-label=Open Settings Menu />
+	*[2077]<a />
+		Configurations
+	*[2082]<li />
+		<svg /> <!-- SVG content collapsed -->
+	*[2083]<li level=1 />
+		*[2080]<p />
+			New
+	*[2087]<span />
+	Details
+	Specify some basic settings for the platform you'll be shipping logs and/or metrics from.
+	*[2094]<span />
+	Add Sources
+	A source is a combination of receivers and processors
+	*[2101]<span />
+	Add Destination
+	A destination is a combination of an exporter and processors
+	Let's get started building your configuration.
+	The
+	Bindplane
+	configuration builder makes it easy to assemble a valid OpenTelemetry configuration.
+	We'll walk you through configuring the Sources you want to ingest telemetry from and the Destination you want to send the data to.
+	<svg /> <!-- SVG content collapsed -->
+	Migrate from an existing configuration with Pipeline Intelligence
+	*[2138]<button />
+		Chronicle Forwarder
+	*[2139]<button />
+		Splunk Universal Forwarder
+	Configuration Details
+	Name
+	*[2151]<div />
+		|SHADOW(open)|*[2148]<input autocomplete=off id=name name=name type=text />
+	*[2185]<div />
+		Agent Type
+		*[2162]<div />
+			|SHADOW(open)|*[2158]<input autocomplete=list id=agent-type-select type=text aria-autocomplete=list role=combobox value=BDOT 1.x (Stable) expanded=false />
+			*[2159]<div />
+				*[2155]<button aria-label=Open title=Open />
+	*[2172]<label id=platform-label />
+		Platform
+	*[2173]<div />
+		*[2168]<div role=combobox id=platform expanded=false />
+			*[2164]<span />
+		*[2170]<svg /> <!-- SVG content collapsed -->
+	Description
+	*[2183]<div />
+		|SHADOW(open)|*[2179]<textarea autocomplete=off id=:r44: name=description />
+	*[2191]<button disabled=true />
+		Next
+	*[2063]<a aria-label=help />

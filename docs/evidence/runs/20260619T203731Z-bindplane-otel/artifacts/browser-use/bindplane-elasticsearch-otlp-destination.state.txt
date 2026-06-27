@@ -1,0 +1,73 @@
+viewport: 1924x1987
+page: 1924x1987
+scroll: (0, 0)
+Overview
+Agents
+Fleets
+Configurations
+Library
+Blueprints
+<org-redacted>
+Default Project
+Configurations
+<svg /> <!-- SVG content collapsed -->
+New
+Details
+Specify some basic settings for the platform you'll be shipping logs and/or metrics from.
+Add Sources
+A source is a combination of receivers and processors
+Add Destination
+A destination is a combination of an exporter and processors
+Add a destination where you'd like to send your telemetry.
+A destination simply represents where you'd like to send your telemetry data. You can configure that here. Depending on the destination you choose, we'll configure specific OpenTelemetry processors for you, ensuring your data shows up in a useful state.
+Add Destination
+Back
+Save
+[4872]<div />
+[4873]<div />
+[4874]<div role=dialog />
+	*[5500]<div />
+		Add Destination: Elasticsearch (OTLP)
+		*[5119]<a aria-label=Open Resource Documentation />
+		Send logs, metrics, and traces to Elasticsearch using the OTLP Exporter.
+		*[5126]<div />
+			*[5124]<button aria-label=Close Resource Dialog />
+		Name
+		*[5136]<div />
+			|SHADOW(open)|*[5131]<input autocomplete=off id=:r5u: name=name type=text maxlength=40 required=true />
+		Choose a name for the reusable resource in Bindplane.
+		Configure
+		Choose Telemetry Type
+		*[5141]<button value=Logs aria-label=Logs pressed=true />
+			Logs
+		*[5142]<button value=Metrics aria-label=Metrics pressed=true />
+			Metrics
+		*[5143]<button value=Traces aria-label=Traces pressed=true />
+			Traces
+		Elastic Instance Deployment Type
+		*[5167]<div />
+			|SHADOW(open)|*[5158]<select id=:r5v: name=deployment_type expanded=false compound_components=(name=Dropdown Toggle,role=button),(name=Options,role=listbox,count=2,options=Self-Managed|Elastic Cloud) />
+			*[5163]<svg /> <!-- SVG content collapsed -->
+		The deployment model of your elastic instance.
+		APM Server URL
+		*[5180]<div />
+			|SHADOW(open)|*[5173]<input autocomplete=off id=:r60: name=server_url type=text required=true />
+		The URL of your Elastic APM Server.
+		*[5176]<a />
+			How to find your APM Server URL
+		Secret Token
+		*[5199]<div />
+			|SHADOW(open)|*[5192]<input autocomplete=new-password id=:r62: name=secret_token type=password required=true />
+			*[5193]<div />
+				*[5189]<div />
+					*[5188]<button aria-label=Show password />
+		Elastic APM Secret Token.
+		*[5195]<a />
+			How to find your APM Secret Token
+		*[5207]<button expanded=false />
+			Advanced
+		*[5462]<button />
+			Cancel
+		*[5464]<button type=submit />
+			Save
+[4875]<div />

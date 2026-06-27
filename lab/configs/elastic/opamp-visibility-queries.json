@@ -1,0 +1,87 @@
+{
+  "data_views": [
+    {"name": "OpAMP Lab Logs", "title": "logs-*-*,logs-opamp.*-*", "time_field": "@timestamp"},
+    {"name": "OpAMP Lab Metrics", "title": "metrics-*-*,metrics-opamp.*-*", "time_field": "@timestamp"},
+    {"name": "OpAMP Control Plane", "title": "logs-opamp.*-*,metrics-opamp.*-*", "time_field": "@timestamp"}
+  ],
+  "kql": {
+    "opamp_inventory": "data_stream.dataset: \"opamp.inventory\"",
+    "opamp_connected_agents": "data_stream.dataset: \"opamp.inventory\" and agent.connected: true",
+    "opamp_limited_metadata": "data_stream.dataset: \"opamp.inventory\" and agent.connected: true and agent.limited_metadata: true",
+    "opamp_remote_config_errors": "data_stream.dataset: \"opamp.inventory\" and agent.remote_config_status: *error*",
+    "opamp_events": "data_stream.dataset: \"opamp.events\"",
+    "opamp_disconnects": "data_stream.dataset: \"opamp.events\" and event.action: \"agent.disconnected\"",
+    "opamp_version_changes": "data_stream.dataset: \"opamp.events\" and event.action: \"agent.version_changed\"",
+    "opamp_downgrades": "data_stream.dataset: \"opamp.events\" and event.action: \"agent.version_changed\" and agent.version_direction: \"downgrade\"",
+    "opamp_config_changes": "data_stream.dataset: \"opamp.events\" and event.action: (\"agent.config_assigned\" or \"agent.config_offered\" or \"agent.config_status_changed\" or \"agent.effective_config_changed\")",
+    "opamp_server_metrics": "data_stream.dataset: \"opamp.server\"",
+    "opamp_connections": "data_stream.dataset: \"opamp.connections\"",
+    "synthetic_app_logs": "data_stream.dataset: \"app.synthetic.otel\"",
+    "synthetic_app_metrics": "data_stream.dataset: \"metrics.application.otel\"",
+    "kubernetes_audit_sensitive": "data_stream.dataset: \"security.kubernetes_audit.otel\" and attributes.verb: (\"create\" or \"update\" or \"patch\" or \"delete\" or \"deletecollection\")",
+    "collector_export_failures": "data_stream.dataset: \"metrics.collector.otel\" and (metrics.otelcol_receiver_failed_log_records_total > 0 or metrics.otelcol_receiver_refused_log_records_total > 0 or metrics.otelcol_receiver_failed_metric_points_total > 0 or metrics.otelcol_receiver_refused_metric_points_total > 0)",
+    "host_metrics": "data_stream.dataset: (\"hostmetricsreceiver.otel\" or \"metrics.host.otel\")",
+    "kubernetes_kubelet_metrics": "data_stream.dataset: (\"kubeletstatsreceiver.otel\" or \"metrics.kubernetes_node.otel\")",
+    "kubernetes_state_metrics": "data_stream.dataset: \"k8sclusterreceiver.otel\""
+  },
+  "suggested_panels": [
+    {
+      "title": "OpAMP lifecycle events by action",
+      "data_view": "OpAMP Control Plane",
+      "query": "data_stream.dataset: \"opamp.events\"",
+      "breakdown_field": "event.action"
+    },
+    {
+      "title": "OpAMP version changes by direction",
+      "data_view": "OpAMP Control Plane",
+      "query": "data_stream.dataset: \"opamp.events\" and event.action: \"agent.version_changed\"",
+      "breakdown_field": "agent.version_direction"
+    },
+    {
+      "title": "Synthetic application log throughput",
+      "data_view": "OpAMP App Telemetry",
+      "query": "data_stream.dataset: \"app.synthetic.otel\""
+    },
+    {
+      "title": "Connected OpAMP agents by ring",
+      "data_view": "OpAMP Control Plane",
+      "query": "data_stream.dataset: \"opamp.inventory\" and agent.connected: true",
+      "breakdown_field": "agent.ring"
+    },
+    {
+      "title": "Connected OpAMP agents by version",
+      "data_view": "OpAMP Control Plane",
+      "query": "data_stream.dataset: \"opamp.inventory\" and agent.connected: true",
+      "breakdown_field": "agent.version"
+    },
+    {
+      "title": "Remote config status",
+      "data_view": "OpAMP Control Plane",
+      "query": "data_stream.dataset: \"opamp.inventory\"",
+      "breakdown_field": "agent.remote_config_status"
+    },
+    {
+      "title": "OpAMP server connected agents",
+      "data_view": "OpAMP Control Plane",
+      "query": "data_stream.dataset: \"opamp.server\" and server.connected_agents: *",
+      "metric_field": "server.connected_agents"
+    },
+    {
+      "title": "OpAMP server goroutines",
+      "data_view": "OpAMP Control Plane",
+      "query": "data_stream.dataset: \"opamp.server\" and server.num_goroutine: *",
+      "metric_field": "server.num_goroutine"
+    },
+    {
+      "title": "Kubernetes sensitive audit verbs",
+      "data_view": "OpAMP Lab Logs",
+      "query": "data_stream.dataset: \"security.kubernetes_audit.otel\" and attributes.verb: (\"create\" or \"update\" or \"patch\" or \"delete\" or \"deletecollection\")",
+      "breakdown_field": "attributes.verb"
+    },
+    {
+      "title": "Collector export failures",
+      "data_view": "OpAMP Lab Metrics",
+      "query": "data_stream.dataset: \"metrics.collector.otel\" and (metrics.otelcol_receiver_failed_log_records_total > 0 or metrics.otelcol_receiver_refused_log_records_total > 0 or metrics.otelcol_receiver_failed_metric_points_total > 0 or metrics.otelcol_receiver_refused_metric_points_total > 0)"
+    }
+  ]
+}
