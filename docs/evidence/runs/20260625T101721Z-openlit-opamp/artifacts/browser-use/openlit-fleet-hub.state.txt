@@ -1,0 +1,69 @@
+viewport: 2041x1132
+page: 2066x1147
+scroll: (0, 0)
+[7]<img alt=OpenLIT />
+OpenLIT
+[49]<div />
+	[50]<svg /> <!-- SVG content collapsed -->
+End-to-End Tracing
+Full request tracing across LLM providers
+[59]<div />
+	[60]<svg /> <!-- SVG content collapsed -->
+Cost & Token Analytics
+Real-time cost tracking and token usage
+[71]<div />
+	[72]<svg /> <!-- SVG content collapsed -->
+11 Evaluation Types
+Hallucination, bias, toxicity, safety & more
+[80]<div />
+	[81]<svg /> <!-- SVG content collapsed -->
+LLM-as-a-Judge
+Automated quality scoring with any LLM
+[101]<div />
+	[102]<svg /> <!-- SVG content collapsed -->
+OpenGround
+Compare LLMs side-by-side on cost & quality
+[113]<div />
+	[114]<svg /> <!-- SVG content collapsed -->
+Prompt Hub
+Version, manage, and deploy prompts
+[125]<div />
+	[126]<svg /> <!-- SVG content collapsed -->
+Rule Engine
+Conditional context and prompt retrieval
+[136]<div />
+	[137]<svg /> <!-- SVG content collapsed -->
+Vault
+Secure secrets and API key management
+[146]<div />
+	[147]<svg /> <!-- SVG content collapsed -->
+Agents
+Manage and operate AI agents from a single hub
+[155]<div />
+	[156]<svg /> <!-- SVG content collapsed -->
+OpenTelemetry Native
+Built on open standards, no vendor lock-in
+Open Source AI Observability Platform
+[173]<div />
+[176]<div />
+[178]<div />
+[181]<div />
+[182]<div />
+[184]<div />
+Welcome to OpenLIT
+Open Source Platform for AI Engineering
+Email
+|SHADOW(open)|[10]<input id=email placeholder=user@openlit.io autocomplete=email type=email name=email required=true />
+Password
+|SHADOW(open)|[11]<input autocomplete=current-password placeholder=******** type=password required=true />
+[12]<button type=submit />
+	Sign Up
+Already have an account?
+[15]<a />
+	Sign in
+[16]<a />
+	[212]<button />
+		Github
+[17]<a />
+	[217]<button />
+		Documentation

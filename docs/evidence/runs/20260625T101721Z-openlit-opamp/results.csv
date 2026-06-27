@@ -1,0 +1,8 @@
+scenario,status,agents,logs_per_second,rss_idle_mb,rss_load_mb,cpu_load_pct,startup_ms,loss_or_backpressure,evidence_path,notes
+custom-opamp-standalone,planned,,,,,,,,,
+ocb-logs-min,planned,,,,,,,,,
+ocb-logs-opamp,planned,,,,,,,,,
+otelcol-contrib,planned,,,,,,,,,
+edot-collector,planned,,,,,,,,,
+elastic-agent-fleet,planned,,,,,,,,,
+kubernetes-daemonset-gateway,planned,,,,,,,,,

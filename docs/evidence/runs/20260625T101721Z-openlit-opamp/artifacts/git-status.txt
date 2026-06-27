@@ -1,0 +1,11 @@
+## scenario/openlit-opamp-analysis
+ M Taskfile.yml
+ M docs/articles/opamp-enterprise-adoption/claim-ledger.md
+ M docs/study/README.md
+ M docs/study/evidence-matrix.md
+ M docs/study/fleet-management-comparison.md
+ M docs/study/lab-methodology.md
+ M scripts/evidence-run.sh
+?? docs/runbooks/openlit-opamp.md
+?? lab/configs/openlit-opamp/
+?? scripts/evidence-openlit-opamp.sh

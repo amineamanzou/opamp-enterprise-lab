@@ -1,0 +1,11 @@
+scenario,result,collector_count,ui_actions,visible_status,remote_config_editable,logs_visible,recovery_seconds,pricing_limit,notes
+first_connection,pass,1,"Browser-use opened local and Hetzner Fleet Hub after auth/onboarding","StatusOK",no,yes,,,"Integrated otelcol-contrib visible on both deployments"
+remote_config,partial,1,"Collector detail opened in UI","StatusOK",no,yes,,,"API exposes effective config but UI Custom/Effective panels stayed Loading"
+bad_config,pass,1,"API validation probes","StatusOK",no,yes,,,"Invalid YAML and scalar YAML rejected with HTTP 400 on local and Hetzner"
+restart,not_run,,,,,,,,"No restart scenario run; not required for this functional maintainability slice"
+disconnect,not_run,,,,,,,,"No disconnect scenario run; not required for this functional maintainability slice"
+tls_mtls,partial,1,"API connection-settings offer","StatusOK",no,yes,5,,"TLSv1.3 offer returned HTTP 200; logs timed out waiting for reconnect"
+host_agent_bridge,pass,1,"Ansible deployed opampsupervisor and OCB collector on host-agent VM","StatusOK",unknown,yes,,,"Required wss endpoint and lab TLS skip-verify; OpenLit API reported host bridge agent StatusOK"
+kubernetes_daemonset,pass,2,"k3s installed server+worker; DaemonSet collector rolled out on both nodes","StatusOK",unknown,yes,,,"Required wss endpoint and opampextension TLS skip-verify; OpenLit API reported two k8s collectors StatusOK"
+kubernetes_app_collector,pass,1,"Namespace-scoped app collector and synthetic app rolled out","StatusOK",unknown,yes,,,"OpenLit API reported app collector StatusOK with deployment.ring=app"
+controller_boundary,pass,5,"Compared UI and API surfaces","StatusOK",no,yes,,,"API richer than UI; UI/API alignment gap documented; Fleet Hub listed integrated, host, k8s, and app collectors"
