@@ -1,0 +1,6 @@
+## scenario/vanilla-opamp-go-experience
+ M Taskfile.yml
+ M lab/opamp-server/internal/server/server.go
+ M lab/opamp-server/internal/server/server_test.go
+ M scripts/evidence-run.sh
+?? scripts/evidence-vanilla-ui.sh

@@ -1,0 +1,12 @@
+{
+  "endpoint": "ws://188.245.92.203:4320/v1/opamp",
+  "agents": 2000,
+  "connected": 2000,
+  "connect_failed": 0,
+  "errors": 0,
+  "remote_configs": 0,
+  "commands": 0,
+  "started_at": "2026-06-19T00:37:12.190880384Z",
+  "finished_at": "2026-06-19T00:42:54.202130627Z",
+  "duration_millis": 342011
+}

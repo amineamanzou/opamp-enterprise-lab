@@ -1,0 +1,19 @@
+## scenario/vanilla-opamp-go-experience
+ M Taskfile.yml
+ M docs/study/README.md
+ M lab/ansible/README.md
+ M lab/ansible/group_vars/all.yml
+ M lab/opamp-server/internal/server/server.go
+ M lab/opamp-server/internal/server/server_test.go
+ M lab/opamp-supervisor/README.md
+ M scripts/collector-host-env.sh
+ M scripts/evidence-run.sh
+?? docs/runbooks/opamp-ops-experience.md
+?? lab/ansible/playbooks/opamp_supervisor_host.yml
+?? lab/ansible/roles/opamp_supervisor_host/
+?? lab/configs/opamp-ops/
+?? scripts/evidence-ops-experience.sh
+?? scripts/ocb-build-version.sh
+?? scripts/opamp-assign-config.sh
+?? scripts/opamp-pre-sweep.sh
+?? scripts/opamp-restart-agent.sh

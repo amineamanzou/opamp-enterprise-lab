@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>OpAMP Server</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 24px; color: #17202a; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #c8d1dc; padding: 8px; text-align: left; vertical-align: top; }
+    th { background: #eef3f8; }
+    code { background: #f4f6f8; padding: 2px 4px; }
+    .muted { color: #5f6b7a; }
+  </style>
+</head>
+<body>
+  <h1>OpAMP Server</h1>
+  <p class="muted">Vanilla OpAMP POC control-plane UI. JSON endpoints: <a href="/v1/inventory">inventory</a> and <a href="/v1/opamp/connections">connections</a>.</p>
+  <h2>Agents</h2>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Ring</th>
+      <th>Hostname</th>
+      <th>Health</th>
+      <th>Connected</th>
+      <th>Remote config</th>
+      <th>Updated</th>
+    </tr>
+
+    <tr>
+      <td><a href="/agent?id=0c73c881942f40788e966179df39015d">0c73c881942f40788e966179df39015d</a></td>
+      <td>dev</td>
+      <td></td>
+      <td></td>
+      <td>true</td>
+      <td></td>
+      <td>2026-06-18 22:18:38.606109977 &#43;0000 UTC</td>
+    </tr>
+
+    <tr>
+      <td><a href="/agent?id=a5f62e35c9ec401f8f7ba9bc24c1f9cc">a5f62e35c9ec401f8f7ba9bc24c1f9cc</a></td>
+      <td>dev</td>
+      <td></td>
+      <td></td>
+      <td>true</td>
+      <td></td>
+      <td>2026-06-18 22:18:38.684379369 &#43;0000 UTC</td>
+    </tr>
+
+    <tr>
+      <td><a href="/agent?id=cba0e1dc190042379542ab45f9a0bb97">cba0e1dc190042379542ab45f9a0bb97</a></td>
+      <td>dev</td>
+      <td></td>
+      <td></td>
+      <td>true</td>
+      <td></td>
+      <td>2026-06-18 22:18:38.607020538 &#43;0000 UTC</td>
+    </tr>
+
+  </table>
+</body>
+</html>

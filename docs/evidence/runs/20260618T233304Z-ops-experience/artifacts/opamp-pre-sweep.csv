@@ -1,0 +1,4 @@
+timestamp_utc,role,target_logs_per_second,duration_seconds,generated_logs,collector_rss_kib,collector_cpu_percent,supervisor_rss_kib,supervisor_cpu_percent,notes
+2026-06-18T23:29:59Z,host-agent,1000,60,58700,54868,2.00,80252,2.00,
+2026-06-18T23:31:00Z,host-agent,5000,60,274500,57772,4.80,83160,4.80,
+2026-06-18T23:32:01Z,host-agent,10000,60,509000,182300,8.20,207688,8.20,
