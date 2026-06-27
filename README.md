@@ -55,3 +55,9 @@ Never commit real values. Use environment variables or local `.env` files:
 - `TF_VAR_hcloud_token`
 
 See component-specific README files under `lab/`.
+
+## Reproducible Experiments
+
+The public repo uses one clean branch per experiment. Start from
+`docs/experiments.md`, checkout the branch you want, then run that branch's
+`SCENARIO.md`.
