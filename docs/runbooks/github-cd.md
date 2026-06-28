@@ -123,6 +123,8 @@ For branch benchmark scenarios, run `operation=apply` from `main` first. Then sw
 
 Benchmark branches should override the stable Taskfile entrypoints `cd:runtime:deploy` and `cd:runtime:verify` when they need a different Ansible scenario. Runtime mode is for sequential benchmarks on the same VMs and may replace the vanilla runtime. If a branch needs a different Terraform topology, use a separate `project_name` and `TF_STATE_S3_KEY` or promote the topology change before using the shared lab.
 
+The CD workflow caches the Linux AMD64 OCB collector binaries by the OCB manifests and build script. The first run after an OCB change builds them and uploads an artifact; later apply/runtime runs restore the cached binaries and `task ocb:build` only verifies their checksums unless `OCB_FORCE_REBUILD=1` is set.
+
 For `destroy`, set `confirm_destroy=true`; otherwise the workflow exits before Terraform.
 
 ## Notes

@@ -92,6 +92,18 @@ jobs:
       - name: Install OCB builder
         run: go install go.opentelemetry.io/collector/cmd/builder@v0.151.0
 
+      - name: Restore OCB binary cache
+        if: env.CD_OPERATION == 'apply' || env.CD_OPERATION == 'runtime'
+        uses: actions/cache@v4
+        with:
+          path: |
+            dist/otelcol-logs-min/otelcol-logs-min
+            dist/otelcol-logs-opamp/otelcol-logs-opamp
+            dist/ocb/SHA256SUMS
+          key: ocb-linux-amd64-${{ hashFiles('lab/collector-ocb/*.yaml', 'scripts/ocb-build.sh') }}
+          restore-keys: |
+            ocb-linux-amd64-
+
       - name: Validate destroy confirmation
         run: |
           if [ "$CD_OPERATION" = "destroy" ] && [ "$CD_CONFIRM_DESTROY" != "true" ]; then
@@ -146,6 +158,17 @@ jobs:
       - name: Deploy runtime
         if: env.CD_OPERATION == 'apply' || env.CD_OPERATION == 'runtime'
         run: task cd:runtime:deploy
+
+      - name: Upload OCB binary artifact
+        if: always() && (env.CD_OPERATION == 'apply' || env.CD_OPERATION == 'runtime') && hashFiles('dist/ocb/SHA256SUMS') != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: ocb-linux-amd64-${{ github.sha }}
+          path: |
+            dist/otelcol-logs-min/otelcol-logs-min
+            dist/otelcol-logs-opamp/otelcol-logs-opamp
+            dist/ocb/SHA256SUMS
+          if-no-files-found: error
 
       - name: Verify runtime
         if: env.CD_OPERATION == 'apply' || env.CD_OPERATION == 'runtime'

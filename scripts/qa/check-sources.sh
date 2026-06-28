@@ -83,8 +83,11 @@ if [[ -f "$cd_workflow" ]]; then
     'actions/checkout@v5' \
     'hashicorp/setup-terraform@' \
     'go-task/setup-task@' \
+    'actions/cache@v4' \
+    'actions/upload-artifact@v4' \
     'scripts/cd/prepare-github-actions-env.sh' \
     'runtime' \
+    'ocb-linux-amd64-${{ hashFiles' \
     'terraform -chdir=lab/infra/hcloud plan -input=false -target=hcloud_firewall.lab' \
     'task cd:runtime:deploy' \
     'task cd:runtime:verify' \
