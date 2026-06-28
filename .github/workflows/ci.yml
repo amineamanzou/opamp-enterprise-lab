@@ -63,6 +63,7 @@ jobs:
         uses: actions/setup-go@v6
         with:
           go-version: '1.25.5'
+          cache-dependency-path: lab/opamp-server/go.sum
 
       - name: Install OCB builder
         if: matrix.task_name == 'ocb:build' || matrix.task_name == 'ci:local'
