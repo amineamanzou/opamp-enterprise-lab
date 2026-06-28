@@ -38,6 +38,16 @@ if ! grep -Eq 'run:[[:space:]]*task|task "\$\{\{ matrix\.task_name \}\}"' "$work
   status=1
 fi
 
+if ! grep -Fq 'actions/setup-go@v6' "$workflow"; then
+  printf 'Workflow must use Node 24-compatible actions/setup-go@v6 before Go tasks.\n' >&2
+  status=1
+fi
+
+if ! grep -Fq 'go.opentelemetry.io/collector/cmd/builder@v0.151.0' "$workflow"; then
+  printf 'Workflow must install the OCB builder for real collector builds.\n' >&2
+  status=1
+fi
+
 for script in scripts/qa/check-anonymization.sh scripts/qa/check-markdown.sh scripts/qa/check-sources.sh; do
   if [[ ! -x "$script" ]]; then
     printf 'QA script is not executable: %s\n' "$script" >&2

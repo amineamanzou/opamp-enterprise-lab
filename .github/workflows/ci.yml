@@ -22,6 +22,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Install QA dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ripgrep
+
       - name: Markdown check
         run: bash scripts/qa/check-markdown.sh
 
@@ -49,8 +54,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Install QA dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ripgrep
+
+      - name: Setup Go
+        uses: actions/setup-go@v6
+        with:
+          go-version: '1.25.5'
+
+      - name: Install OCB builder
+        if: matrix.task_name == 'ocb:build' || matrix.task_name == 'ci:local'
+        run: go install go.opentelemetry.io/collector/cmd/builder@v0.151.0
+
       - name: Install Task
-        uses: arduino/setup-task@v2
+        uses: go-task/setup-task@v2
 
       - name: Install ansible-lint
         if: matrix.task_name == 'ansible:lint' || matrix.task_name == 'ci:local'

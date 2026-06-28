@@ -3,7 +3,8 @@ set -euo pipefail
 
 root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 export GOCACHE="${GOCACHE:-/tmp/opamp-poc-go-cache}"
-export GOMODCACHE="${GOMODCACHE:-/tmp/opamp-poc-go-mod-cache}"
+export GOMODCACHE="${GOMODCACHE:-/tmp/opamp-poc-ocb-go-mod-cache}"
+export GOTOOLCHAIN="${GOTOOLCHAIN:-go1.25.5}"
 export CGO_ENABLED="${CGO_ENABLED:-0}"
 export GOOS="${GOOS:-linux}"
 export GOARCH="${GOARCH:-amd64}"
