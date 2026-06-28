@@ -45,7 +45,7 @@ default_state_key="${GITHUB_REPOSITORY:-opamp-enterprise-lab}/hcloud.tfstate"
 state_key="${TF_STATE_S3_KEY:-$default_state_key}"
 export CD_PROJECT_NAME="$project_name"
 export CD_STATE_KEY="$state_key"
-actions_cidrs_file="tmp/github-actions-cidrs.txt"
+runner_cidrs_file="tmp/github-runner-cidrs.txt"
 operator_cidrs_file="tmp/operator-cidrs.txt"
 all_ssh_cidrs_file="tmp/all-ssh-cidrs.txt"
 
@@ -112,26 +112,28 @@ end
 RUBY
 
 if [[ -n "${CD_GITHUB_ACTIONS_CIDRS:-}" ]]; then
-  printf '%s\n' "$CD_GITHUB_ACTIONS_CIDRS" | tr ',' '\n' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' | awk 'NF' > "$actions_cidrs_file"
+  printf '%s\n' "$CD_GITHUB_ACTIONS_CIDRS" | tr ',' '\n' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' | awk 'NF' > "$runner_cidrs_file"
 else
-  if ! command -v curl >/dev/null 2>&1 || ! command -v jq >/dev/null 2>&1; then
-    printf 'curl and jq are required to fetch GitHub Actions CIDRs. Set CD_GITHUB_ACTIONS_CIDRS to override.\n' >&2
+  if ! command -v curl >/dev/null 2>&1; then
+    printf 'curl is required to resolve the current runner SSH CIDR. Set CD_GITHUB_ACTIONS_CIDRS to override.\n' >&2
     exit 1
   fi
 
-  if ! curl -fsSL https://api.github.com/meta | jq -r '.actions[]' > "$actions_cidrs_file"; then
-    printf 'Unable to fetch GitHub Actions CIDRs. Set CD_GITHUB_ACTIONS_CIDRS to override.\n' >&2
+  runner_ipv4="$(curl -4fsSL https://api.ipify.org || true)"
+  if [[ -z "$runner_ipv4" ]]; then
+    printf 'Unable to resolve the current runner public IPv4. Set CD_GITHUB_ACTIONS_CIDRS to override.\n' >&2
     exit 1
   fi
+  printf '%s/32\n' "$runner_ipv4" > "$runner_cidrs_file"
 fi
 
-if [[ ! -s "$actions_cidrs_file" ]]; then
-  printf 'No GitHub Actions CIDRs were resolved.\n' >&2
+if [[ ! -s "$runner_cidrs_file" ]]; then
+  printf 'No GitHub runner SSH CIDRs were resolved.\n' >&2
   exit 1
 fi
 
 printf '%s\n' "$CD_OPERATOR_CIDR" > "$operator_cidrs_file"
-cat "$operator_cidrs_file" "$actions_cidrs_file" | sort -u > "$all_ssh_cidrs_file"
+cat "$operator_cidrs_file" "$runner_cidrs_file" | sort -u > "$all_ssh_cidrs_file"
 
 ruby <<'RUBY' > lab/infra/hcloud/github-actions.auto.tfvars.json
 require "json"

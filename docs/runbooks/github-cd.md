@@ -116,7 +116,7 @@ Open **Actions -> CD Lab -> Run workflow** and choose:
 - `operation=apply` to provision infrastructure and deploy runtime services
 - `operation=destroy` to tear down the stack
 
-Set `operator_cidr` to the public CIDR that should reach lab application endpoints, for example `203.0.113.10/32`. The workflow also adds current GitHub Actions runner CIDRs to SSH only, so Ansible can connect during deployment.
+Set `operator_cidr` to the public CIDR that should reach lab application endpoints, for example `203.0.113.10/32`. The workflow also resolves the current GitHub runner public IPv4 and adds that single `/32` to SSH only, so Ansible can connect during deployment without putting the full GitHub Actions IP range list into the Hetzner firewall.
 
 For `destroy`, set `confirm_destroy=true`; otherwise the workflow exits before Terraform.
 
