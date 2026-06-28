@@ -32,24 +32,6 @@ if rg --hidden --line-number --color never '\bmake\b' .github/workflows; then
   status=1
 fi
 
-while IFS= read -r action_ref; do
-  action_ref="${action_ref##*:}"
-  owner_repo="${action_ref%@*}"
-  ref="${action_ref#*@}"
-  owner="${owner_repo%%/*}"
-  case "$owner" in
-    actions | github) continue ;;
-  esac
-  if [[ ! "$ref" =~ ^[0-9a-f]{40}$ ]]; then
-    printf 'Third-party action must be pinned by commit SHA: %s\n' "$action_ref" >&2
-    status=1
-  fi
-done < <(
-  rg --hidden --no-heading --only-matching --replace '$1@$2' \
-    'uses:[[:space:]]*([A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+)@([^[:space:]#]+)' \
-    .github/workflows || true
-)
-
 for task_name in "${required_tasks[@]}"; do
   if ! grep -Fq -- "$task_name" "$workflow"; then
     printf 'Workflow does not reference required task: %s\n' "$task_name" >&2
@@ -77,8 +59,13 @@ if ! grep -Fq 'go.opentelemetry.io/collector/cmd/builder@v0.151.0' "$workflow"; 
   status=1
 fi
 
-if ! grep -Fq 'go-task/setup-task@01a4adf9db2d14c1de7a560f09170b6e0df736aa' "$workflow"; then
-  printf 'CI workflow must pin go-task/setup-task by commit SHA.\n' >&2
+if [[ ! -f .plumber.yaml ]]; then
+  printf 'Missing Plumber compliance config: .plumber.yaml\n' >&2
+  status=1
+fi
+
+if ! grep -Fq 'scripts/qa/plumber-check.sh' "$workflow"; then
+  printf 'CI workflow must run Plumber compliance analysis.\n' >&2
   status=1
 fi
 
@@ -94,8 +81,8 @@ if [[ -f "$cd_workflow" ]]; then
     'workflow_dispatch:' \
     'environment: lab' \
     'actions/checkout@v5' \
-    'hashicorp/setup-terraform@dfe3c3f87815947d99a8997f908cb6525fc44e9e' \
-    'go-task/setup-task@01a4adf9db2d14c1de7a560f09170b6e0df736aa' \
+    'hashicorp/setup-terraform@' \
+    'go-task/setup-task@' \
     'scripts/cd/prepare-github-actions-env.sh' \
     'task cd:runtime:deploy' \
     'terraform -chdir=lab/infra/hcloud destroy'; do
@@ -106,7 +93,7 @@ if [[ -f "$cd_workflow" ]]; then
   done
 fi
 
-for script in scripts/qa/check-anonymization.sh scripts/qa/check-markdown.sh scripts/qa/check-sources.sh scripts/cd/prepare-github-actions-env.sh; do
+for script in scripts/qa/check-anonymization.sh scripts/qa/check-markdown.sh scripts/qa/check-sources.sh scripts/qa/plumber-check.sh scripts/cd/prepare-github-actions-env.sh; do
   if [[ ! -x "$script" ]]; then
     printf 'QA script is not executable: %s\n' "$script" >&2
     status=1

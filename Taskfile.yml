@@ -122,6 +122,11 @@ tasks:
     cmds:
       - ./scripts/secrets-check.sh
 
+  compliance:plumber:
+    desc: Run Plumber repository compliance analysis.
+    cmds:
+      - ./scripts/qa/plumber-check.sh
+
   secrets:render:
     desc: Render local env files from SOPS-encrypted secrets.
     cmds:
