@@ -75,13 +75,13 @@ jobs:
           cache-dependency-path: lab/opamp-server/go.sum
 
       - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v4
+        uses: hashicorp/setup-terraform@dfe3c3f87815947d99a8997f908cb6525fc44e9e # v4
         with:
           terraform_version: '<1.16.0'
           terraform_wrapper: false
 
       - name: Install Task
-        uses: go-task/setup-task@v2
+        uses: go-task/setup-task@01a4adf9db2d14c1de7a560f09170b6e0df736aa # v2
 
       - name: Install Ansible
         run: |

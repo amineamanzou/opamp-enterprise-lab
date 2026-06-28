@@ -70,7 +70,7 @@ jobs:
         run: go install go.opentelemetry.io/collector/cmd/builder@v0.151.0
 
       - name: Install Task
-        uses: go-task/setup-task@v2
+        uses: go-task/setup-task@01a4adf9db2d14c1de7a560f09170b6e0df736aa # v2
 
       - name: Install ansible-lint
         if: matrix.task_name == 'ansible:lint' || matrix.task_name == 'ci:local'
