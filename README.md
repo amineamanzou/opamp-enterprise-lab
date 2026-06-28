@@ -54,6 +54,18 @@ Never commit real values. Use environment variables or local `.env` files:
 - `HCLOUD_TOKEN`
 - `TF_VAR_hcloud_token`
 
+For local Terraform commands, export `TF_VAR_hcloud_token` because Terraform
+reads the Hetzner provider token from the `hcloud_token` variable:
+
+```sh
+export TF_VAR_hcloud_token="$HCLOUD_TOKEN"
+```
+
+For GitHub CD, do not create a separate `TF_VAR_hcloud_token` secret. Add only
+`HCLOUD_TOKEN` to the `lab` GitHub Environment; the workflow maps it to
+`TF_VAR_hcloud_token` internally for Terraform steps. See
+`docs/runbooks/github-cd.md`.
+
 See component-specific README files under `lab/`.
 
 ## Reproducible Experiments

@@ -34,6 +34,16 @@ Optional:
 
 The S3-compatible bucket must already exist. The workflow writes only Terraform state to it.
 
+Do not add a separate `TF_VAR_hcloud_token` GitHub secret. The workflow reads
+`HCLOUD_TOKEN` and exports it as `TF_VAR_hcloud_token` for Terraform:
+
+```yaml
+TF_VAR_hcloud_token: ${{ secrets.HCLOUD_TOKEN }}
+```
+
+Local Terraform runs are different: in a shell, export
+`TF_VAR_hcloud_token="$HCLOUD_TOKEN"` yourself before running `terraform plan`.
+
 ## SSH Keypair
 
 Generate a dedicated keypair for GitHub CD:
