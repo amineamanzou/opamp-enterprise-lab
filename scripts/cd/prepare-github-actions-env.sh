@@ -28,9 +28,9 @@ for name in "${required_env[@]}"; do
 done
 
 case "$CD_OPERATION" in
-  plan | apply | destroy) ;;
+  plan | apply | runtime | destroy) ;;
   *)
-    printf 'CD_OPERATION must be one of: plan, apply, destroy\n' >&2
+    printf 'CD_OPERATION must be one of: plan, apply, runtime, destroy\n' >&2
     exit 1
     ;;
 esac

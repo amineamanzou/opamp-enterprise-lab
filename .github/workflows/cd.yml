@@ -11,6 +11,7 @@ on:
         options:
           - plan
           - apply
+          - runtime
           - destroy
       project_name:
         description: Prefix used for Hetzner resources.
@@ -31,7 +32,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: cd-lab-${{ github.repository }}-${{ github.ref }}
+  group: cd-lab-${{ github.repository }}-${{ inputs.project_name }}
   cancel-in-progress: false
 
 jobs:
@@ -110,32 +111,45 @@ jobs:
       - name: Terraform validate
         run: task infra:validate
 
+      - name: Check runtime state exists
+        if: env.CD_OPERATION == 'runtime'
+        run: |
+          terraform -chdir=lab/infra/hcloud output -json \
+            | jq -e '.servers.value | length > 0' >/dev/null \
+            || {
+              echo "Runtime operation requires an existing lab state. Run operation=apply from main first." >&2
+              exit 1
+            }
+
       - name: Terraform plan
-        if: env.CD_OPERATION != 'destroy'
+        if: env.CD_OPERATION == 'plan' || env.CD_OPERATION == 'apply'
         run: terraform -chdir=lab/infra/hcloud plan -input=false -out=tfplan
 
       - name: Show Terraform plan
-        if: env.CD_OPERATION != 'destroy'
+        if: env.CD_OPERATION == 'plan' || env.CD_OPERATION == 'apply'
         run: terraform -chdir=lab/infra/hcloud show -no-color tfplan
 
       - name: Terraform apply
         if: env.CD_OPERATION == 'apply'
         run: terraform -chdir=lab/infra/hcloud apply -auto-approve -input=false tfplan
 
+      - name: Refresh runtime SSH access
+        if: env.CD_OPERATION == 'runtime'
+        run: |
+          terraform -chdir=lab/infra/hcloud plan -input=false -target=hcloud_firewall.lab -out=tfplan-runtime-access
+          terraform -chdir=lab/infra/hcloud apply -auto-approve -input=false tfplan-runtime-access
+
       - name: Terraform destroy
         if: env.CD_OPERATION == 'destroy'
         run: terraform -chdir=lab/infra/hcloud destroy -auto-approve -input=false
 
       - name: Deploy runtime
-        if: env.CD_OPERATION == 'apply'
+        if: env.CD_OPERATION == 'apply' || env.CD_OPERATION == 'runtime'
         run: task cd:runtime:deploy
 
       - name: Verify runtime
-        if: env.CD_OPERATION == 'apply'
-        run: |
-          cd lab/ansible
-          ansible -i inventory/hosts.ini opamp_server -m shell -a 'systemctl is-active opamp-poc-server && curl -fsS http://127.0.0.1:4321/v1/agents >/dev/null'
-          ansible -i inventory/hosts.ini host_agents -m shell -a 'systemctl is-active opampsupervisor-logs'
+        if: env.CD_OPERATION == 'apply' || env.CD_OPERATION == 'runtime'
+        run: task cd:runtime:verify
 
       - name: Summary
         if: always()

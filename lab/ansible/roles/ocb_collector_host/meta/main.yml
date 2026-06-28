@@ -1,0 +1,6 @@
+---
+dependencies:
+  - role: synthetic_logs
+    vars:
+      synthetic_log_service_enabled: true
+      synthetic_log_service_state: started
