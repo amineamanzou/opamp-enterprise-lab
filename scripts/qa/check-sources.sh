@@ -69,7 +69,7 @@ if ! grep -Fq 'scripts/qa/plumber-check.sh' "$workflow"; then
   status=1
 fi
 
-for task_name in ansible:opamp:server cd:runtime:deploy; do
+for task_name in ansible:opamp:server cd:runtime:deploy cd:runtime:verify; do
   if ! grep -Fq -- "$task_name" Taskfile.yml; then
     printf 'Taskfile is missing CD task: %s\n' "$task_name" >&2
     status=1
@@ -84,7 +84,10 @@ if [[ -f "$cd_workflow" ]]; then
     'hashicorp/setup-terraform@' \
     'go-task/setup-task@' \
     'scripts/cd/prepare-github-actions-env.sh' \
+    'runtime' \
+    'terraform -chdir=lab/infra/hcloud plan -input=false -target=hcloud_firewall.lab' \
     'task cd:runtime:deploy' \
+    'task cd:runtime:verify' \
     'terraform -chdir=lab/infra/hcloud destroy'; do
     if ! grep -Fq -- "$required_text" "$cd_workflow"; then
       printf 'CD workflow is missing required text: %s\n' "$required_text" >&2

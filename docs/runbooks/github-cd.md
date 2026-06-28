@@ -113,10 +113,15 @@ Put the private key contents in `LAB_SSH_PRIVATE_KEY` and the public key content
 Open **Actions -> CD Lab -> Run workflow** and choose:
 
 - `operation=plan` to validate the stack and show Terraform changes
-- `operation=apply` to provision infrastructure and deploy runtime services
+- `operation=apply` to provision infrastructure and deploy the default vanilla OpAMP runtime
+- `operation=runtime` to reuse an existing lab and run the current branch runtime/Ansible only
 - `operation=destroy` to tear down the stack
 
 Set `operator_cidr` to the public CIDR that should reach lab application endpoints, for example `203.0.113.10/32`. The workflow also resolves the current GitHub runner public IPv4 and adds that single `/32` to SSH only, so Ansible can connect during deployment without putting the full GitHub Actions IP range list into the Hetzner firewall.
+
+For branch benchmark scenarios, run `operation=apply` from `main` first. Then switch to a benchmark branch and run `operation=runtime` with the same `project_name` and `TF_STATE_S3_KEY`. The runtime operation keeps the existing Terraform state, refreshes only the lab firewall for the current GitHub runner SSH address, renders inventory from the existing state, and runs `task cd:runtime:deploy` followed by `task cd:runtime:verify` from the checked-out branch.
+
+Benchmark branches should override the stable Taskfile entrypoints `cd:runtime:deploy` and `cd:runtime:verify` when they need a different Ansible scenario. Runtime mode is for sequential benchmarks on the same VMs and may replace the vanilla runtime. If a branch needs a different Terraform topology, use a separate `project_name` and `TF_STATE_S3_KEY` or promote the topology change before using the shared lab.
 
 For `destroy`, set `confirm_destroy=true`; otherwise the workflow exits before Terraform.
 

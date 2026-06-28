@@ -144,6 +144,13 @@ tasks:
       - task: ansible:opamp:server
       - task: ansible:collector:supervisor
 
+  cd:runtime:verify:
+    desc: Verify the smoke lab runtime after CD deployment.
+    dir: lab/ansible
+    cmds:
+      - ansible -i inventory/hosts.ini opamp_server -m shell -a 'systemctl is-active opamp-poc-server && curl -fsS http://127.0.0.1:4321/v1/agents >/dev/null'
+      - ansible -i inventory/hosts.ini host_agents -m shell -a 'systemctl is-active opampsupervisor-logs'
+
   secrets:encrypt:hcloud:
     desc: Encrypt secrets/hcloud.env to secrets.encrypted/hcloud.sops.yaml.
     cmds:
