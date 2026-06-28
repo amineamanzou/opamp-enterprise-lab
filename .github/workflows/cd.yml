@@ -45,6 +45,7 @@ jobs:
       CD_OPERATOR_CIDR: ${{ inputs.operator_cidr }}
       CD_CONFIRM_DESTROY: ${{ inputs.confirm_destroy }}
       HCLOUD_TOKEN: ${{ secrets.HCLOUD_TOKEN }}
+      TF_VAR_hcloud_token: ${{ secrets.HCLOUD_TOKEN }}
       ELASTIC_OTLP_ENDPOINT: ${{ secrets.ELASTIC_OTLP_ENDPOINT }}
       ELASTIC_API_KEY: ${{ secrets.ELASTIC_API_KEY }}
       OPAMP_AUTH_TOKEN: ${{ secrets.OPAMP_AUTH_TOKEN }}
