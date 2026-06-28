@@ -66,6 +66,11 @@ For GitHub CD, do not create a separate `TF_VAR_hcloud_token` secret. Add only
 `TF_VAR_hcloud_token` internally for Terraform steps. See
 `docs/runbooks/github-cd.md`.
 
+GitHub workflow secrets are documented in `docs/runbooks/github-cd.md`. CI does
+not require secrets. CD requires a `lab` Environment with Hetzner, Elastic,
+OpAMP, SSH, and S3-compatible Terraform state secrets before `apply` or
+`destroy` can run.
+
 See component-specific README files under `lab/`.
 
 ## Reproducible Experiments
