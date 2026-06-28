@@ -1,0 +1,147 @@
+name: CD Lab
+
+on:
+  workflow_dispatch:
+    inputs:
+      operation:
+        description: Terraform operation to run.
+        required: true
+        default: plan
+        type: choice
+        options:
+          - plan
+          - apply
+          - destroy
+      project_name:
+        description: Prefix used for Hetzner resources.
+        required: true
+        default: opamp-enterprise-lab
+        type: string
+      operator_cidr:
+        description: CIDR allowed to reach lab application endpoints and SSH.
+        required: true
+        type: string
+      confirm_destroy:
+        description: Required when operation is destroy.
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cd-lab-${{ github.repository }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  lab:
+    name: ${{ inputs.operation }} lab
+    runs-on: ubuntu-latest
+    environment: lab
+    env:
+      CD_OPERATION: ${{ inputs.operation }}
+      CD_PROJECT_NAME: ${{ inputs.project_name }}
+      CD_OPERATOR_CIDR: ${{ inputs.operator_cidr }}
+      CD_CONFIRM_DESTROY: ${{ inputs.confirm_destroy }}
+      HCLOUD_TOKEN: ${{ secrets.HCLOUD_TOKEN }}
+      ELASTIC_OTLP_ENDPOINT: ${{ secrets.ELASTIC_OTLP_ENDPOINT }}
+      ELASTIC_API_KEY: ${{ secrets.ELASTIC_API_KEY }}
+      OPAMP_AUTH_TOKEN: ${{ secrets.OPAMP_AUTH_TOKEN }}
+      LAB_SSH_PRIVATE_KEY: ${{ secrets.LAB_SSH_PRIVATE_KEY }}
+      LAB_SSH_PUBLIC_KEY: ${{ secrets.LAB_SSH_PUBLIC_KEY }}
+      TF_STATE_S3_BUCKET: ${{ secrets.TF_STATE_S3_BUCKET }}
+      TF_STATE_S3_REGION: ${{ secrets.TF_STATE_S3_REGION }}
+      TF_STATE_S3_ENDPOINT: ${{ secrets.TF_STATE_S3_ENDPOINT }}
+      TF_STATE_S3_ACCESS_KEY_ID: ${{ secrets.TF_STATE_S3_ACCESS_KEY_ID }}
+      TF_STATE_S3_SECRET_ACCESS_KEY: ${{ secrets.TF_STATE_S3_SECRET_ACCESS_KEY }}
+      TF_STATE_S3_KEY: ${{ secrets.TF_STATE_S3_KEY }}
+      ANSIBLE_PRIVATE_KEY_FILE: ${{ github.workspace }}/tmp/cd-ssh/opamp_lab
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y curl jq openssh-client python3-pip ripgrep ruby
+
+      - name: Setup Go
+        uses: actions/setup-go@v6
+        with:
+          go-version: '1.25.5'
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v4
+        with:
+          terraform_version: '<1.16.0'
+          terraform_wrapper: false
+
+      - name: Install Task
+        uses: go-task/setup-task@v2
+
+      - name: Install Ansible
+        run: |
+          python -m pip install --user ansible ansible-lint
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+
+      - name: Install OCB builder
+        run: go install go.opentelemetry.io/collector/cmd/builder@v0.151.0
+
+      - name: Validate destroy confirmation
+        run: |
+          if [ "$CD_OPERATION" = "destroy" ] && [ "$CD_CONFIRM_DESTROY" != "true" ]; then
+            echo "Set confirm_destroy=true to run destroy." >&2
+            exit 1
+          fi
+
+      - name: Prepare CD environment
+        run: scripts/cd/prepare-github-actions-env.sh
+
+      - name: Check required secrets
+        run: task secrets:check
+
+      - name: Terraform init
+        run: terraform -chdir=lab/infra/hcloud init -backend-config=backend.cd.hcl -input=false -reconfigure
+
+      - name: Terraform validate
+        run: task infra:validate
+
+      - name: Terraform plan
+        if: env.CD_OPERATION != 'destroy'
+        run: terraform -chdir=lab/infra/hcloud plan -input=false -out=tfplan
+
+      - name: Show Terraform plan
+        if: env.CD_OPERATION != 'destroy'
+        run: terraform -chdir=lab/infra/hcloud show -no-color tfplan
+
+      - name: Terraform apply
+        if: env.CD_OPERATION == 'apply'
+        run: terraform -chdir=lab/infra/hcloud apply -auto-approve -input=false tfplan
+
+      - name: Terraform destroy
+        if: env.CD_OPERATION == 'destroy'
+        run: terraform -chdir=lab/infra/hcloud destroy -auto-approve -input=false
+
+      - name: Deploy runtime
+        if: env.CD_OPERATION == 'apply'
+        run: task cd:runtime:deploy
+
+      - name: Verify runtime
+        if: env.CD_OPERATION == 'apply'
+        run: |
+          cd lab/ansible
+          ansible -i inventory/hosts.ini opamp_server -m shell -a 'systemctl is-active opamp-poc-server && curl -fsS http://127.0.0.1:4321/v1/agents >/dev/null'
+          ansible -i inventory/hosts.ini host_agents -m shell -a 'systemctl is-active opampsupervisor-logs'
+
+      - name: Summary
+        if: always()
+        run: |
+          {
+            echo "## CD Lab"
+            echo
+            echo "- Operation: $CD_OPERATION"
+            echo "- Project: $CD_PROJECT_NAME"
+            echo "- Terraform backend key: ${TF_STATE_S3_KEY:-${GITHUB_REPOSITORY}/hcloud.tfstate}"
+          } >> "$GITHUB_STEP_SUMMARY"
