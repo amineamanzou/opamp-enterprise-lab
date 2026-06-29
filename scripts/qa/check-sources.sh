@@ -7,6 +7,7 @@ cd "$root"
 status=0
 
 workflow=".github/workflows/ci.yml"
+cd_workflow=".github/workflows/cd.yml"
 required_tasks=(
   'study:check'
   'opamp:test'
@@ -19,6 +20,11 @@ required_tasks=(
 if [[ ! -f "$workflow" ]]; then
   printf 'Missing workflow: %s\n' "$workflow" >&2
   exit 1
+fi
+
+if [[ ! -f "$cd_workflow" ]]; then
+  printf 'Missing workflow: %s\n' "$cd_workflow" >&2
+  status=1
 fi
 
 if rg --hidden --line-number --color never '\bmake\b' .github/workflows; then
@@ -38,7 +44,62 @@ if ! grep -Eq 'run:[[:space:]]*task|task "\$\{\{ matrix\.task_name \}\}"' "$work
   status=1
 fi
 
-for script in scripts/qa/check-anonymization.sh scripts/qa/check-markdown.sh scripts/qa/check-sources.sh; do
+if ! grep -Fq 'actions/setup-go@v6' "$workflow"; then
+  printf 'Workflow must use Node 24-compatible actions/setup-go@v6 before Go tasks.\n' >&2
+  status=1
+fi
+
+if ! grep -Fq 'actions/checkout@v5' "$workflow"; then
+  printf 'Workflow must use Node 24-compatible actions/checkout@v5.\n' >&2
+  status=1
+fi
+
+if ! grep -Fq 'go.opentelemetry.io/collector/cmd/builder@v0.151.0' "$workflow"; then
+  printf 'Workflow must install the OCB builder for real collector builds.\n' >&2
+  status=1
+fi
+
+if [[ ! -f .plumber.yaml ]]; then
+  printf 'Missing Plumber compliance config: .plumber.yaml\n' >&2
+  status=1
+fi
+
+if ! grep -Fq 'scripts/qa/plumber-check.sh' "$workflow"; then
+  printf 'CI workflow must run Plumber compliance analysis.\n' >&2
+  status=1
+fi
+
+for task_name in ansible:opamp:server cd:runtime:deploy cd:runtime:verify; do
+  if ! grep -Fq -- "$task_name" Taskfile.yml; then
+    printf 'Taskfile is missing CD task: %s\n' "$task_name" >&2
+    status=1
+  fi
+done
+
+if [[ -f "$cd_workflow" ]]; then
+  for required_text in \
+    'workflow_dispatch:' \
+    'environment: lab' \
+    'actions/checkout@v5' \
+    'hashicorp/setup-terraform@' \
+    'go-task/setup-task@' \
+    'actions/cache@v4' \
+    'actions/upload-artifact@v4' \
+    'scripts/cd/prepare-github-actions-env.sh' \
+    'runtime' \
+    'ocb-linux-amd64-${{ hashFiles' \
+    'terraform -chdir=lab/infra/hcloud plan -input=false -target=hcloud_firewall.lab' \
+    'task cd:runtime:deploy' \
+    'task cd:runtime:verify' \
+    'terraform -chdir=lab/infra/hcloud destroy'; do
+    if ! grep -Fq -- "$required_text" "$cd_workflow"; then
+      printf 'CD workflow is missing required text: %s\n' "$required_text" >&2
+      status=1
+    fi
+  done
+fi
+
+for script in scripts/qa/check-anonymization.sh scripts/qa/check-markdown.sh scripts/qa/check-sources.sh scripts/qa/plumber-check.sh scripts/cd/prepare-github-actions-env.sh; do
   if [[ ! -x "$script" ]]; then
     printf 'QA script is not executable: %s\n' "$script" >&2
     status=1
