@@ -48,6 +48,12 @@ tasks:
     cmds:
       - ansible-playbook -i inventory/hosts.ini playbooks/bootstrap.yml
 
+  ansible:opamp:server:
+    desc: Deploy the OpAMP server on the provisioned lab host.
+    dir: lab/ansible
+    cmds:
+      - ansible-playbook -i inventory/hosts.ini playbooks/opamp_server.yml
+
   collector:env:
     desc: Render a local ignored env file for host collector deployment.
     cmds:
@@ -116,10 +122,34 @@ tasks:
     cmds:
       - ./scripts/secrets-check.sh
 
+  compliance:plumber:
+    desc: Run Plumber repository compliance analysis.
+    cmds:
+      - ./scripts/qa/plumber-check.sh
+
   secrets:render:
     desc: Render local env files from SOPS-encrypted secrets.
     cmds:
       - ./scripts/secrets-render.sh
+
+  cd:runtime:deploy:
+    desc: Build and deploy the smoke lab runtime through Ansible.
+    cmds:
+      - task: opamp:build
+      - task: opamp:supervisor:build:linux
+      - task: ocb:build
+      - task: infra:inventory
+      - task: collector:env
+      - task: ansible:bootstrap
+      - task: ansible:opamp:server
+      - task: ansible:collector:supervisor
+
+  cd:runtime:verify:
+    desc: Verify the smoke lab runtime after CD deployment.
+    dir: lab/ansible
+    cmds:
+      - ansible -i inventory/hosts.ini opamp_server -m shell -a 'systemctl is-active opamp-poc-server && curl -fsS http://127.0.0.1:4321/healthz >/dev/null'
+      - ansible -i inventory/hosts.ini host_agents -m shell -a 'systemctl is-active opampsupervisor-logs'
 
   secrets:encrypt:hcloud:
     desc: Encrypt secrets/hcloud.env to secrets.encrypted/hcloud.sops.yaml.
