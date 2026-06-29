@@ -20,7 +20,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
+
+      - name: Install QA dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ripgrep
 
       - name: Markdown check
         run: bash scripts/qa/check-markdown.sh
@@ -31,10 +36,27 @@ jobs:
       - name: Source check
         run: bash scripts/qa/check-sources.sh
 
+  compliance:
+    name: Plumber compliance
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Plumber compliance
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          PLUMBER_GITHUB_TOKEN: ${{ secrets.PLUMBER_GITHUB_TOKEN }}
+        run: bash scripts/qa/plumber-check.sh
+
   task-ci:
     name: task ${{ matrix.task_name }}
     runs-on: ubuntu-latest
-    needs: qa-assets
+    needs:
+      - qa-assets
+      - compliance
     strategy:
       fail-fast: false
       matrix:
@@ -47,10 +69,25 @@ jobs:
           - ci:local
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
+
+      - name: Install QA dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ripgrep
+
+      - name: Setup Go
+        uses: actions/setup-go@v6
+        with:
+          go-version: '1.25.5'
+          cache-dependency-path: lab/opamp-server/go.sum
+
+      - name: Install OCB builder
+        if: matrix.task_name == 'ocb:build' || matrix.task_name == 'ci:local'
+        run: go install go.opentelemetry.io/collector/cmd/builder@v0.151.0
 
       - name: Install Task
-        uses: arduino/setup-task@v2
+        uses: go-task/setup-task@01a4adf9db2d14c1de7a560f09170b6e0df736aa # v2
 
       - name: Install ansible-lint
         if: matrix.task_name == 'ansible:lint' || matrix.task_name == 'ci:local'
