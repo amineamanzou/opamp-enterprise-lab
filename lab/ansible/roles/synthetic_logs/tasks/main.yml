@@ -47,8 +47,8 @@
   ansible.builtin.systemd:
     daemon_reload: true
 
-- name: Keep synthetic log generator disabled by default
+- name: Set synthetic log generator service state
   ansible.builtin.systemd:
     name: synthetic-log-generator.service
-    enabled: false
-    state: stopped
+    enabled: "{{ synthetic_log_service_enabled | default(false) }}"
+    state: "{{ synthetic_log_service_state | default('stopped') }}"

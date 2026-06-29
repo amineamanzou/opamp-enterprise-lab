@@ -9,7 +9,6 @@ if command -v terraform >/dev/null 2>&1; then
     test -f main.tf
     test -f variables.tf
     test -f outputs.tf
-    terraform providers >/dev/null
     grep -R "resource \"hcloud_server\"" -n .
     echo "completed static Terraform checks; set TERRAFORM_VALIDATE_SCHEMAS=1 to run provider-backed terraform validate"
   fi

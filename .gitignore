@@ -28,6 +28,9 @@ __pycache__/
 secrets/
 secrets.encrypted/*.sops.yaml
 *.auto.tfvars
+*.auto.tfvars.json
+lab/infra/hcloud/backend.cd.tf
+lab/infra/hcloud/backend.cd.hcl
 
 memory.md
 
