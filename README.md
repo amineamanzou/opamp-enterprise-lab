@@ -54,6 +54,38 @@ Never commit real values. Use environment variables or local `.env` files:
 - `HCLOUD_TOKEN`
 - `TF_VAR_hcloud_token`
 
+For local Terraform commands, export `TF_VAR_hcloud_token` because Terraform
+reads the Hetzner provider token from the `hcloud_token` variable:
+
+```sh
+export TF_VAR_hcloud_token="$HCLOUD_TOKEN"
+```
+
+For GitHub CD, do not create a separate `TF_VAR_hcloud_token` secret. Add only
+`HCLOUD_TOKEN` to the `lab` GitHub Environment; the workflow maps it to
+`TF_VAR_hcloud_token` internally for Terraform steps. See
+`docs/runbooks/github-cd.md`.
+
+GitHub workflow secrets are documented in `docs/runbooks/github-cd.md`. CI does
+not require secrets. CD requires a `lab` Environment with Hetzner, Elastic,
+OpAMP, SSH, and S3-compatible Terraform state secrets before `apply` or
+`destroy` can run.
+
+The CI workflow also runs Plumber compliance analysis using `.plumber.yaml`.
+The CI job installs the official Plumber CLI release binary and runs:
+
+```sh
+plumber config validate
+plumber analyze --config .plumber.yaml --threshold 100
+```
+
+If Plumber needs broader GitHub API read access for branch protection or
+rulesets, add `PLUMBER_GITHUB_TOKEN` as a repository secret. The compliance
+script uses it in place of the default workflow `GITHUB_TOKEN` when present.
+Use a fine-grained token with `Contents: Read`, `Metadata: Read`, and
+`Administration: Read`, or a classic token with `repo` scope. The `main`
+branch must be protected for the default Plumber policy to pass.
+
 See component-specific README files under `lab/`.
 
 ## Reproducible Experiments
